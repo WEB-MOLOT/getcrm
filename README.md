@@ -1,2 +1,38 @@
-<p>ТЗ - https://docs.google.com/document/d/1wLKiWGbnFU_aId6V4hWpAgGGKSf_PrRTIruH7LlpkTY/edit
-<p>Верстка - http://test.web-molot.ru/getcrm/index.php
+## GETCRM
+
+### Документация
+
+- ТЗ - https://docs.google.com/document/d/1wLKiWGbnFU_aId6V4hWpAgGGKSf_PrRTIruH7LlpkTY/edit
+- Верстка - http://test.web-molot.ru/getcrm/index.php
+
+### Локальный запуск проекта
+
+Создать SQLite базу
+
+```
+touch database/database.sqlite
+```
+
+Указать путь до базы в файле .env
+
+```
+DB_CONNECTION=sqlite
+DB_DATABASE=/home/user/projects/getcrm/database/database.sqlite
+DB_FOREIGN_KEYS=true
+```
+
+Создать ключ приложения, структуру базы данных и заполнить ее тестовыми данными
+
+```
+php artisan key:generate
+php artisan migrate:fresh --seed
+```
+
+Запустить PHP built-in сервер
+
+```
+php artisan serve
+```
+
+После этого проект будет доступен в браузере по адресу http://127.0.0.1:8000/
+
