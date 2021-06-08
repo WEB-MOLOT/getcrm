@@ -60,6 +60,11 @@
 
 <body>
 
+<div class="wrapper">
+    @yield('before_content')
+    @yield('content')
+    @yield('after_content')
+</div>
 
 @yield('footer')
 </body>
