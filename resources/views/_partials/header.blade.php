@@ -889,7 +889,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#">Расчет цены</a>
+                        <a href="{{ route('site.price.index') }}">Расчет цены</a>
                     </li>
                     <li>
                         <a href="{{ route('site.form.index') }}">Отдел продаж</a>

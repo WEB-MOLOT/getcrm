@@ -16,7 +16,7 @@
                 <ul class="d_flex f_wrap">
                     <li><a href="#">Решения</a></li>
                     <li><a href="#">Услуги</a></li>
-                    <li><a href="#">Расчет цены</a></li>
+                    <li><a href="{{ route('site.price.index') }}">Расчет цены</a></li>
                     <li><a href="{{ route('site.form.index') }}">Отдел продаж</a></li>
                 </ul>
             </div>
