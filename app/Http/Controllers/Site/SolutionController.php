@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class OracleController extends Controller
+class SolutionController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -20,6 +20,6 @@ class OracleController extends Controller
     {
         $data = [];
 
-        return view('site.oracle', $data);
+        return view('site.solution', $data);
     }
 }
