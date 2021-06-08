@@ -145,18 +145,18 @@
                 </div>
             </div>
             <ul>
-                <li><a href="#">О компании</a></li>
-                <li><a href="#">Новости</a></li>
-                <li><a href="#">Вакансии</a></li>
-                <li><a href="#">Истории успеха</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="{{ route('site.about.index') }}">О компании</a></li>
+                <li><a href="{{ route('site.news.index') }}">Новости</a></li>
+                <li><a href="{{ route('site.job.index') }}">Вакансии</a></li>
+                <li><a href="{{ route('site.history.index') }}">Истории успеха</a></li>
+                <li><a href="{{ route('site.contacts.index') }}">Контакты</a></li>
             </ul>
         </div>
     </div>
     <div class="header_inside d_flex a_items_center j_content_between">
         <div class="header_left d_flex">
             <div class="hl_logo">
-                <a href="#" class="logo">
+                <a href="{{ route('site.index') }}" class="logo">
                     <img src="/img/logo.png" alt=""/>
                 </a>
             </div>
@@ -892,7 +892,7 @@
                         <a href="#">Расчет цены</a>
                     </li>
                     <li>
-                        <a href="#">Отдел продаж</a>
+                        <a href="{{ route('site.form.index') }}">Отдел продаж</a>
                     </li>
                 </ul>
             </div>

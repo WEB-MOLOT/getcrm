@@ -25,7 +25,7 @@
             </div>
             <div class="ftbk_big">НОВАЯ ЭРА <span>CUSTOMER EXPERIENCE</span></div>
             <div class="ftbk_btn">
-                <a href="#" class="btn btn_orange btn_orange_with_border">
+                <a href="{{ route('site.customer.index') }}" class="btn btn_orange btn_orange_with_border">
                     <span>Начни знакомство</span>
                 </a>
             </div>
