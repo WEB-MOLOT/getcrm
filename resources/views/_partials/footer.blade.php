@@ -8,7 +8,7 @@
         <div class="footer_inside_item footer_inside_item__copyright">
             <div class="footer_copyright">
                 All rights reseved 2019
-                <a href="#">Политика конфиденциальности</a>
+                <a href="{{ route('site.privacy.index')  }}">Политика конфиденциальности</a>
             </div>
         </div>
         <div class="footer_inside_item footer_inside_item__menu">

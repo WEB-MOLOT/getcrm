@@ -32,3 +32,4 @@ Route::get('/job', Site\JobController::class)->name('site.job.index');
 Route::get('/landing', Site\LandingController::class)->name('site.landing.index');
 Route::get('/oracle', Site\OracleController::class)->name('site.oracle.index');
 Route::get('/price', Site\PriceController::class)->name('site.price.index');
+Route::get('/privacy', Site\PrivacyController::class)->name('site.privacy.index');
