@@ -34,7 +34,7 @@
 @endsection
 
 @section('after_content')
-    @include('_partials.footer')
+
 @endsection
 
 @section('content')
