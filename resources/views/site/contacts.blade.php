@@ -43,7 +43,7 @@
                 ></script>
             </div>
             <div class="contacts">
-                <img src="img/contacts.png" class="image"/>
+                <img src="/img/contacts.png" class="image"/>
                 <a href="tel:+74957254376">+7 (495) 725 43 76</a>
                 <div class="hours">
                     <span></span>
@@ -59,10 +59,10 @@
             </div>
         </div>
         <div class="container">
-            <img src="img/contacts2.png" class="mob_image"/>
+            <img src="/img/contacts2.png" class="mob_image"/>
             <h2>Отправить сообщение</h2>
             <div class="form-block">
-                <img src="img/contacts2.png"/>
+                <img src="/img/contacts2.png"/>
                 <form>
                     <input type="text" placeholder="Ваше имя" required/>
                     <input type="email" placeholder="E-mail" required id="mail"/>

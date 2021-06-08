@@ -36,7 +36,7 @@
                 Для связи с отделом продаж заполните форму ниже и мы свяжемся с вами
                 в ближайшее время.
             </div>
-            <img src="img/form.png"/>
+            <img src="/img/form.png"/>
             <form>
                 <input type="text" placeholder="Ваше имя"/>
                 <input type="email" placeholder="E-mail" required/>

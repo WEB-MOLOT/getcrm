@@ -46,7 +46,7 @@
                     <h2>На этом месте заголовок данной новости, можно в 2 строки</h2>
                     <div class="text">
                         <div class="image">
-                            <img src="img/news2.jpg"/>
+                            <img src="/img/news2.jpg"/>
                         </div>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum

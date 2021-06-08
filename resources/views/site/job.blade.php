@@ -39,15 +39,15 @@
                 </p>
                 <div class="info">
                     <div class="info-item">
-                        <div><img src="img/job1.svg"/></div>
+                        <div><img src="/img/job1.svg"/></div>
                         <div>Требуемый опыт работы: 3–6 лет</div>
                     </div>
                     <div class="info-item">
-                        <div><img src="img/job2.svg"/></div>
+                        <div><img src="/img/job2.svg"/></div>
                         <div>Полная занятость, полный день</div>
                     </div>
                     <div class="info-item">
-                        <div><img src="img/job3.svg"/></div>
+                        <div><img src="/img/job3.svg"/></div>
                         <div>до 250 000 руб.</div>
                     </div>
                 </div>
@@ -71,15 +71,15 @@
                 </p>
                 <div class="info">
                     <div class="info-item">
-                        <div><img src="img/job1.svg"/></div>
+                        <div><img src="/img/job1.svg"/></div>
                         <div>Требуемый опыт работы: 3–6 лет</div>
                     </div>
                     <div class="info-item">
-                        <div><img src="img/job2.svg"/></div>
+                        <div><img src="/img/job2.svg"/></div>
                         <div>Полная занятость, полный день</div>
                     </div>
                     <div class="info-item">
-                        <div><img src="img/job3.svg"/></div>
+                        <div><img src="/img/job3.svg"/></div>
                         <div>до 250 000 руб.</div>
                     </div>
                 </div>
@@ -103,15 +103,15 @@
                 </p>
                 <div class="info">
                     <div class="info-item">
-                        <div><img src="img/job1.svg"/></div>
+                        <div><img src="/img/job1.svg"/></div>
                         <div>Требуемый опыт работы: 3–6 лет</div>
                     </div>
                     <div class="info-item">
-                        <div><img src="img/job2.svg"/></div>
+                        <div><img src="/img/job2.svg"/></div>
                         <div>Полная занятость, полный день</div>
                     </div>
                     <div class="info-item">
-                        <div><img src="img/job3.svg"/></div>
+                        <div><img src="/img/job3.svg"/></div>
                         <div>до 250 000 руб.</div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <div class="bottom-link">
-                <img src="img/hh.png"/> <a href="#">Профиль нашей компании</a> на
+                <img src="/img/hh.png"/> <a href="#">Профиль нашей компании</a> на
                 hh.ru
             </div>
         </div>

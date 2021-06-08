@@ -157,7 +157,7 @@
         <div class="header_left d_flex">
             <div class="hl_logo">
                 <a href="#" class="logo">
-                    <img src="img/logo.png" alt=""/>
+                    <img src="/img/logo.png" alt=""/>
                 </a>
             </div>
             <div class="hl_menu_wrapper">
@@ -245,7 +245,7 @@
                                                                                                         class="item_variable_info--image"
                                                                                                     >
                                                                                                         <img
-                                                                                                            src="img/temp/bg_dropdown.png"
+                                                                                                            src="/img/temp/bg_dropdown.png"
                                                                                                             alt=""
                                                                                                         />
                                                                                                     </div>
@@ -359,7 +359,7 @@
                                                                                                         class="item_variable_info--image"
                                                                                                     >
                                                                                                         <img
-                                                                                                            src="img/temp/bg_dropdown.png"
+                                                                                                            src="/img/temp/bg_dropdown.png"
                                                                                                             alt=""
                                                                                                         />
                                                                                                     </div>
@@ -448,7 +448,7 @@
                                                                                                         class="item_variable_info--image"
                                                                                                     >
                                                                                                         <img
-                                                                                                            src="img/temp/bg_dropdown.png"
+                                                                                                            src="/img/temp/bg_dropdown.png"
                                                                                                             alt=""
                                                                                                         />
                                                                                                     </div>
@@ -532,7 +532,7 @@
                                                                                                         class="item_variable_info--image"
                                                                                                     >
                                                                                                         <img
-                                                                                                            src="img/temp/bg_dropdown.png"
+                                                                                                            src="/img/temp/bg_dropdown.png"
                                                                                                             alt=""
                                                                                                         />
                                                                                                     </div>
@@ -692,7 +692,7 @@
                                                                                             class="item_variable_info--image"
                                                                                         >
                                                                                             <img
-                                                                                                src="img/temp/bg_dropdown.png"
+                                                                                                src="/img/temp/bg_dropdown.png"
                                                                                                 alt=""
                                                                                             />
                                                                                         </div>
@@ -747,7 +747,7 @@
                                                                                             class="item_variable_info--image"
                                                                                         >
                                                                                             <img
-                                                                                                src="img/temp/bg_dropdown.png"
+                                                                                                src="/img/temp/bg_dropdown.png"
                                                                                                 alt=""
                                                                                             />
                                                                                         </div>
@@ -794,7 +794,7 @@
                                                                                             class="item_variable_info--image"
                                                                                         >
                                                                                             <img
-                                                                                                src="img/temp/bg_dropdown.png"
+                                                                                                src="/img/temp/bg_dropdown.png"
                                                                                                 alt=""
                                                                                             />
                                                                                         </div>
@@ -842,7 +842,7 @@
                                                                                             class="item_variable_info--image"
                                                                                         >
                                                                                             <img
-                                                                                                src="img/temp/bg_dropdown.png"
+                                                                                                src="/img/temp/bg_dropdown.png"
                                                                                                 alt=""
                                                                                             />
                                                                                         </div>

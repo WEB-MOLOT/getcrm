@@ -66,7 +66,7 @@
                         </p>
                     </div>
                     <div class="image">
-                        <img src="img/about.png"/>
+                        <img src="/img/about.png"/>
                     </div>
                 </div>
                 <div class="blocks">
@@ -75,19 +75,19 @@
                     </div>
                     <div class="flex">
                         <div class="item">
-                            <div><img src="img/about1.svg"/></div>
+                            <div><img src="/img/about1.svg"/></div>
                             <div>Обеспечить качество услуг и разработки</div>
                         </div>
                         <div class="item">
-                            <div><img src="img/about2.svg"/></div>
+                            <div><img src="/img/about2.svg"/></div>
                             <div>Инновации в каждом проекте</div>
                         </div>
                         <div class="item">
-                            <div><img src="img/about3.svg"/></div>
+                            <div><img src="/img/about3.svg"/></div>
                             <div>Уменьшить цикл внедрения</div>
                         </div>
                         <div class="item">
-                            <div><img src="img/about4.svg"/></div>
+                            <div><img src="/img/about4.svg"/></div>
                             <div>Делиться лучшими мировыми практиками</div>
                         </div>
                     </div>

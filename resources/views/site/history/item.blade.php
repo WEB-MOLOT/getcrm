@@ -45,7 +45,7 @@
                     </a>
                     <h2>Информация о компании</h2>
                     <div class="top-info">
-                        <div><img src="img/airlines2.png"/></div>
+                        <div><img src="/img/airlines2.png"/></div>
                         <div>
                             <p>Основана в 1943 году</p>
                             <p>Более 10 000 000 пассажиров в год</p>
@@ -112,11 +112,11 @@
                     <div class="flex before-after">
                         <div class="item">
                             <p>До</p>
-                            <img src="img/before.png"/>
+                            <img src="/img/before.png"/>
                         </div>
                         <div class="item">
                             <p>После</p>
-                            <img src="img/before.png"/>
+                            <img src="/img/before.png"/>
                         </div>
                         <div class="item">
                             <div class="block">

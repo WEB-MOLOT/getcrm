@@ -2,7 +2,7 @@
     <div class="footer_inside d_flex a_items_center j_content_between">
         <div class="footer_inside_item footer_inside_item__logo">
             <div class="footer_logo">
-                <a href="#"><img src="img/logo_footer.png" alt=""/></a>
+                <a href="#"><img src="/img/logo_footer.png" alt=""/></a>
             </div>
         </div>
         <div class="footer_inside_item footer_inside_item__copyright">

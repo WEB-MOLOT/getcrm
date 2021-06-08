@@ -53,7 +53,7 @@
                     <div id="t31">
                         <div class="flex">
                             <div class="image">
-                                <img src="img/image.png"/>
+                                <img src="/img/image.png"/>
                             </div>
                             <div class="info">
                                 <div class="flex">
@@ -120,7 +120,7 @@
                     <div id="t32">
                         <div class="flex">
                             <div class="image">
-                                <img src="img/image.png"/>
+                                <img src="/img/image.png"/>
                             </div>
                             <div class="info">
                                 <div class="flex">
@@ -191,7 +191,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab7.svg"/> Формирование динамических сегментов
+                            <img src="/img/tab7.svg"/> Формирование динамических сегментов
                             (фильтров) для рассылок <span></span>
                         </div>
 
@@ -226,7 +226,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab8.svg"/> Омниканальность <span></span>
+                            <img src="/img/tab8.svg"/> Омниканальность <span></span>
                         </div>
                         <div class="text">
                             <a href="#" class="add">Добавить в проект</a>
@@ -259,7 +259,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab9.svg" class="small"/> Создание
+                            <img src="/img/tab9.svg" class="small"/> Создание
                             динамического контента и компании <span></span>
                         </div>
                         <div class="text">
@@ -293,7 +293,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab10.svg"/> Построение многошаговых программ
+                            <img src="/img/tab10.svg"/> Построение многошаговых программ
                             <span></span>
                         </div>
                         <div class="text">
@@ -327,7 +327,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab11.svg"/> Настройка триггеров <span></span>
+                            <img src="/img/tab11.svg"/> Настройка триггеров <span></span>
                         </div>
                         <div class="text">
                             <a href="#" class="add">Добавить в проект</a>
@@ -360,7 +360,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab12.svg"/> Аналитика <span></span>
+                            <img src="/img/tab12.svg"/> Аналитика <span></span>
                         </div>
                         <div class="text">
                             <a href="#" class="add">Добавить в проект</a>
@@ -393,7 +393,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab13.svg"/> Многоканальный персонализированный
+                            <img src="/img/tab13.svg"/> Многоканальный персонализированный
                             Ремаркетинг/ Ретаргетинг <span></span>
                         </div>
                         <div class="text">
@@ -427,7 +427,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab14.svg"/> Интеграция <span></span>
+                            <img src="/img/tab14.svg"/> Интеграция <span></span>
                         </div>
                         <div class="text">
                             <a href="#" class="add">Добавить в проект</a>
@@ -460,7 +460,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab15.svg"/> Производительность и безопасность
+                            <img src="/img/tab15.svg"/> Производительность и безопасность
                             <span></span>
                         </div>
                         <div class="text">
@@ -494,7 +494,7 @@
                     </div>
                     <div class="item">
                         <div class="name">
-                            <img src="img/tab16.svg"/> Полезные ресурсы <span></span>
+                            <img src="/img/tab16.svg"/> Полезные ресурсы <span></span>
                         </div>
                         <div class="text">
                             <a href="#" class="add">Добавить в проект</a>
@@ -529,34 +529,34 @@
                 <div class="tabs">
                     <ul class="tabNavigation other">
                         <li>
-                            <a href="#t1"><img src="img/tab7.svg"/></a>
+                            <a href="#t1"><img src="/img/tab7.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t2"><img src="img/tab8.svg"/></a>
+                            <a href="#t2"><img src="/img/tab8.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t3"><img src="img/tab9.svg"/></a>
+                            <a href="#t3"><img src="/img/tab9.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t4"><img src="img/tab10.svg"/></a>
+                            <a href="#t4"><img src="/img/tab10.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t5"><img src="img/tab11.svg"/></a>
+                            <a href="#t5"><img src="/img/tab11.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t6"><img src="img/tab12.svg"/></a>
+                            <a href="#t6"><img src="/img/tab12.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t7"><img src="img/tab13.svg"/></a>
+                            <a href="#t7"><img src="/img/tab13.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t8"><img src="img/tab14.svg"/></a>
+                            <a href="#t8"><img src="/img/tab14.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t9"><img src="img/tab15.svg"/></a>
+                            <a href="#t9"><img src="/img/tab15.svg"/></a>
                         </li>
                         <li>
-                            <a href="#t10"><img src="img/tab16.svg"/></a>
+                            <a href="#t10"><img src="/img/tab16.svg"/></a>
                         </li>
                     </ul>
                     <div id="t1">
@@ -606,7 +606,7 @@
                 </div>
                 <div class="middle-text">
                     <div class="name">
-                        Индустриальные надстройки <img src="img/plane.svg"/>
+                        Индустриальные надстройки <img src="/img/plane.svg"/>
                     </div>
                     <p class="bold">Дополнительный функционал для авиакомпаний</p>
                     <p>
@@ -778,7 +778,7 @@
                                     <div class="flex">
                                         <div class="company">
                                             <div>
-                                                <span><img src="img/beeline.png"/></span>
+                                                <span><img src="/img/beeline.png"/></span>
                                             </div>
                                             <div>
                                                 Старший менеджер
@@ -810,7 +810,7 @@
                                     <div class="flex">
                                         <div class="company">
                                             <div>
-                                                <span><img src="img/beeline.png"/></span>
+                                                <span><img src="/img/beeline.png"/></span>
                                             </div>
                                             <div>
                                                 Старший менеджер
@@ -842,7 +842,7 @@
                                     <div class="flex">
                                         <div class="company">
                                             <div>
-                                                <span><img src="img/beeline.png"/></span>
+                                                <span><img src="/img/beeline.png"/></span>
                                             </div>
                                             <div>
                                                 Старший менеджер
@@ -874,7 +874,7 @@
                                     <div class="flex">
                                         <div class="company">
                                             <div>
-                                                <span><img src="img/beeline.png"/></span>
+                                                <span><img src="/img/beeline.png"/></span>
                                             </div>
                                             <div>
                                                 Старший менеджер

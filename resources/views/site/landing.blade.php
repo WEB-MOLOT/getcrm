@@ -39,7 +39,7 @@
 @section('content')
     <div class="landing">
         <section class="landing-main">
-            <img src="img/landing/main-bg.jpg" alt="" class="landing-main__bg"/>
+            <img src="/img/landing/main-bg.jpg" alt="" class="landing-main__bg"/>
             <div class="container">
                 <div class="landing-main__inner">
                     <div class="landing-main__col landing-main__col--text">
@@ -63,7 +63,7 @@
                     <div class="landing-main__col landing-main__col--video">
                         <div class="landing-main__video-outer">
                             <img
-                                src="img/landing/macbook.png"
+                                src="/img/landing/macbook.png"
                                 alt=""
                                 class="landing-main__video-laptop"
                             />
@@ -73,7 +73,7 @@
                                     class="landing-main__video-play"
                                 ></button>
                                 <video
-                                    src="img/landing/Pexels-Videos-1448735.mp4"
+                                    src="/img/landing/Pexels-Videos-1448735.mp4"
                                     class="landing-main__video"
                                     poster="img/landing/macbook-poster.jpg"
                                 ></video>
@@ -93,7 +93,7 @@
                     <div class="landing-function__list">
                         <div class="landing-function__item">
                             <img
-                                src="img/landing/func-1.jpg"
+                                src="/img/landing/func-1.jpg"
                                 alt=""
                                 class="landing-function__item-bg"
                             />
@@ -114,7 +114,7 @@
                                 </ul>
                                 <div class="landing-function__item-img-wrap">
                                     <img
-                                        src="img/landing/function-1.svg"
+                                        src="/img/landing/function-1.svg"
                                         alt=""
                                         class="landing-function__img"
                                     />
@@ -123,7 +123,7 @@
                         </div>
                         <div class="landing-function__item">
                             <img
-                                src="img/landing/func-2.jpg"
+                                src="/img/landing/func-2.jpg"
                                 alt=""
                                 class="landing-function__item-bg"
                             />
@@ -152,7 +152,7 @@
                                 </ul>
                                 <div class="landing-function__item-img-wrap">
                                     <img
-                                        src="img/landing/function-2.svg"
+                                        src="/img/landing/function-2.svg"
                                         alt=""
                                         class="landing-function__img"
                                     />
@@ -161,7 +161,7 @@
                         </div>
                         <div class="landing-function__item">
                             <img
-                                src="img/landing/func-3.jpg"
+                                src="/img/landing/func-3.jpg"
                                 alt=""
                                 class="landing-function__item-bg"
                             />
@@ -187,7 +187,7 @@
                                 </ul>
                                 <div class="landing-function__item-img-wrap">
                                     <img
-                                        src="img/landing/function-3.svg"
+                                        src="/img/landing/function-3.svg"
                                         alt=""
                                         class="landing-function__img"
                                     />
@@ -208,7 +208,7 @@
                         <div class="landing-features__item">
                             <div class="landing-features__item-img-wrap">
                                 <img
-                                    src="img/landing/features-1.svg"
+                                    src="/img/landing/features-1.svg"
                                     alt=""
                                     class="landing-features__item-img"
                                 />
@@ -221,7 +221,7 @@
                         <div class="landing-features__item">
                             <div class="landing-features__item-img-wrap">
                                 <img
-                                    src="img/landing/features-2.svg"
+                                    src="/img/landing/features-2.svg"
                                     alt=""
                                     class="landing-features__item-img"
                                 />
@@ -234,7 +234,7 @@
                         <div class="landing-features__item">
                             <div class="landing-features__item-img-wrap">
                                 <img
-                                    src="img/landing/features-3.svg"
+                                    src="/img/landing/features-3.svg"
                                     alt=""
                                     class="landing-features__item-img"
                                 />
@@ -247,7 +247,7 @@
                         <div class="landing-features__item">
                             <div class="landing-features__item-img-wrap">
                                 <img
-                                    src="img/landing/features-4.svg"
+                                    src="/img/landing/features-4.svg"
                                     alt=""
                                     class="landing-features__item-img"
                                 />
@@ -281,7 +281,7 @@
                                     <div class="landing-solution__item-solution-wrap">
                                         <div class="landing-solution__item-img-wrap">
                                             <img
-                                                src="img/landing/solution-1.jpg"
+                                                src="/img/landing/solution-1.jpg"
                                                 alt=""
                                                 class="landing-solution__item-img"
                                             />
@@ -303,7 +303,7 @@
                                     <div class="landing-solution__item-solution-wrap">
                                         <div class="landing-solution__item-img-wrap">
                                             <img
-                                                src="img/landing/macbook.png"
+                                                src="/img/landing/macbook.png"
                                                 alt=""
                                                 class="landing-solution__item-img"
                                             />
@@ -325,7 +325,7 @@
                                     <div class="landing-solution__item-solution-wrap">
                                         <div class="landing-solution__item-img-wrap">
                                             <img
-                                                src="img/landing/solution-1.jpg"
+                                                src="/img/landing/solution-1.jpg"
                                                 alt=""
                                                 class="landing-solution__item-img"
                                             />
@@ -347,7 +347,7 @@
                                     <div class="landing-solution__item-solution-wrap">
                                         <div class="landing-solution__item-img-wrap">
                                             <img
-                                                src="img/landing/solution-1.jpg"
+                                                src="/img/landing/solution-1.jpg"
                                                 alt=""
                                                 class="landing-solution__item-img"
                                             />
@@ -369,7 +369,7 @@
                                     <div class="landing-solution__item-solution-wrap">
                                         <div class="landing-solution__item-img-wrap">
                                             <img
-                                                src="img/landing/solution-1.jpg"
+                                                src="/img/landing/solution-1.jpg"
                                                 alt=""
                                                 class="landing-solution__item-img"
                                             />
@@ -391,7 +391,7 @@
                                     <div class="landing-solution__item-solution-wrap">
                                         <div class="landing-solution__item-img-wrap">
                                             <img
-                                                src="img/landing/solution-1.jpg"
+                                                src="/img/landing/solution-1.jpg"
                                                 alt=""
                                                 class="landing-solution__item-img"
                                             />
@@ -413,7 +413,7 @@
                                     <div class="landing-solution__item-solution-wrap">
                                         <div class="landing-solution__item-img-wrap">
                                             <img
-                                                src="img/landing/solution-1.jpg"
+                                                src="/img/landing/solution-1.jpg"
                                                 alt=""
                                                 class="landing-solution__item-img"
                                             />
@@ -438,7 +438,7 @@
                                 <div class="landing-solution__tab js-open" data-tab="1">
                                     <div class="landing-solution__tab-img-wrap">
                                         <img
-                                            src="img/landing/solution-1.jpg"
+                                            src="/img/landing/solution-1.jpg"
                                             alt=""
                                             class="landing-solution__tab-img"
                                         />
@@ -455,7 +455,7 @@
                                 <div class="landing-solution__tab" data-tab="2">
                                     <div class="landing-solution__tab-img-wrap">
                                         <img
-                                            src="img/landing/macbook.png"
+                                            src="/img/landing/macbook.png"
                                             alt=""
                                             class="landing-solution__tab-img"
                                         />
@@ -472,7 +472,7 @@
                                 <div class="landing-solution__tab" data-tab="3">
                                     <div class="landing-solution__tab-img-wrap">
                                         <img
-                                            src="img/landing/macbook-poster.jpg"
+                                            src="/img/landing/macbook-poster.jpg"
                                             alt=""
                                             class="landing-solution__tab-img"
                                         />
@@ -489,7 +489,7 @@
                                 <div class="landing-solution__tab" data-tab="4">
                                     <div class="landing-solution__tab-img-wrap">
                                         <img
-                                            src="img/landing/macbook.png"
+                                            src="/img/landing/macbook.png"
                                             alt=""
                                             class="landing-solution__tab-img"
                                         />
@@ -506,7 +506,7 @@
                                 <div class="landing-solution__tab" data-tab="5">
                                     <div class="landing-solution__tab-img-wrap">
                                         <img
-                                            src="img/landing/macbook-poster.jpg"
+                                            src="/img/landing/macbook-poster.jpg"
                                             alt=""
                                             class="landing-solution__tab-img"
                                         />
@@ -523,7 +523,7 @@
                                 <div class="landing-solution__tab" data-tab="6">
                                     <div class="landing-solution__tab-img-wrap">
                                         <img
-                                            src="img/landing/solution-1.jpg"
+                                            src="/img/landing/solution-1.jpg"
                                             alt=""
                                             class="landing-solution__tab-img"
                                         />
@@ -540,7 +540,7 @@
                                 <div class="landing-solution__tab" data-tab="7">
                                     <div class="landing-solution__tab-img-wrap">
                                         <img
-                                            src="img/landing/solution-1.jpg"
+                                            src="/img/landing/solution-1.jpg"
                                             alt=""
                                             class="landing-solution__tab-img"
                                         />
@@ -568,7 +568,7 @@
                         <div class="landing-get__wrap-inner">
                             <div class="landing-get__top">
                                 <img
-                                    src="img/landing/license-top.svg"
+                                    src="/img/landing/license-top.svg"
                                     alt=""
                                     class="landing-get__top-img"
                                 />
@@ -701,7 +701,7 @@
                         <div class="landing-order__item">
                             <div class="landing-order__item-img-wrap">
                                 <img
-                                    src="img/landing/license-1.svg"
+                                    src="/img/landing/license-1.svg"
                                     alt=""
                                     class="landing-order__item-img"
                                 />
@@ -713,7 +713,7 @@
                         <div class="landing-order__item">
                             <div class="landing-order__item-img-wrap">
                                 <img
-                                    src="img/landing/license-2.svg"
+                                    src="/img/landing/license-2.svg"
                                     alt=""
                                     class="landing-order__item-img"
                                 />
@@ -725,7 +725,7 @@
                         <div class="landing-order__item">
                             <div class="landing-order__item-img-wrap">
                                 <img
-                                    src="img/landing/license-3.svg"
+                                    src="/img/landing/license-3.svg"
                                     alt=""
                                     class="landing-order__item-img"
                                 />
@@ -737,7 +737,7 @@
                         <div class="landing-order__item">
                             <div class="landing-order__item-img-wrap">
                                 <img
-                                    src="img/landing/license-4.svg"
+                                    src="/img/landing/license-4.svg"
                                     alt=""
                                     class="landing-order__item-img"
                                 />
@@ -749,7 +749,7 @@
                         <div class="landing-order__item">
                             <div class="landing-order__item-img-wrap">
                                 <img
-                                    src="img/landing/license-5.svg"
+                                    src="/img/landing/license-5.svg"
                                     alt=""
                                     class="landing-order__item-img"
                                 />
@@ -768,7 +768,7 @@
                     <div class="landing-mobile__col landing-mobile__col--img">
                         <div class="landing-mobile__img-wrap">
                             <img
-                                src="img/landing/phone.png"
+                                src="/img/landing/phone.png"
                                 alt=""
                                 class="landing-mobile__img"
                             />
@@ -787,7 +787,7 @@
                         <div class="landing-mobile__text-wrap">
                             <div class="landing-mobile__img-wrap--mobile">
                                 <img
-                                    src="img/landing/phone.png"
+                                    src="/img/landing/phone.png"
                                     alt=""
                                     class="landing-mobile__img"
                                 />

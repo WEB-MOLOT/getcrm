@@ -406,7 +406,7 @@
                     >
                 <span class="d_flex a_items_center j_content_center">
                   <em class="btn_icon"
-                  ><img src="img/icon_btn_phone.png" alt=""
+                  ><img src="/img/icon_btn_phone.png" alt=""
                       /></em>
                   <em class="btn_txt">Связаться с менеджером</em>
                 </span>
@@ -758,7 +758,7 @@
                                     <div
                                         class="why_getcrm_item--variant_icon d_flex a_items_center j_content_center"
                                     >
-                                        <img src="img/svg/icon_why_crm_1.svg" alt=""/>
+                                        <img src="/img/svg/icon_why_crm_1.svg" alt=""/>
                                     </div>
                                     <div class="why_getcrm_item--variant_txt">
                                         Контроль бизнес- результатов
@@ -768,7 +768,7 @@
                                     <div
                                         class="why_getcrm_item--variant_icon d_flex a_items_center j_content_center"
                                     >
-                                        <img src="img/svg/icon_why_crm_2.svg" alt=""/>
+                                        <img src="/img/svg/icon_why_crm_2.svg" alt=""/>
                                     </div>
                                     <div class="why_getcrm_item--variant_txt">
                                         Customer Journey Mapping (CJM):
@@ -778,7 +778,7 @@
                                     <div
                                         class="why_getcrm_item--variant_icon d_flex a_items_center j_content_center"
                                     >
-                                        <img src="img/svg/icon_why_crm_3.svg" alt=""/>
+                                        <img src="/img/svg/icon_why_crm_3.svg" alt=""/>
                                     </div>
                                     <div class="why_getcrm_item--variant_txt">
                                         Применение лучших практик (BPI, Best Practice
@@ -862,7 +862,7 @@
                                     <div
                                         class="why_getcrm_item--variant_icon d_flex a_items_center j_content_center"
                                     >
-                                        <img src="img/svg/icon_why_crm_4.svg" alt=""/>
+                                        <img src="/img/svg/icon_why_crm_4.svg" alt=""/>
                                     </div>
                                     <div class="why_getcrm_item--variant_txt">
                                         С нами выбор платформы станет проще
@@ -872,7 +872,7 @@
                                     <div
                                         class="why_getcrm_item--variant_icon d_flex a_items_center j_content_center"
                                     >
-                                        <img src="img/svg/icon_why_crm_5.svg" alt=""/>
+                                        <img src="/img/svg/icon_why_crm_5.svg" alt=""/>
                                     </div>
                                     <div class="why_getcrm_item--variant_txt">
                                         Выбери выгодного и ответственного партнера
@@ -882,7 +882,7 @@
                                     <div
                                         class="why_getcrm_item--variant_icon d_flex a_items_center j_content_center"
                                     >
-                                        <img src="img/svg/icon_why_crm_6.svg" alt=""/>
+                                        <img src="/img/svg/icon_why_crm_6.svg" alt=""/>
                                     </div>
                                     <div class="why_getcrm_item--variant_txt">
                                         Подключитесь к непрерывному источнику знаний
@@ -972,7 +972,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -997,7 +997,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1022,7 +1022,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1047,7 +1047,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1072,7 +1072,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1097,7 +1097,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1122,7 +1122,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1147,7 +1147,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1172,7 +1172,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1197,7 +1197,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1222,7 +1222,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1247,7 +1247,7 @@
                             class="item_inside d_flex a_items_center j_content_between"
                         >
                             <div class="project_logo">
-                                <img src="img/temp/project_logo.png" alt=""/>
+                                <img src="/img/temp/project_logo.png" alt=""/>
                             </div>
                             <div class="project_percentage">
                                 <div class="project_percentage--value">+16%</div>
@@ -1272,73 +1272,73 @@
                 <div class="projects_slider_thumbnails">
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_1.png" alt=""/>
+                            <img src="/img/temp/project_thumb_1.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_2.png" alt=""/>
+                            <img src="/img/temp/project_thumb_2.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_3.png" alt=""/>
+                            <img src="/img/temp/project_thumb_3.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_4.png" alt=""/>
+                            <img src="/img/temp/project_thumb_4.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_1.png" alt=""/>
+                            <img src="/img/temp/project_thumb_1.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_2.png" alt=""/>
+                            <img src="/img/temp/project_thumb_2.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_3.png" alt=""/>
+                            <img src="/img/temp/project_thumb_3.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_4.png" alt=""/>
+                            <img src="/img/temp/project_thumb_4.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_1.png" alt=""/>
+                            <img src="/img/temp/project_thumb_1.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_2.png" alt=""/>
+                            <img src="/img/temp/project_thumb_2.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_3.png" alt=""/>
+                            <img src="/img/temp/project_thumb_3.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
                     <div class="item">
                         <div class="item_inside d_flex a_items_end j_content_center">
-                            <img src="img/temp/project_thumb_4.png" alt=""/>
+                            <img src="/img/temp/project_thumb_4.png" alt=""/>
                             <span></span>
                         </div>
                     </div>
@@ -1354,7 +1354,7 @@
                     <div class="item">
                         <div class="item_inside d_flex a_items_end">
                             <img
-                                src="img/temp/certificate_1.png"
+                                src="/img/temp/certificate_1.png"
                                 xoriginal="img/temp/original/certificate_1.png"
                                 class="xzoomImage"
                                 alt=""
@@ -1364,7 +1364,7 @@
                     <div class="item">
                         <div class="item_inside d_flex a_items_end">
                             <img
-                                src="img/temp/certificate_2.png"
+                                src="/img/temp/certificate_2.png"
                                 xoriginal="img/temp/original/certificate_2.png"
                                 class="xzoomImage"
                                 alt=""
@@ -1374,7 +1374,7 @@
                     <div class="item">
                         <div class="item_inside d_flex a_items_end">
                             <img
-                                src="img/temp/certificate_3.png"
+                                src="/img/temp/certificate_3.png"
                                 xoriginal="img/temp/original/certificate_3.png"
                                 class="xzoomImage"
                                 alt=""
@@ -1384,7 +1384,7 @@
                     <div class="item">
                         <div class="item_inside d_flex a_items_end">
                             <img
-                                src="img/temp/certificate_1.png"
+                                src="/img/temp/certificate_1.png"
                                 xoriginal="img/temp/original/certificate_1.png"
                                 class="xzoomImage"
                                 alt=""
@@ -1394,7 +1394,7 @@
                     <div class="item">
                         <div class="item_inside d_flex a_items_end">
                             <img
-                                src="img/temp/certificate_2.png"
+                                src="/img/temp/certificate_2.png"
                                 xoriginal="img/temp/original/certificate_2.png"
                                 class="xzoomImage"
                                 alt=""
@@ -1404,7 +1404,7 @@
                     <div class="item">
                         <div class="item_inside d_flex a_items_end">
                             <img
-                                src="img/temp/certificate_3.png"
+                                src="/img/temp/certificate_3.png"
                                 xoriginal="img/temp/original/certificate_3.png"
                                 class="xzoomImage"
                                 alt=""
@@ -1463,7 +1463,7 @@
             <div class="vacancies_wrapper_inside">
                 <div class="vacancies_inside d_flex a_items_center">
                     <div class="vacancies_image">
-                        <img src="img/temp/vacancies_1.jpg" alt=""/>
+                        <img src="/img/temp/vacancies_1.jpg" alt=""/>
                     </div>
                     <div class="vacancies_info d_flex a_items_center">
                         <div class="vacancies_info_inside">
@@ -1495,7 +1495,7 @@
                             class="vacancies_btn_link d_flex a_items_center j_content_center"
                         >
                   <span class="vacancies_btn_link--icon">
-                    <img src="img/vacancies_hh_icon.png" alt=""/>
+                    <img src="/img/vacancies_hh_icon.png" alt=""/>
                   </span>
                             <span class="vacancies_btn_link--txt">
                     <span class="vacancies_btn_link--txt_one"
@@ -1518,7 +1518,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1554,7 +1554,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1590,7 +1590,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1626,7 +1626,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1662,7 +1662,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1698,7 +1698,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1734,7 +1734,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1770,7 +1770,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1806,7 +1806,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
@@ -1842,7 +1842,7 @@
                         <a href="#" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">10.01.2020</span>
                             <div class="item_image">
-                                <img src="img/temp/news_1.jpg" alt=""/>
+                                <img src="/img/temp/news_1.jpg" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">

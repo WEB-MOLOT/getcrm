@@ -40,56 +40,56 @@
                         <div class="item">
                             <div class="name">ПОТРЕБНОСТЬ</div>
                             <div class="icon">
-                                <img src="img/customer1.svg"/>
+                                <img src="/img/customer1.svg"/>
                             </div>
                             Вовлекайте
                         </div>
                         <div class="item">
                             <div class="name">ПОИСК</div>
                             <div class="icon">
-                                <img src="img/customer2.svg"/>
+                                <img src="/img/customer2.svg"/>
                             </div>
                             Узнавайте
                         </div>
                         <div class="item">
                             <div class="name">ВЫБОР</div>
                             <div class="icon">
-                                <img src="img/customer3.svg"/>
+                                <img src="/img/customer3.svg"/>
                             </div>
                             Предлагайте нужное
                         </div>
                         <div class="item">
                             <div class="name">ПОКУПКА</div>
                             <div class="icon">
-                                <img src="img/customer4.svg"/>
+                                <img src="/img/customer4.svg"/>
                             </div>
                             Удивляйте
                         </div>
                         <div class="item">
                             <div class="name">ПОЛУЧЕНИЕ</div>
                             <div class="icon">
-                                <img src="img/customer5.svg"/>
+                                <img src="/img/customer5.svg"/>
                             </div>
                             Будьте последовательны
                         </div>
                         <div class="item">
                             <div class="name">ИСПОЛЬЗОВАНИЕ</div>
                             <div class="icon">
-                                <img src="img/customer6.svg"/>
+                                <img src="/img/customer6.svg"/>
                             </div>
                             Упрощайте
                         </div>
                         <div class="item">
                             <div class="name">ОБСЛУЖИВАНИЕ</div>
                             <div class="icon">
-                                <img src="img/customer7.svg"/>
+                                <img src="/img/customer7.svg"/>
                             </div>
                             Заботьтесь
                         </div>
                         <div class="item">
                             <div class="name">РЕКОМЕНДАЦИИ</div>
                             <div class="icon">
-                                <img src="img/customer8.svg"/>
+                                <img src="/img/customer8.svg"/>
                             </div>
                             Награждайте
                         </div>
@@ -129,7 +129,7 @@
                             </p>
                         </div>
                         <div class="image">
-                            <img src="img/customer1.png"/>
+                            <img src="/img/customer1.png"/>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                     <h2>Почему сложно создать запоминающийся Customer Experience?</h2>
                     <div class="flex">
                         <div class="image">
-                            <img src="img/customer2.png"/>
+                            <img src="/img/customer2.png"/>
                         </div>
                         <div class="text">
                             <ul>
@@ -188,7 +188,7 @@
                     </h2>
                     <div class="flex">
                         <div class="image">
-                            <img src="img/customer3.png"/>
+                            <img src="/img/customer3.png"/>
                         </div>
                         <div class="text">
                             <p>
@@ -230,7 +230,7 @@
                     </h2>
                     <div class="flex">
                         <div class="image">
-                            <img src="img/customer4.png"/>
+                            <img src="/img/customer4.png"/>
                         </div>
                         <div class="text">
                             <p>
@@ -277,7 +277,7 @@
                             </p>
                         </div>
                         <div class="image">
-                            <img src="img/customer5.png"/>
+                            <img src="/img/customer5.png"/>
                         </div>
                     </div>
                 </div>
@@ -353,7 +353,7 @@
                     </ol>
                     <div class="block__img-wrap">
                         <img
-                            src="img/customer/experience.png"
+                            src="/img/customer/experience.png"
                             alt=""
                             class="block__img"
                         />

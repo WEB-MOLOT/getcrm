@@ -49,7 +49,7 @@
                     </a>
                     <div class="info">
                         <div class="logo">
-                            <img src="img/airlines.png"/>
+                            <img src="/img/airlines.png"/>
                         </div>
                         <p>
                             Внедрение ситемы кросс-канальных коммуникаций в АК "Уральские
@@ -98,7 +98,7 @@
                     </a>
                     <div class="info">
                         <div class="logo">
-                            <img src="img/airlines.png"/>
+                            <img src="/img/airlines.png"/>
                         </div>
                         <p>
                             Внедрение ситемы кросс-канальных коммуникаций в АК "Уральские
@@ -145,7 +145,7 @@
                     </a>
                     <div class="info">
                         <div class="logo">
-                            <img src="img/airlines.png"/>
+                            <img src="/img/airlines.png"/>
                         </div>
                         <p>
                             Внедрение ситемы кросс-канальных коммуникаций в АК "Уральские
@@ -184,7 +184,7 @@
                     </a>
                     <div class="info">
                         <div class="logo">
-                            <img src="img/airlines.png"/>
+                            <img src="/img/airlines.png"/>
                         </div>
                         <p>
                             Внедрение ситемы кросс-канальных коммуникаций в АК "Уральские
