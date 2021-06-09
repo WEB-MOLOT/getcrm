@@ -60,7 +60,7 @@ class NewsItems extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::image('preview'),
+            AdminColumn::image('image'),
             AdminColumn::text('title', 'Заголовок'),
             AdminColumn::datetime('created_at', 'Добавлена')
                 ->setWidth('200px')
