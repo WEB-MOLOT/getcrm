@@ -12,6 +12,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
      */
     protected $sections = [
         \App\Models\NewsItem::class => 'App\Http\Sections\NewsItems',
+        \App\Models\Vacancy::class => 'App\Http\Sections\Vacancies',
     ];
 
     /**
