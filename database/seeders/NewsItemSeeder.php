@@ -7,12 +7,7 @@ use Illuminate\Database\Seeder;
 
 class NewsItemSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         NewsItem::factory(10)->create();
     }

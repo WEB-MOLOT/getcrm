@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateVacanciesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
@@ -24,12 +19,7 @@ class CreateVacanciesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('vacancies');
     }

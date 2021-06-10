@@ -11,12 +11,9 @@ use Illuminate\Database\Seeder;
 class SuccessStorySeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
      * @throws Exception
      */
-    public function run()
+    public function run(): void
     {
         SuccessStory::factory(5)
             ->has(SuccessStoryBadge::factory()->count(3), 'badges')

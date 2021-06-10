@@ -9,15 +9,11 @@ use JetBrains\PhpStorm\ArrayShape;
 class VacancyFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
      * @var string
      */
     protected $model = Vacancy::class;
 
     /**
-     * Define the model's default state.
-     *
      * @return array
      */
     #[ArrayShape(['title' => "string", 'content' => "array|string", 'hh' => "string", 'params' => "string[]"])]

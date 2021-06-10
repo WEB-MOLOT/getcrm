@@ -9,15 +9,11 @@ use JetBrains\PhpStorm\ArrayShape;
 class NewsItemFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
      * @var string
      */
     protected $model = NewsItem::class;
 
     /**
-     * Define the model's default state.
-     *
      * @return array
      */
     #[ArrayShape(['title' => "string", 'description' => "string", 'content' => "array|string", 'image' => "string"])]

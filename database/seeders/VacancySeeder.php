@@ -7,12 +7,7 @@ use Illuminate\Database\Seeder;
 
 class VacancySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         Vacancy::factory(5)->create();
     }
