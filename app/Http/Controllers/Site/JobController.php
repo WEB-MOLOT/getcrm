@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Vacancy;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +19,11 @@ class JobController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        $data = [];
+        $vacancies = Vacancy::query()->latest('id')->get();
+
+        $data = [
+            'vacancies' => $vacancies,
+        ];
 
         return view('site.job', $data);
     }

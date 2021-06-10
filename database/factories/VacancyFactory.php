@@ -20,12 +20,15 @@ class VacancyFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence,
-            'content' => $this->faker->paragraphs(3, true),
+            'title' => trim($this->faker->sentence, '.'),
+            'content' => '<p>' . implode('</p><p>', $this->faker->paragraphs(3)) . '</p>',
             'hh' => 'https://hh.ru/vacancy/' . $this->faker->numberBetween(45000000, 45212758),
             'params' => [
-                'salary' => $this->faker->randomElement(['от', 'до']) . ' ' . $this->faker->numberBetween(70000, 240000),
-                'experience' => $this->faker->numberBetween(5, 9) . ' лет',
+                'salary' => $this->faker->randomElement(['от', 'до']) . ' '
+                    . number_format(num: $this->faker->numberBetween(70000, 240000), thousands_separator: ' ')
+                    . ' руб.',
+                'experience' => $this->faker->randomElement(['от', 'до']) . ' '
+                    . $this->faker->numberBetween(5, 9) . ' лет',
                 'employment' => $this->faker->randomElement(['Полная занятость', 'Удаленная работа']) . ', полный день',
             ],
         ];

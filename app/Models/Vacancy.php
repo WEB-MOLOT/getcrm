@@ -18,7 +18,28 @@ class Vacancy extends Model
         'params',
     ];
 
+    protected $appends = [
+        'salary',
+        'experience',
+        'employment',
+    ];
+
     protected $casts = [
         'params' => 'object',
     ];
+
+    public function getSalaryAttribute(): ?string
+    {
+        return optional($this->params)->salary;
+    }
+
+    public function getExperienceAttribute(): ?string
+    {
+        return optional($this->params)->experience;
+    }
+
+    public function getEmploymentAttribute(): ?string
+    {
+        return optional($this->params)->employment;
+    }
 }

@@ -1,3 +1,12 @@
+<?php
+/**
+ * @var Collection|Vacancy[] $vacancies
+ */
+
+use App\Models\Vacancy;
+use Illuminate\Database\Eloquent\Collection;
+
+?>
 @extends('layouts.site')
 
 @section('title')
@@ -23,104 +32,38 @@
     <div class="job-page">
         <div class="container">
             <h1>Вакансии</h1>
-            <div class="item">
-                <h2>Архитектор информационной системы</h2>
-                <p>
-                    Анализ бизнес-требований к платформе в целом и к отдельным ее
-                    компонентам. Выбор и подготовка архитектурных
-                    вариантов/альтернатив реализации платформы.
-                </p>
-                <p>
-                    Общее представление об Enterprise Architecture Body of Knowledge.
-                    Навык проектирования Enterprise Architecture, Solution
-                    Architecture, Technical Architecture с использованием
-                    представлений, узлов...
-                    <a href="#">читать все</a>
-                </p>
-                <div class="info">
-                    <div class="info-item">
-                        <div><img src="/img/job1.svg"/></div>
-                        <div>Требуемый опыт работы: 3–6 лет</div>
+            @foreach($vacancies as $vacancy)
+                <div class="item">
+                    <h2>{{ $vacancy->title }}</h2>
+                    {!! $vacancy->content !!}
+                    <div class="info">
+                        @if($vacancy->experience)
+                            <div class="info-item">
+                                <div><img src="/img/job1.svg" alt="Требуемый опыт работы"/></div>
+                                <div>Требуемый опыт работы: {{ $vacancy->experience }}</div>
+                            </div>
+                        @endif
+                        @if($vacancy->employment)
+                            <div class="info-item">
+                                <div><img src="/img/job2.svg" alt="Тип занятости"/></div>
+                                <div>{{ $vacancy->employment }}</div>
+                            </div>
+                        @endif
+                        @if($vacancy->salary)
+                            <div class="info-item">
+                                <div><img src="/img/job3.svg" alt="Зарплата"/></div>
+                                <div>{{ $vacancy->salary }}</div>
+                            </div>
+                        @endif
                     </div>
-                    <div class="info-item">
-                        <div><img src="/img/job2.svg"/></div>
-                        <div>Полная занятость, полный день</div>
-                    </div>
-                    <div class="info-item">
-                        <div><img src="/img/job3.svg"/></div>
-                        <div>до 250 000 руб.</div>
-                    </div>
-                </div>
-                <div class="link">
-                    <a href="#">Откликнуться на HH</a>
-                </div>
-            </div>
-            <div class="item">
-                <h2>Архитектор информационной системы</h2>
-                <p>
-                    Анализ бизнес-требований к платформе в целом и к отдельным ее
-                    компонентам. Выбор и подготовка архитектурных
-                    вариантов/альтернатив реализации платформы.
-                </p>
-                <p>
-                    Общее представление об Enterprise Architecture Body of Knowledge.
-                    Навык проектирования Enterprise Architecture, Solution
-                    Architecture, Technical Architecture с использованием
-                    представлений, узлов...
-                    <a href="#">читать все</a>
-                </p>
-                <div class="info">
-                    <div class="info-item">
-                        <div><img src="/img/job1.svg"/></div>
-                        <div>Требуемый опыт работы: 3–6 лет</div>
-                    </div>
-                    <div class="info-item">
-                        <div><img src="/img/job2.svg"/></div>
-                        <div>Полная занятость, полный день</div>
-                    </div>
-                    <div class="info-item">
-                        <div><img src="/img/job3.svg"/></div>
-                        <div>до 250 000 руб.</div>
+                    <div class="link">
+                        <a href="{{ $vacancy->hh }}">Откликнуться на HH</a>
                     </div>
                 </div>
-                <div class="link">
-                    <a href="#">Откликнуться на HH</a>
-                </div>
-            </div>
-            <div class="item">
-                <h2>Архитектор информационной системы</h2>
-                <p>
-                    Анализ бизнес-требований к платформе в целом и к отдельным ее
-                    компонентам. Выбор и подготовка архитектурных
-                    вариантов/альтернатив реализации платформы.
-                </p>
-                <p>
-                    Общее представление об Enterprise Architecture Body of Knowledge.
-                    Навык проектирования Enterprise Architecture, Solution
-                    Architecture, Technical Architecture с использованием
-                    представлений, узлов...
-                    <a href="#">читать все</a>
-                </p>
-                <div class="info">
-                    <div class="info-item">
-                        <div><img src="/img/job1.svg"/></div>
-                        <div>Требуемый опыт работы: 3–6 лет</div>
-                    </div>
-                    <div class="info-item">
-                        <div><img src="/img/job2.svg"/></div>
-                        <div>Полная занятость, полный день</div>
-                    </div>
-                    <div class="info-item">
-                        <div><img src="/img/job3.svg"/></div>
-                        <div>до 250 000 руб.</div>
-                    </div>
-                </div>
-                <div class="link">
-                    <a href="#">Откликнуться на HH</a>
-                </div>
-            </div>
+            @endforeach
             <div class="bottom-link">
-                <img src="/img/hh.png"/> <a href="#">Профиль нашей компании</a> на
+                <img src="/img/hh.png" alt="Профиль нашей компании на hh.ru"/>
+                <a href="{{ config('site.hh_profile') }}">Профиль нашей компании</a> на
                 hh.ru
             </div>
         </div>
