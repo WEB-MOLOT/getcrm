@@ -27,6 +27,16 @@ class SuccessStory extends Model
         'solution' => 'array',
     ];
 
+    public function getLogoUrl(): string
+    {
+        return '/' . $this->logo;
+    }
+
+    public function getImageUrl(): string
+    {
+        return '/' . $this->image;
+    }
+
     public function badges(): HasMany
     {
         return $this->hasMany(SuccessStoryBadge::class);

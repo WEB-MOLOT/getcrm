@@ -21,8 +21,8 @@ Route::get('/', Site\IndexController::class)->name('site.index');
 Route::get('/news', Site\News\IndexController::class)->name('site.news.index');
 Route::get('/news/{newsItem}', Site\News\ItemController::class)->name('site.news.item');
 
-Route::get('/histories', Site\History\IndexController::class)->name('site.histories.index');
-Route::get('/histories/{historyItem}', Site\History\ItemController::class)->name('site.histories.item');
+Route::get('/success_stories', Site\Stories\IndexController::class)->name('site.stories.index');
+Route::get('/success_stories/{successStory}', Site\Stories\ItemController::class)->name('site.stories.item');
 
 Route::get('/about', Site\AboutController::class)->name('site.about.index');
 Route::get('/contacts', Site\ContactsController::class)->name('site.contacts.index');

@@ -148,7 +148,7 @@
                 <li><a href="{{ route('site.about.index') }}">О компании</a></li>
                 <li><a href="{{ route('site.news.index') }}">Новости</a></li>
                 <li><a href="{{ route('site.job.index') }}">Вакансии</a></li>
-                <li><a href="{{ route('site.histories.index') }}">Истории успеха</a></li>
+                <li><a href="{{ route('site.stories.index') }}">Истории успеха</a></li>
                 <li><a href="{{ route('site.contacts.index') }}">Контакты</a></li>
             </ul>
         </div>

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Site\History;
+namespace App\Http\Controllers\Site\Stories;
 
 use App\Http\Controllers\Controller;
+use App\Models\SuccessStory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +19,9 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        $data = [];
+        $data = [
+            'stories' => SuccessStory::query()->with('badges', 'results')->get(),
+        ];
 
         return view('site.history.index', $data);
     }

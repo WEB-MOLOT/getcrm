@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Site\History;
+namespace App\Http\Controllers\Site\Stories;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
