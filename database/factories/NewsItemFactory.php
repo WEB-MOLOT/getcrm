@@ -22,8 +22,8 @@ class NewsItemFactory extends Factory
         $imagePath = public_path('storage/news');
 
         return [
-            'title' => $this->faker->sentence,
-            'description' => $this->faker->sentence(3, true),
+            'title' => trim($this->faker->sentence, '.'),
+            'description' => $this->faker->sentence(20, true),
             'content' => $this->faker->paragraphs(6, true),
             'image' => 'storage/news/' . $this->faker->image(dir: $imagePath, category: 'animals', fullPath: false),
         ];

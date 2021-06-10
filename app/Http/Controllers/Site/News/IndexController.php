@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site\News;
 
 use App\Http\Controllers\Controller;
+use App\Models\NewsItem;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +19,12 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        $data = [];
+        /** @var NewsItem $news */
+        $news = NewsItem::query()->latest('id')->paginate(10);
+
+        $data = [
+            'newsItems' => $news,
+        ];
 
         return view('site.news.index', $data);
     }
