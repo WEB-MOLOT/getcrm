@@ -18,7 +18,7 @@ class CreateVacanciesTable extends Migration
             $table->string('title')->comment('Заголовок');
             $table->text('content')->comment('Содержание');
             $table->string('hh')->nullable()->comment('Ссылка на HH');
-            $table->json('employment')->nullable()->comment('Параметры');
+            $table->json('params')->nullable()->comment('Параметры');
             $table->timestamps();
             $table->softDeletes();
         });
