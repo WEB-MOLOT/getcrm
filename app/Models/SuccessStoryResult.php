@@ -19,6 +19,16 @@ class SuccessStoryResult extends Model
         'success_story_id',
     ];
 
+    public function getAfterUrl(): string
+    {
+        return '/' . $this->after;
+    }
+
+    public function getBeforeUrl(): string
+    {
+        return '/' . $this->before;
+    }
+
     public function story(): BelongsTo
     {
         return $this->belongsTo(SuccessStory::class);

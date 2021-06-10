@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SuccessStory extends Model
@@ -45,5 +46,12 @@ class SuccessStory extends Model
     public function results(): HasMany
     {
         return $this->hasMany(SuccessStoryResult::class);
+    }
+
+    public function lastResult(): HasOne
+    {
+        return $this->hasOne(SuccessStoryResult::class)
+            ->latest('id')
+            ->limit(1);
     }
 }
