@@ -24,8 +24,8 @@ class SuccessStoryResultFactory extends Factory
         $afterPath = public_path('storage/stories/after');
 
         return [
-            'before' => 'storage/stories/before/' . $this->faker->image(dir: $beforePath, category: 'animals', fullPath: false),
-            'after' => 'storage/stories/after/' . $this->faker->image(dir: $afterPath, category: 'animals', fullPath: false),
+            'before' => 'storage/stories/before/' . $this->faker->image(dir: $beforePath, width: 328, height: 627, category: 'animals', fullPath: false),
+            'after' => 'storage/stories/after/' . $this->faker->image(dir: $afterPath, width: 328, height: 627, category: 'animals', fullPath: false),
             'description' => $this->faker->sentence(10),
             'success_story_id' => null,
         ];

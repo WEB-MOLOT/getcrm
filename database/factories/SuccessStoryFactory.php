@@ -24,8 +24,8 @@ class SuccessStoryFactory extends Factory
 
         return [
             'title' => trim($this->faker->sentence, '.'),
-            'image' => 'storage/stories/images/' . $this->faker->image(dir: $imagePath, category: 'animals', fullPath: false),
-            'logo' => 'storage/stories/logos/' . $this->faker->image(dir: $logoPath, category: 'animals', fullPath: false),
+            'image' => 'storage/stories/images/' . $this->faker->image(dir: $imagePath, width: 342, height: 165, fullPath: false),
+            'logo' => 'storage/stories/logos/' . $this->faker->image(dir: $logoPath, width: 160, height: 90, fullPath: false),
             'short_about' => [
                 $this->faker->sentence(2),
                 $this->faker->sentence(2),

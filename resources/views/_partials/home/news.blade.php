@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Collection;
                         <a href="{{ route('site.news.item', $item) }}" class="item_inside d_flex a_items_center">
                             <span class="item_info__date">{{ $item->created_at->format('d.m.Y') }}</span>
                             <div class="item_image">
-                                <img src="{{ $item->getImageUrl() }}" alt=""/>
+                                <img src="{{ $item->getImageUrl() }}" width="150" height="169" alt=""/>
                             </div>
                             <div class="item_info">
                                 <div class="item_title">
