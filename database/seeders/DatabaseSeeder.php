@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
            UserSeeder::class,
            NewsItemSeeder::class,
            VacancySeeder::class,
+           SuccessStorySeeder::class,
        ]);
     }
 }
