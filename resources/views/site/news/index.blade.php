@@ -43,7 +43,7 @@ use Illuminate\Database\Eloquent\Collection;
                         >{{ $item->title }}</a
                         >
                         <a href="{{ route('site.news.item', $item) }}">
-                            <img src="{{ $item->image }}" alt=""/>
+                            <img src="{{ $item->getImageUrl() }}" alt=""/>
                         </a>
                         <p>
                             {{ $item->description }}

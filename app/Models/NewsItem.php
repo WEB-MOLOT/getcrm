@@ -17,4 +17,9 @@ class NewsItem extends Model
         'content',
         'image',
     ];
+
+    public function getImageUrl(): string
+    {
+        return '/' . $this->image;
+    }
 }

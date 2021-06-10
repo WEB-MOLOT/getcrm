@@ -1,7 +1,17 @@
+<?php
+/**
+ * @var NewsItem $newsItem
+ * @var ?NewsItem $prev
+ * @var ?NewsItem $next
+ */
+
+use App\Models\NewsItem;
+
+?>
 @extends('layouts.site')
 
 @section('title')
-    Новость
+    {{ $newsItem->title }}
 @endsection
 
 @section('footer')
@@ -25,7 +35,7 @@
             <h1>Новости</h1>
             <div class="news-post">
                 <div class="post">
-                    <a href="#" class="back-link">
+                    <a href="{{ route('site.news.index') }}" class="back-link">
                         <svg
                             width="10"
                             height="16"
@@ -41,62 +51,34 @@
                         </svg>
                     </a>
                     <div class="date">
-                        24.09.2019
+                        {{ $newsItem->created_at->format('d.m.Y') }}
                     </div>
-                    <h2>На этом месте заголовок данной новости, можно в 2 строки</h2>
+                    <h2>{{ $newsItem->title }}</h2>
                     <div class="text">
                         <div class="image">
-                            <img src="/img/news2.jpg"/>
+                            <img src="{{ $newsItem->getImageUrl() }}" alt=""/>
                         </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ipsum
-                            vestibulum nulla sit eros sed. Quis facilisis id natoque
-                            adipiscing urna vitae leo, nulla nulla. Ipsum vulputate
-                            malesuada proin metus aliquet. Et pretium neque quam tortor
-                            dignissim imperdiet. Amet, suspendisse nec, vitae, sodales ut
-                            ipsum. Vitae dolor, risus eget morbi.
-                        </p>
-                        <p>
-                            Lectus amet, proin magna quis. Molestie dolor, potenti quam
-                            accumsan justo, eget cursus sit. Aliquam quis dignissim
-                            scelerisque euismod viverra metus, elementum sed enim. In
-                            fermentum, in aliquet eu odio malesuada vitae. Nulla quam non
-                            platea pharetra volutpat justo, id. Diam eget dui egestas erat
-                            mattis sodales. Proin orci massa nunc ultrices porttitor.
-                            Orci, viverra gravida egestas eget. Vivamus maecenas mattis
-                            imperdiet nunc amet aenean.
-                        </p>
-                        <p>
-                            Habitasse suspendisse rhoncus vel velit. Facilisi nisl pretium
-                            ornare sed quis iaculis. Quam congue in volutpat egestas ac
-                            bibendum. Condimentum nulla velit, et nulla pretium diam
-                            faucibus volutpat urna. Sed semper justo malesuada eu molestie
-                            mauris. Sagittis, massa est fringilla sodales aliquam ultrices
-                            ipsum. Tempus in ut purus nisi cursus ullamcorper mi cras
-                            nisl. Arcu vitae donec nunc pellentesque quis. Ut eu rhoncus
-                            volutpat posuere ut commodo. Nec aenean lorem ultrices odio.
-                            Lorem eu sagittis, in amet in mattis id. Augue quis risus
-                            gravida phasellus mattis eu aliquam amet, sed. Ut pulvinar
-                            scelerisque feugiat amet scelerisque. Sem pellentesque purus
-                            tempus nulla risus, risus, metus feugiat. Eu elementum id ut
-                            sed.
-                        </p>
+                        {!! $newsItem->content !!}
                     </div>
                 </div>
                 <div class="flex no_pad">
                     <div class="other-post prev">
-                        <a href="#" class="link"></a>
-                        <a href="#">предыдущая <br/>новость</a>
-                        <p>На этом месте заголовок данной новости, можно в 2 строки</p>
+                        @if($prev)
+                            <a href="{{ route('site.news.item', $prev) }}" class="link"></a>
+                            <a href="{{ route('site.news.item', $prev) }}">предыдущая <br/>новость</a>
+                            <p>{{ $prev->title }}</p>
+                        @endif
                     </div>
                     <div class="other-post next">
-                        <a href="#" class="link"></a>
-                        <a href="#">следующая <br/>новость</a>
-                        <p>На этом месте заголовок данной новости, можно в 2 строки</p>
+                        @if($next)
+                            <a href="{{ route('site.news.item', $next) }}" class="link"></a>
+                            <a href="{{ route('site.news.item', $next) }}">следующая <br/>новость</a>
+                            <p>{{ $next->title }}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="all-news-link">
-                    <a href="#">
+                    <a href="{{ route('site.news.index') }}">
                         <svg
                             width="41"
                             height="34"

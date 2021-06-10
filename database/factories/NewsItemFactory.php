@@ -24,7 +24,7 @@ class NewsItemFactory extends Factory
         return [
             'title' => trim($this->faker->sentence, '.'),
             'description' => $this->faker->sentence(20, true),
-            'content' => $this->faker->paragraphs(6, true),
+            'content' => '<p>' . implode('</p><p>', $this->faker->paragraphs(12)) . '</p>',
             'image' => 'storage/news/' . $this->faker->image(dir: $imagePath, category: 'animals', fullPath: false),
         ];
     }
