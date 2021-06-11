@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('is_admin')->default(0)->index()->comment('Администратор');
+            $table->foreignId('company_id')->nullable()->comment('Компания')->constrained();
             $table->softDeletes()->index();
         });
     }
