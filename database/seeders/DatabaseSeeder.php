@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Service;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +18,7 @@ class DatabaseSeeder extends Seeder
             VacancySeeder::class,
             SuccessStorySeeder::class,
             SolutionSeeder::class,
-            Service::class,
+            ServiceSeeder::class,
         ]);
     }
 
