@@ -1,6 +1,8 @@
 ## GETCRM
 
-https://getcrm.4test.xyz/ 
+- https://getcrm.4test.xyz/ - стенд разработки, обновляется ежедневно
+- https://getcrm.pw/ - демонстрационный стенд, обновляется по вторникам и пятницам
+- https://getcrm.ru/ - продакшен
 
 ### Документация
 
@@ -9,6 +11,7 @@ https://getcrm.4test.xyz/
 
 ### Тестовые данные
 
+- admin@getcrm.ru password - Админ сайта, есть доступ в панель управления https://getcrm.4test.xyz/admin
 - user@getcrm.ru password - Пользователь сайта, есть доступ в ЛК
 
 ### Локальный запуск проекта
