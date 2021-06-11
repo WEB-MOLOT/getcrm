@@ -6,7 +6,6 @@ use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 
 class AdminSectionsServiceProvider extends ServiceProvider
 {
-
     /**
      * @var array
      */
@@ -18,6 +17,13 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\Company::class => 'App\Http\Sections\Companies',
         \App\Models\Service::class => 'App\Http\Sections\Services',
         \App\Models\Solution::class => 'App\Http\Sections\Solutions',
+
+        \App\Models\Settings\SiteSetting::class => 'App\Http\Sections\Settings\SiteSettings',
+        \App\Models\Settings\SmtpSetting::class => 'App\Http\Sections\Settings\SmtpSettings',
+
+        \App\Models\Menus\TopMenu::class => 'App\Http\Sections\Menus\TopMenu',
+        \App\Models\Menus\FooterMenu::class => 'App\Http\Sections\Menus\FooterMenu',
+        \App\Models\Menus\BurgerMenu::class => 'App\Http\Sections\Menus\BurgerMenu',
 
         \App\Models\Pages\AboutPage::class => 'App\Http\Sections\Pages\AboutPage',
         \App\Models\Pages\ContactsPage::class => 'App\Http\Sections\Pages\ContactsPage',
