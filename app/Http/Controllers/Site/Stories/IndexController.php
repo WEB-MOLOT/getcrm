@@ -20,7 +20,7 @@ class IndexController extends Controller
     public function __invoke(Request $request): View|Factory|Application
     {
         $data = [
-            'stories' => SuccessStory::query()->with('badges', 'results')->get(),
+            'stories' => SuccessStory::query()->with('badges', 'results')->paginate(4),
         ];
 
         return view('site.history.index', $data);
