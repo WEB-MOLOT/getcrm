@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PeriodDiscount extends Model
 {
     use HasFactory;
+
+    protected $table = 'data_period_discounts';
 }
