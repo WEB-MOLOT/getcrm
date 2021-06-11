@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             NewsItemSeeder::class,
             VacancySeeder::class,
             SuccessStorySeeder::class,
+            SolutionSeeder::class,
         ]);
     }
 
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             public_path('storage/stories/logos/*.png'),
             public_path('storage/stories/before/*.png'),
             public_path('storage/stories/after/*.png'),
+            public_path('storage/solutions/images')
         ])->each(function ($path) {
             foreach (glob($path) as $filepath) {
                 unlink($filepath);
