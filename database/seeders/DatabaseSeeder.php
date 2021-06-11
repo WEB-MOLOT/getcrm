@@ -8,7 +8,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->clearOldImages();
+        if (!app()->isProduction()) {
+            $this->clearOldImages();
+        }
 
         $this->call([
             UserSeeder::class,
