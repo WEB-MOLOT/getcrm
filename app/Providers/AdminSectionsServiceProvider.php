@@ -17,6 +17,10 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\Customer::class => 'App\Http\Sections\Customers',
         \App\Models\Company::class => 'App\Http\Sections\Companies',
         \App\Models\Pages\AboutPage::class => 'App\Http\Sections\Pages\AboutPage',
+        \App\Models\Pages\ContactsPage::class => 'App\Http\Sections\Pages\ContactsPage',
+        \App\Models\Pages\CustomExperiencePage::class => 'App\Http\Sections\Pages\CustomExperiencePage',
+        \App\Models\Pages\HomePage::class => 'App\Http\Sections\Pages\HomePage',
+        \App\Models\Pages\LandingPage::class => 'App\Http\Sections\Pages\LandingPage',
     ];
 
     /**
