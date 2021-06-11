@@ -33,7 +33,7 @@ class CustomExperiencePage extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'pages/ce';
 
     /**
      * Initialize class.

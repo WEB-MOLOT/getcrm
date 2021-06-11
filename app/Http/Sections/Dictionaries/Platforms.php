@@ -33,9 +33,9 @@ class Platforms extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'dictionaries/platforms';
 
-    /**
+    /*
      * Initialize class.
      */
     public function initialize()

@@ -33,7 +33,7 @@ class Filters extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'dictionaries/filters';
 
     /**
      * Initialize class.

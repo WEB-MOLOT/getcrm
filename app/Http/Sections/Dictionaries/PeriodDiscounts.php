@@ -33,7 +33,7 @@ class PeriodDiscounts extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'dictionaries/discounts/periods';
 
     /**
      * Initialize class.

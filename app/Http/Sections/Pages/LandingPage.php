@@ -33,7 +33,7 @@ class LandingPage extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'pages/dimarke';
 
     /**
      * Initialize class.

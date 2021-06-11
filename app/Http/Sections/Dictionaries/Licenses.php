@@ -33,7 +33,7 @@ class Licenses extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'dictionaries/licenses';
 
     /**
      * Initialize class.

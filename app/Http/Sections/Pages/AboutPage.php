@@ -33,7 +33,7 @@ class AboutPage extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'pages/about';
 
     /**
      * Initialize class.

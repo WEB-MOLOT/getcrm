@@ -33,7 +33,7 @@ class Solutions extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'dictionaries/solutions';
 
     /**
      * Initialize class.

@@ -33,7 +33,7 @@ class AmountDiscounts extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'dictionaries/discounts/amounts';
 
     /**
      * Initialize class.
