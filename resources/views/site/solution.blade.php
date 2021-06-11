@@ -1,7 +1,16 @@
+<?php
+/**
+ * @var Solution $solution
+ */
+
+use App\Models\Solution;
+
+?>
+
 @extends('layouts.site')
 
 @section('title')
-    Oracle
+    {{ $solution->title }}
 @endsection
 
 @section('footer')
