@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
             public_path('storage/stories/logos/*.png'),
             public_path('storage/stories/before/*.png'),
             public_path('storage/stories/after/*.png'),
-            public_path('storage/solutions/images'),
-            public_path('storage/services/images'),
+            public_path('storage/solutions/images/*.png'),
+            public_path('storage/services/images/*.png'),
         ])->each(function ($path) {
             foreach (glob($path) as $filepath) {
                 unlink($filepath);
