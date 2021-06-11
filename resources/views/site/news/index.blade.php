@@ -1,10 +1,11 @@
 <?php
 /**
- * @var Collection|NewsItem[] $newsItems
+ * @var Collection|NewsItem[]|LengthAwarePaginator $newsItems
  */
 
 use App\Models\NewsItem;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 ?>
 @extends('layouts.site')
@@ -70,10 +71,7 @@ use Illuminate\Database\Eloquent\Collection;
             </div>
             <div class="flex">
                 <div class="pages">
-                    <span>Страница:</span>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
+                    {{ $newsItems->onEachSide(1)->links() }}
                 </div>
                 <div class="years">
                     <span>Новости за:</span>
