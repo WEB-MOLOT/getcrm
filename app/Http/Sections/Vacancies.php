@@ -105,7 +105,7 @@ class Vacancies extends Section implements Initializable
         return AdminForm::card()->addBody([
             AdminFormElement::text('title', 'Заголовок')
                 ->required(),
-            AdminFormElement::textarea('content', 'Описание')
+            AdminFormElement::wysiwyg('content', 'Описание')
                 ->required(),
             AdminFormElement::text('params->salary', 'Зарплата'),
             AdminFormElement::text('params->experience', 'Опыт работы'),

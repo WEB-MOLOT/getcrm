@@ -92,7 +92,7 @@ class NewsItems extends Section implements Initializable
                 ->required(),
             AdminFormElement::textarea('description', 'Анонс')
                 ->required(),
-            AdminFormElement::textarea('content', 'Содержание')
+            AdminFormElement::wysiwyg('content', 'Содержание')
                 ->required(),
             AdminFormElement::image('image', 'Изображение')
                 ->setUploadPath(static function (UploadedFile $file) {

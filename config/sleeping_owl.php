@@ -240,14 +240,14 @@ return [
     */
 
     'wysiwyg'     => [
-        'default'   => 'ckeditor',
+        'default' => 'ckeditor5',
 
         /*
          * See http://docs.ckeditor.com/#!/api/CKEDITOR.config
          */
-        'ckeditor'  => [
+        'ckeditor' => [
             'defaultLanguage' => config('app.locale'),
-            'height'       => 200,
+            'height' => 200,
             'allowedContent' => true,
             'extraPlugins' => 'uploadimage,image2,justify,youtube,uploadfile',
             /*
@@ -321,10 +321,10 @@ return [
 
             'toolbar' => [
                 'undo', 'redo', '|',
-                'heading', '|',
-                'bold', 'italic', 'blockQuote', 'link', 'bulletedList', 'numberedList', '|',
-                'CKFinder', 'ImageUpload', 'imageTextAlternative', 'MediaEmbed', 'imageStyle:full', 'imageStyle:side', '|',
-                'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells', '|',
+//                'heading', '|',
+//                'bold', 'italic', 'blockQuote', 'link', 'bulletedList', 'numberedList', '|',
+//                'CKFinder', 'ImageUpload', 'imageTextAlternative', 'MediaEmbed', 'imageStyle:full', 'imageStyle:side', '|',
+//                'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells', '|',
             ],
 
             'uploadUrl'                 => '/storage/images_admin',
