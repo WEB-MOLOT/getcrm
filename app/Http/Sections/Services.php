@@ -41,7 +41,7 @@ class Services extends Section implements Initializable
     public function initialize()
     {
         $this->addToNavigation()
-            ->setPriority(1000)
+            ->setPriority(500)
             ->setIcon('fab fa-dev');
     }
 

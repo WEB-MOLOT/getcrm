@@ -45,7 +45,7 @@ class NewsItems extends Section implements Initializable
     public function initialize()
     {
         $this->addToNavigation()
-            ->setPriority(300)
+            ->setPriority(600)
             ->setIcon('fas fa-newspaper');
     }
 

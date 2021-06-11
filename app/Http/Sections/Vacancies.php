@@ -6,6 +6,7 @@ use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
+use AdminNavigation;
 use App\Models\Vacancy;
 use HTML;
 use Illuminate\Database\Eloquent\Builder;
@@ -44,9 +45,11 @@ class Vacancies extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()
-            ->setPriority(400)
-            ->setIcon('fas fa-swimmer');
+        $page = AdminNavigation::getPages()->findById('content');
+
+        $page->addPage(
+            $this->makePage(300)->setIcon('fab fa-dev')
+        );
     }
 
     /**

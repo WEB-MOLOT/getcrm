@@ -4,6 +4,7 @@ namespace App\Http\Sections\Pages;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminNavigation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -40,9 +41,11 @@ class LandingPage extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()
-            ->setPriority(940)
-            ->setIcon('fab fa-dev');
+        $page = AdminNavigation::getPages()->findById('content');
+
+        $page->addPage(
+            $this->makePage(300)->setIcon('fab fa-dev')
+        );
     }
 
     /**

@@ -41,7 +41,7 @@ class Solutions extends Section implements Initializable
     public function initialize()
     {
         $this->addToNavigation()
-            ->setPriority(1000)
+            ->setPriority(400)
             ->setIcon('fab fa-dev');
     }
 

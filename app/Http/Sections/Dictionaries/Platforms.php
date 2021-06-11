@@ -4,6 +4,7 @@ namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminNavigation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -40,9 +41,11 @@ class Platforms extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()
-            ->setPriority(1000)
-            ->setIcon('fab fa-dev');
+        $page = AdminNavigation::getPages()->findById('dictionaries');
+
+        $page->addPage(
+            $this->makePage(300)->setIcon('fab fa-dev')
+        );
     }
 
     /**

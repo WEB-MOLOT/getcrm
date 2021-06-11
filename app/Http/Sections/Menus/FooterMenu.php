@@ -4,6 +4,7 @@ namespace App\Http\Sections\Menus;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminNavigation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -40,9 +41,11 @@ class FooterMenu extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()
-            ->setPriority(1000)
-            ->setIcon('fab fa-dev');
+        $page = AdminNavigation::getPages()->findById('settings');
+
+        $page->addPage(
+            $this->makePage(400)->setIcon('fab fa-dev')
+        );
     }
 
     /**

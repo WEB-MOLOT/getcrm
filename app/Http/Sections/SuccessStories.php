@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Sections\Pages;
+namespace App\Http\Sections;
 
 use AdminColumn;
 use AdminDisplay;
-use AdminNavigation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -13,13 +12,13 @@ use SleepingOwl\Admin\Contracts\Initializable;
 use SleepingOwl\Admin\Section;
 
 /**
- * Class AboutPage
+ * Class SuccessStories
  *
- * @property \App\Models\Pages\AboutPage $model
+ * @property \App\Models\SuccessStory $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class AboutPage extends Section implements Initializable
+class SuccessStories extends Section implements Initializable
 {
     /**
      * @var bool
@@ -29,23 +28,21 @@ class AboutPage extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'О компании';
+    protected $title = 'Истории успеха';
 
     /**
      * @var string
      */
-    protected $alias = 'pages/about';
+    protected $alias;
 
     /**
      * Initialize class.
      */
     public function initialize()
     {
-        $page = AdminNavigation::getPages()->findById('content');
-
-        $page->addPage(
-            $this->makePage(300)->setIcon('fab fa-dev')
-        );
+        $this->addToNavigation()
+            ->setPriority(700)
+            ->setIcon('fab fa-dev');
     }
 
     /**
@@ -58,7 +55,7 @@ class AboutPage extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('Slug', 'Slug'),
+            AdminColumn::text('email', 'E-mail'),
         ];
 
         $display = AdminDisplay::table()

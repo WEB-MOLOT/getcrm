@@ -4,6 +4,7 @@ namespace App\Http\Sections;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminNavigation;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -41,9 +42,11 @@ class Customers extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()
-            ->setPriority(1000)
-            ->setIcon('fab fa-dev');
+        $page = AdminNavigation::getPages()->findById('crm');
+
+        $page->addPage(
+            $this->makePage(400)->setIcon('fab fa-dev')
+        );
     }
 
     /**
