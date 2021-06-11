@@ -31,6 +31,6 @@ Route::get('/form', Site\FormController::class)->name('site.form.index');
 Route::get('/job', Site\JobController::class)->name('site.job.index');
 Route::get('/dimarke', Site\LandingController::class)->name('site.landing.index');
 Route::get('/solutions/{solution}', Site\SolutionController::class)->name('site.solutions.show');
-Route::get('/services', Site\ServiceController::class)->name('site.services.index');
+Route::get('/services/{service}', Site\ServiceController::class)->name('site.services.show');
 Route::get('/price', Site\PriceController::class)->name('site.price.index');
 Route::get('/privacy', Site\PrivacyController::class)->name('site.privacy.index');
