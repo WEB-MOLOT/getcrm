@@ -4,6 +4,7 @@
 /public/packages/sleepingowl
 /storage/*.key
 /vendor
+/.ssh
 .env
 .env.backup
 .phpunit.result.cache
