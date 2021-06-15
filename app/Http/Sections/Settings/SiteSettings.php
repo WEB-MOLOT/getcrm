@@ -4,18 +4,21 @@ namespace App\Http\Sections\Settings;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use App\Models\Settings\SiteSetting;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
  * Class SiteSettings
  *
- * @property \App\Models\Settings\SiteSetting $model
+ * @property SiteSetting $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
@@ -44,7 +47,7 @@ class SiteSettings extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('settings');
 
         $page->addPage(
-            $this->makePage(100)->setIcon('fab fa-dev')
+            $this->makePage(150)->setIcon('fas fa-cog')
         );
     }
 
@@ -55,19 +58,17 @@ class SiteSettings extends Section implements Initializable
     public function onDisplay(): DisplayInterface
     {
         $columns = [
-            AdminColumn::text('id', '#')
-                ->setWidth('50px')
-                ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::text('title', 'Параметр'),
+            AdminColumn::text('value', 'Значение'),
         ];
 
         $display = AdminDisplay::table()
-            ->paginate(40)
+            ->paginate(200)
             ->setColumns($columns)
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
-            $query->latest('id');
+            $query->oldest('title');
         });
 
         return $display;
@@ -78,52 +79,21 @@ class SiteSettings extends Section implements Initializable
      * @param array $payload
      * @return FormInterface
      */
-    public function onEdit(?int $id = null, array $payload = []): FormInterface
+    public function onEdit(int $id = null, array $payload = []): FormInterface
     {
+        /** @var SiteSetting $setting */
+        $setting = SiteSetting::query()->find($id);
 
-    }
+        $method = $setting->type->value();
 
-    /**
-     * @param array $payload
-     * @return FormInterface
-     * @throws \Exception
-     */
-    public function onCreate(array $payload = []): FormInterface
-    {
-        return $this->onEdit(null, $payload);
-    }
+        $form = AdminForm::card()->addBody([
+            AdminFormElement::$method('value', $setting->title),
+        ]);
 
-    /**
-     * @param Model $model
-     * @return bool
-     */
-    public function isEditable(Model $model): bool
-    {
-        return false;
-    }
+        $form->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+        ]);
 
-    /**
-     * @return bool
-     */
-    public function isCreatable(): bool
-    {
-        return false;
-    }
-
-    /**
-     * @param Model $model
-     * @return bool
-     */
-    public function isDeletable(Model $model): bool
-    {
-        return false;
-    }
-
-    /**
-     * @return void
-     */
-    public function onRestore(int $id)
-    {
-        // remove if unused
+        return $form;
     }
 }

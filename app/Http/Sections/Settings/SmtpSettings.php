@@ -4,12 +4,16 @@ namespace App\Http\Sections\Settings;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use App\Models\Settings\SmtpSetting;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -44,7 +48,7 @@ class SmtpSettings extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('settings');
 
         $page->addPage(
-            $this->makePage(200)->setIcon('fab fa-dev')
+            $this->makePage(200)->setIcon('fas fa-at')
         );
     }
 
@@ -55,19 +59,17 @@ class SmtpSettings extends Section implements Initializable
     public function onDisplay(): DisplayInterface
     {
         $columns = [
-            AdminColumn::text('id', '#')
-                ->setWidth('50px')
-                ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::text('title', 'Параметр'),
+            AdminColumn::text('value', 'Значение'),
         ];
 
         $display = AdminDisplay::table()
-            ->paginate(40)
+            ->paginate(200)
             ->setColumns($columns)
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
-            $query->latest('id');
+            $query->oldest('title');
         });
 
         return $display;
@@ -80,7 +82,20 @@ class SmtpSettings extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
+        /** @var SmtpSetting $setting */
+        $setting = SmtpSetting::query()->find($id);
 
+        $method = $setting->type->value();
+
+        $form = AdminForm::card()->addBody([
+            AdminFormElement::$method('value', $setting->title),
+        ]);
+
+        $form->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+        ]);
+
+        return $form;
     }
 
     /**

@@ -15,6 +15,11 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('section')->comment('Секция');
+            $table->string('name')->unique()->comment('Наименование');
+            $table->string('type')->comment('Тип поля для ввода данных');
+            $table->text('value')->nullable()->comment('Значение');
+            $table->string('title')->comment('Заголовок');
             $table->timestamps();
         });
     }

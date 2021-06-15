@@ -80,7 +80,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
             [
                 'title' => 'Настройки',
                 'id' => 'settings',
-                'icon' => 'fab fa-dev',
+                'icon' => 'fas fa-cogs',
                 'priority' => 800,
             ],
         ]);
