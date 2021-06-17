@@ -4,6 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    @if(config('site.noindex'))
+        <meta name="robots" content="noindex, nofollow"/>
+    @endif
+
+    <meta name="keywords" content="{{ config('site.keywords') }}"/>
+    <meta name="description" content="{{ config('site.description') }}"/>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -48,14 +55,15 @@
     />
     <title>
         @hasSection('title')
-            @yield('title')
-        @else
-            {{ config('app.name', 'Laravel') }}
+            @yield('title') |
         @endif
+
+        {{ config('site.title') }}
     </title>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    {!! config('site.code.head') !!}
 </head>
 
 <body>
@@ -88,5 +96,7 @@
 <script type="text/javascript" src="/js/main.js?v6"></script>
 
 @stack('js_bottom')
+
+{!! config('site.code.footer') !!}
 
 </html>

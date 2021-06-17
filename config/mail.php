@@ -34,6 +34,9 @@ return [
     */
 
     'mailers' => [
+        /*
+         * Данные в ключе smtp переписываются из базы (кроме timeout & auth_mode)
+         */
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
