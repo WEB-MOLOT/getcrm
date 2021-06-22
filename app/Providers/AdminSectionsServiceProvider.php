@@ -68,7 +68,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
             [
                 'title' => 'CRM',
                 'id' => 'crm',
-                'icon' => 'fab fa-dev',
+                'icon' => 'fas fa-chart-pie',
                 'priority' => 200,
             ],
             [

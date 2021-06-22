@@ -6,25 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFiltersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('data_filters', function (Blueprint $table) {
             $table->id();
+            $table->unsignedTinyInteger('type')->comment('Тип фильтра');
+            $table->string('label')->comment('Значение');
+            $table->unsignedTinyInteger('key')->comment('Ключ');
             $table->timestamps();
+
+            $table->unique([
+                'type',
+                'key'
+            ]);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('data_filters');
     }

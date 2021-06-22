@@ -6,26 +6,29 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePlatformsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('data_platforms', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->comment('Название');
+            $table->text('description')->comment('Описание');
             $table->timestamps();
+        });
+
+        Schema::create('platform_solution', function (Blueprint $table) {
+            $table->foreignId('solution_id')->comment('Решение')->constrained('data_solutions');
+            $table->foreignId('platform_id')->comment('Платформа')->constrained('data_platforms');
+
+            $table->unique([
+                'solution_id',
+                'platform_id',
+            ]);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
+        Schema::dropIfExists('platform_solution');
         Schema::dropIfExists('data_platforms');
     }
 }

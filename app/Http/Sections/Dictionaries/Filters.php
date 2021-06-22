@@ -4,7 +4,10 @@ namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use App\Models\Dictionaries\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -44,7 +47,7 @@ class Filters extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('dictionaries');
 
         $page->addPage(
-            $this->makePage(100)->setIcon('fab fa-dev')
+            $this->makePage(100)->setIcon('fas fa-filter')
         );
     }
 
@@ -58,7 +61,10 @@ class Filters extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::custom('Группа фильтров', static function (Filter $item) {
+                return $item->type->label();
+            }),
+            AdminColumn::text('label', 'E-mail'),
         ];
 
         $display = AdminDisplay::table()
@@ -80,7 +86,10 @@ class Filters extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-
+        return AdminForm::card()->addBody([
+            AdminFormElement::text('label', 'Значение')
+                ->required(),
+        ]);
     }
 
     /**
@@ -91,15 +100,6 @@ class Filters extends Section implements Initializable
     public function onCreate(array $payload = []): FormInterface
     {
         return $this->onEdit(null, $payload);
-    }
-
-    /**
-     * @param Model $model
-     * @return bool
-     */
-    public function isEditable(Model $model): bool
-    {
-        return false;
     }
 
     /**

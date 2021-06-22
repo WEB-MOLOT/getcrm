@@ -44,7 +44,7 @@ class Administrators extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('settings');
 
         $page->addPage(
-            $this->makePage(600)->setIcon('fab fa-dev')
+            $this->makePage(600)->setIcon('fas fa-user-lock')
         );
     }
 
@@ -58,7 +58,13 @@ class Administrators extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
+            AdminColumn::text('name', 'Имя'),
+            AdminColumn::text('email', 'Логин'),
             AdminColumn::text('email', 'E-mail'),
+            AdminColumn::datetime('last_login_at', 'Дата последнего входа')
+                ->setFormat('d.m.Y H:i:s'),
+            AdminColumn::datetime('created_at', 'Дата регистрации')
+                ->setFormat('d.m.Y'),
         ];
 
         $display = AdminDisplay::table()
@@ -68,7 +74,7 @@ class Administrators extends Section implements Initializable
 
         $display->setApply(function (Builder $query) {
             $query->latest('id');
-        });
+        })->setNewEntryButtonText('Добавить администратора');
 
         return $display;
     }
@@ -99,7 +105,7 @@ class Administrators extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -107,7 +113,7 @@ class Administrators extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**

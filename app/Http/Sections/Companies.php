@@ -4,10 +4,14 @@ namespace App\Http\Sections;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
 use App\Models\Company;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
@@ -45,7 +49,7 @@ class Companies extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('crm');
 
         $page->addPage(
-            $this->makePage(300)->setIcon('fab fa-dev')
+            $this->makePage(300)->setIcon('fas fa-building')
         );
     }
 
@@ -59,6 +63,7 @@ class Companies extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
+            AdminColumn::image('logo', 'Логотип'),
             AdminColumn::text('name', 'Название'),
         ];
 
@@ -81,13 +86,21 @@ class Companies extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-
+        return AdminForm::card()->addBody([
+            AdminFormElement::text('name', 'Название компании')
+                ->required(),
+            AdminFormElement::image('logo', 'Логотип')
+                ->setUploadPath(static function (UploadedFile $file) {
+                    return 'storage/companies/logos';
+                })
+                ->required(),
+        ]);
     }
 
     /**
      * @param array $payload
      * @return FormInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function onCreate(array $payload = []): FormInterface
     {
@@ -100,7 +113,7 @@ class Companies extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -108,7 +121,7 @@ class Companies extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**

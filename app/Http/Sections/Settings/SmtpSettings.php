@@ -9,7 +9,6 @@ use AdminFormElement;
 use AdminNavigation;
 use App\Models\Settings\SmtpSetting;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
@@ -96,49 +95,5 @@ class SmtpSettings extends Section implements Initializable
         ]);
 
         return $form;
-    }
-
-    /**
-     * @param array $payload
-     * @return FormInterface
-     * @throws \Exception
-     */
-    public function onCreate(array $payload = []): FormInterface
-    {
-        return $this->onEdit(null, $payload);
-    }
-
-    /**
-     * @param Model $model
-     * @return bool
-     */
-    public function isEditable(Model $model): bool
-    {
-        return false;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCreatable(): bool
-    {
-        return false;
-    }
-
-    /**
-     * @param Model $model
-     * @return bool
-     */
-    public function isDeletable(Model $model): bool
-    {
-        return false;
-    }
-
-    /**
-     * @return void
-     */
-    public function onRestore(int $id)
-    {
-        // remove if unused
     }
 }

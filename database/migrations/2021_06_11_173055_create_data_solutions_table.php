@@ -15,6 +15,8 @@ class CreateDataSolutionsTable extends Migration
     {
         Schema::create('data_solutions', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->comment('Название');
+            $table->text('description')->comment('Описание');
             $table->timestamps();
         });
     }

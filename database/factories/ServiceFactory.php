@@ -16,7 +16,13 @@ class ServiceFactory extends Factory
     /**
      * @return array
      */
-    #[ArrayShape(['title' => "string", 'subtitle' => "string", 'image' => "string", 'video' => "string", 'description' => "string"])]
+    #[ArrayShape([
+        'title' => "string",
+        'subtitle' => "string",
+        'image' => "string",
+        'video' => "string",
+        'description' => "string"
+    ])]
     public function definition(): array
     {
         $imagePath = public_path('storage/services/images');

@@ -4,7 +4,11 @@ namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use App\Models\Dictionaries\Platform;
+use App\Models\Dictionaries\Solution;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -44,7 +48,7 @@ class Services extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('dictionaries');
 
         $page->addPage(
-            $this->makePage(400)->setIcon('fab fa-dev')
+            $this->makePage(400)->setIcon('fab fa-servicestack')
         );
     }
 
@@ -58,7 +62,7 @@ class Services extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::text('name', 'Название'),
         ];
 
         $display = AdminDisplay::table()
@@ -80,7 +84,18 @@ class Services extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-
+        return AdminForm::card()->addBody([
+            AdminFormElement::text('name', 'Название')
+                ->required(),
+            AdminFormElement::textarea('description', 'Описание')
+                ->required(),
+            AdminFormElement::multiselect('solutions', 'Решения')
+                ->setModelForOptions(Solution::class, 'name')
+                ->required(),
+            AdminFormElement::multiselect('solutions', 'Платформы')
+                ->setModelForOptions(Platform::class, 'name')
+                ->required(),
+        ]);
     }
 
     /**
@@ -91,23 +106,6 @@ class Services extends Section implements Initializable
     public function onCreate(array $payload = []): FormInterface
     {
         return $this->onEdit(null, $payload);
-    }
-
-    /**
-     * @param Model $model
-     * @return bool
-     */
-    public function isEditable(Model $model): bool
-    {
-        return false;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCreatable(): bool
-    {
-        return false;
     }
 
     /**

@@ -16,7 +16,12 @@ class SuccessStoryResultFactory extends Factory
     /**
      * @return array
      */
-    #[ArrayShape(['before' => "string", 'after' => "string", 'description' => "string", 'success_story_id' => "null"])]
+    #[ArrayShape([
+        'before' => "string",
+        'after' => "string",
+        'description' => "string",
+        'success_story_id' => "null"
+    ])]
     public function definition(): array
     {
         $beforePath = public_path('storage/stories/before');
@@ -24,8 +29,10 @@ class SuccessStoryResultFactory extends Factory
         $afterPath = public_path('storage/stories/after');
 
         return [
-            'before' => 'storage/stories/before/' . $this->faker->image(dir: $beforePath, width: 328, height: 627, category: 'animals', fullPath: false),
-            'after' => 'storage/stories/after/' . $this->faker->image(dir: $afterPath, width: 328, height: 627, category: 'animals', fullPath: false),
+            'before' => config('dev.load_images') ? 'storage/stories/before/'
+                . $this->faker->image(dir: $beforePath, width: 328, height: 627, category: 'animals', fullPath: false) : null,
+            'after' => config('dev.load_images') ? 'storage/stories/after/'
+                . $this->faker->image(dir: $afterPath, width: 328, height: 627, category: 'animals', fullPath: false) : null,
             'description' => $this->faker->sentence(10),
             'success_story_id' => null,
         ];

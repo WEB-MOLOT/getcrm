@@ -16,7 +16,12 @@ class VacancyFactory extends Factory
     /**
      * @return array
      */
-    #[ArrayShape(['title' => "string", 'content' => "array|string", 'hh' => "string", 'params' => "string[]"])]
+    #[ArrayShape([
+        'title' => "string",
+        'content' => "array|string",
+        'hh' => "string",
+        'params' => "string[]"
+    ])]
     public function definition(): array
     {
         return [
@@ -24,12 +29,21 @@ class VacancyFactory extends Factory
             'content' => '<p>' . implode('</p><p>', $this->faker->paragraphs(3)) . '</p>',
             'hh' => 'https://hh.ru/vacancy/' . $this->faker->numberBetween(45000000, 45212758),
             'params' => [
-                'salary' => $this->faker->randomElement(['от', 'до']) . ' '
+                'salary' => $this->faker->randomElement([
+                        'от',
+                        'до'
+                    ]) . ' '
                     . number_format(num: $this->faker->numberBetween(70000, 240000), thousands_separator: ' ')
                     . ' руб.',
-                'experience' => $this->faker->randomElement(['от', 'до']) . ' '
+                'experience' => $this->faker->randomElement([
+                        'от',
+                        'до'
+                    ]) . ' '
                     . $this->faker->numberBetween(5, 9) . ' лет',
-                'employment' => $this->faker->randomElement(['Полная занятость', 'Удаленная работа']) . ', полный день',
+                'employment' => $this->faker->randomElement([
+                        'Полная занятость',
+                        'Удаленная работа'
+                    ]) . ', полный день',
             ],
         ];
     }

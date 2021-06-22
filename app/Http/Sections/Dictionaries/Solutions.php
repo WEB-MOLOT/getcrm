@@ -4,6 +4,8 @@ namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -44,7 +46,7 @@ class Solutions extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('dictionaries');
 
         $page->addPage(
-            $this->makePage(200)->setIcon('fab fa-dev')
+            $this->makePage(200)->setIcon('fas fa-house-user')
         );
     }
 
@@ -58,7 +60,7 @@ class Solutions extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::text('name', 'Название'),
         ];
 
         $display = AdminDisplay::table()
@@ -80,7 +82,12 @@ class Solutions extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-
+        return AdminForm::card()->addBody([
+            AdminFormElement::text('name', 'Название')
+                ->required(),
+            AdminFormElement::textarea('description', 'Описание')
+                ->required(),
+        ]);
     }
 
     /**
@@ -91,23 +98,6 @@ class Solutions extends Section implements Initializable
     public function onCreate(array $payload = []): FormInterface
     {
         return $this->onEdit(null, $payload);
-    }
-
-    /**
-     * @param Model $model
-     * @return bool
-     */
-    public function isEditable(Model $model): bool
-    {
-        return false;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCreatable(): bool
-    {
-        return false;
     }
 
     /**

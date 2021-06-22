@@ -21,6 +21,7 @@ class User extends Authenticatable
         'password',
         'is_admin',
         'company_id',
+        'last_login_at',
     ];
 
     protected $hidden = [
@@ -30,6 +31,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
         'is_admin' => 'boolean',
     ];
 }

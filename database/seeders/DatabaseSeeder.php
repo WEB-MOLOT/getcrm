@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call([
+            Dictionaries\FilterSeeder::class,
+            Dictionaries\SolutionSeeder::class,
+            Dictionaries\PlatformSeeder::class,
+            Dictionaries\ServiceSeeder::class,
+            CompanySeeder::class,
             SettingSeeder::class,
             UserSeeder::class,
             NewsItemSeeder::class,

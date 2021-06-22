@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Customer extends User
 {
@@ -14,5 +15,10 @@ class Customer extends User
         static::addGlobalScope('customer', function (Builder $builder) {
             $builder->where('is_admin', '=', 0);
         });
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 }

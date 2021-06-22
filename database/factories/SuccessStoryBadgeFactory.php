@@ -16,7 +16,11 @@ class SuccessStoryBadgeFactory extends Factory
     /**
      * @return array
      */
-    #[ArrayShape(['title' => "string", 'value' => "int", 'success_story_id' => "null"])]
+    #[ArrayShape([
+        'title' => "string",
+        'value' => "int",
+        'success_story_id' => "null"
+    ])]
     public function definition(): array
     {
         $value = $this->faker->optional()->numberBetween(1, 30);
