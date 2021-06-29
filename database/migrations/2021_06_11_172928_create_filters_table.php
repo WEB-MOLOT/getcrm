@@ -17,7 +17,7 @@ class CreateFiltersTable extends Migration
 
             $table->unique([
                 'type',
-                'key'
+                'key',
             ]);
         });
     }

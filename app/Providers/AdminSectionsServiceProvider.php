@@ -51,7 +51,10 @@ class AdminSectionsServiceProvider extends ServiceProvider
      */
     public function boot(\SleepingOwl\Admin\Admin $admin)
     {
-        $this->app->call([$this, 'registerNavigation']);
+        $this->app->call([
+            $this,
+            'registerNavigation'
+        ]);
 
         parent::boot($admin);
     }

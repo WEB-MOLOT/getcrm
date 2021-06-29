@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDataServicesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('data_services', function (Blueprint $table) {
             $table->id();
@@ -41,12 +36,7 @@ class CreateDataServicesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('service_solution');
         Schema::dropIfExists('platform_service');
