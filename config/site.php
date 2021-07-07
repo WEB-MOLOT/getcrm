@@ -11,6 +11,7 @@ return [
     'email' => [
         'admin' => null,
         'subscribe' => null,
+        'sale' => null,
     ],
     'hh_profile' => null,
     'noindex' => null,

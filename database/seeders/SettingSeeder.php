@@ -57,6 +57,11 @@ class SettingSeeder extends Seeder
             'value' => 'subscribe@getcrm.ru',
             'title' => 'Адрес email для подписок',
         ],
+        'site.email.sale' => [
+            'type' => 'text',
+            'value' => 'b2b@getcrm.ru',
+            'title' => 'Адрес email для вывода на сайте',
+        ],
         'site.hh_profile' => [
             'type' => 'text',
             'value' => 'https://hh.ru/employer/2118926',

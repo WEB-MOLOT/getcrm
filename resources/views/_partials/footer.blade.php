@@ -40,7 +40,7 @@
                     <a href="tel:+74957254376">+ 7 (495) <span>725-43-76</span></a>
                 </div>
                 <div class="footer_email">
-                    Напишите нам: <a href="mailto:hello@getcrm.ru">hello@getcrm.ru</a>
+                    Напишите нам: <a href="mailto:{{ config('site.email.sale') }}">{{ config('site.email.sale') }}</a>
                 </div>
             </div>
         </div>
