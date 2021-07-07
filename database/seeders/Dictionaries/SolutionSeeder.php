@@ -9,6 +9,32 @@ class SolutionSeeder extends Seeder
 {
     public function run(): void
     {
-        Solution::factory(10)->create();
+        foreach ($this->solutions as $solution) {
+            Solution::factory()->create([
+                'name' => $solution['name'],
+            ]);
+        }
+
     }
+
+    protected array $solutions = [
+        [
+            'name' => 'Система кросс-канальных коммуникаций',
+        ],
+        [
+            'name' => 'Система персонализации контента сайта',
+        ],
+        [
+            'name' => 'Система анализа поведения клиентов в цифровых ресурсах',
+        ],
+        [
+            'name' => 'Программа Лояльности',
+        ],
+        [
+            'name' => 'Система автоматизации контакт-центра и управления сервисными обращениями',
+        ],
+        [
+            'name' => 'Профиль клиента и продажи',
+        ],
+    ];
 }
