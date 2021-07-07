@@ -59,7 +59,7 @@ class SettingSeeder extends Seeder
         ],
         'site.hh_profile' => [
             'type' => 'text',
-            'value' => 'https://hh.ru/',
+            'value' => 'https://hh.ru/employer/2118926',
             'title' => 'Профиль компании на hh.ru',
         ],
         'site.noindex' => [
