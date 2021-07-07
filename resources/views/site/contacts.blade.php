@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\Models\Pages\ContactsPage $page
+ * @var \App\Models\SeoData $seo
+ */
+?>
 @extends('layouts.site')
 
 @section('title')
@@ -12,7 +18,7 @@
     <script src="/js/jquery.maskedinput.min.js"></script>
     <script>
         $(function () {
-            $("#phone").mask("+7(999) 999-9999");
+            $("#phone").mask("{{ $page->phone() }}");
         });
     </script>
 @endpush
@@ -44,7 +50,7 @@
             </div>
             <div class="contacts">
                 <img src="/img/contacts.png" class="image"/>
-                <a href="tel:+74957254376">+7 (495) 725 43 76</a>
+                <a href="tel:{{ $page->clearedPhone() }}">{{ $page->phone() }}</a>
                 <div class="hours">
                     <span></span>
                     <span></span>

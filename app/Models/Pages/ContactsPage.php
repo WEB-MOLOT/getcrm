@@ -16,4 +16,19 @@ class ContactsPage extends Page
             $builder->where('slug', '=', 'contacts');
         });
     }
+
+    public function phone(): string
+    {
+        return $this->block('phone');
+    }
+
+    public function clearedPhone(): string
+    {
+        return preg_replace('/[^0-9+]/', '', $this->phone());
+    }
+
+    public function address(): string
+    {
+        return $this->block('address');
+    }
 }

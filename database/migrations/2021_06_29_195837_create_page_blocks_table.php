@@ -10,6 +10,18 @@ class CreatePageBlocksTable extends Migration
     {
         Schema::create('page_blocks', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('page_id')->comment('')->constrained();
+            $table->string('type')->comment('');
+            $table->string('slug')->comment('');
+            $table->boolean('is_visible')->default(1)->comment('');
+            $table->text('content')->nullable()->comment('');
+
+            $table->unique([
+                'page_id',
+                'slug',
+            ]);
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\Page;
+use App\Models\Pages\ContactsPage;
 use App\Models\SeoData;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -20,7 +20,7 @@ class ContactsController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        $page = Page::query()->where('slug', '=', 'contacts')->firstOrFail();
+        $page = ContactsPage::firstOrFail();
 
         /** @var SeoData $seo */
         $seo = $page->seoData()->first();
