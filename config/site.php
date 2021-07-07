@@ -8,6 +8,7 @@ return [
     'title' => null,
     'description' => null,
     'keywords' => null,
+    'phone' => null,
     'email' => [
         'admin' => null,
         'subscribe' => null,

@@ -47,6 +47,11 @@ class SettingSeeder extends Seeder
             'value' => 'getcrm, business',
             'title' => 'Ключевые слова <keywords>',
         ],
+        'site.phone' => [
+            'type' => 'text',
+            'value' => '+ 7 (495) <span>725-43-76</span>',
+            'title' => 'Номер телефона для вывода на сайте',
+        ],
         'site.email.admin' => [
             'type' => 'text',
             'value' => 'admin@getcrm.ru',

@@ -37,7 +37,7 @@
         <div class="footer_inside_item">
             <div class="footer_info">
                 <div class="footer_number">
-                    <a href="tel:+74957254376">+ 7 (495) <span>725-43-76</span></a>
+                    <a href="tel:{{ preg_replace('/[^0-9\+]/', '', config('site.phone')) }}">{!! config('site.phone') !!}</a>
                 </div>
                 <div class="footer_email">
                     Напишите нам: <a href="mailto:{{ config('site.email.sale') }}">{{ config('site.email.sale') }}</a>

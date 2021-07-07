@@ -946,9 +946,8 @@
                 </div>
             </div>
             <div class="hr_number">
-                <a href="tel:+74957254376" class="hr_number_link"
-                >+ 7 (495) <span>725-43-76</span></a
-                >
+                <a href="tel:{{ preg_replace('/[^0-9\+]/', '', config('site.phone')) }}"
+                   class="hr_number_link">{!! config('site.phone') !!}</a>
             </div>
         </div>
     </div>
