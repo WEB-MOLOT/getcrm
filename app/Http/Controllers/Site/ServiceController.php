@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
+use App\Models\SeoData;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +20,15 @@ class ServiceController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        $data = [];
+        $page = Page::query()->where('slug', '=', 'service')->firstOrFail();
+
+        /** @var SeoData $seo */
+        $seo = $page->seoData()->first();
+
+        $data = [
+            'page' => $page,
+            'seo' => $seo,
+        ];
 
         return view('site.service', $data);
     }

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             Dictionaries\SolutionSeeder::class,
             Dictionaries\PlatformSeeder::class,
             Dictionaries\ServiceSeeder::class,
+            PageSeeder::class,
             CompanySeeder::class,
             SettingSeeder::class,
             UserSeeder::class,

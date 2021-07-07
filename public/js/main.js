@@ -1770,10 +1770,19 @@ $(document).ready(function () {
   //Проверка формы с почтой для подписки на рассылку
   if (footerSubscription) {
     footerSubscription.addEventListener("submit", (e) => {
-      e.preventDefault();
-      subscriptionModal.classList.add("opened");
-      windowOverlay.classList.add("active-modal");
-      setTimeout(() => footerSubscription.reset(), 400);
+        e.preventDefault();
+
+        $.ajax({
+            type: 'GET',
+            url: '/subscribe',
+            data: {
+                'email': $(footerSubscription).find('input[name=email]').val(),
+            },
+        });
+
+        subscriptionModal.classList.add("opened");
+        windowOverlay.classList.add("active-modal");
+        setTimeout(() => footerSubscription.reset(), 400);
     });
   }
   //Проверка формы с регистрацией

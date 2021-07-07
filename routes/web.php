@@ -23,3 +23,5 @@ Route::get('/solutions/{solution}', Site\SolutionController::class)->name('site.
 Route::get('/services/{service}', Site\ServiceController::class)->name('site.services.show');
 Route::get('/price', Site\PriceController::class)->name('site.price.index');
 Route::get('/privacy', Site\PrivacyController::class)->name('site.privacy.index');
+
+Route::get('/subscribe', Site\SubscribeController::class)->name('site.subscribe.store');

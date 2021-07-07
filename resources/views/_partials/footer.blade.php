@@ -21,9 +21,10 @@
         </div>
         <div class="footer_inside_item footer_inside_item__form">
             <div class="footer_subscribe">
-                <form action="#" class="footer_subscribe_inside">
+                <form action="{{ route('site.subscribe.store') }}" class="footer_subscribe_inside">
                     <input
                         type="email"
+                        name="email"
                         placeholder="Введите свой e-mail: и будьте в курсе всех новостей:"
                         required
                     />

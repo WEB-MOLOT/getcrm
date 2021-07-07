@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         $companies = Company::all();
 
-        User::factory(1)->admin()->create([
+        User::factory(1)->customer()->create([
             'email' => 'admin@getcrm.ru',
         ]);
 
