@@ -250,7 +250,8 @@
 
     <!-- Modal "Personal account" -->
     <div class="modal_personal_account modal-block">
-        <form action="#" name="login" class="modal__login">
+        <form action="{{ route('login') }}" method="POST" name="login" class="modal__login">
+            {{ csrf_field() }}
             <h3 class="login__title">Личный кабинет</h3>
             <input
                 type="email"
@@ -268,7 +269,7 @@
             />
             <div class="login__pass_inform">
                 <label class="remember__pass">
-                    <input type="checkbox" checked class="checkbox"/>
+                    <input type="checkbox" checked name="remember" id="remember" class="checkbox"/>
                     <p>Запомнить пароль</p>
                 </label>
                 <a href="#" class="forgot_pass">Забыли пароль?</a>
@@ -330,7 +331,7 @@
             <input
                 type="text"
                 placeholder="Компания"
-                name="company"
+                name="firm"
                 class="form__input"
                 required
             />
@@ -351,14 +352,14 @@
             <input
                 type="password"
                 placeholder="Повторите пароль"
-                placeholder="password-verification"
+                name="password_confirmation"
                 class="form__input"
                 required
             />
             <label class="form__privacy registration__form_privacy">
                 <input type="checkbox" checked class="checkbox" required/>
                 <p>
-                    Я согласен с условиями <a href="#">политики конфиденциальности</a>
+                    Я согласен с условиями <a href="{{ route('site.privacy.index') }}">политики конфиденциальности</a>
                 </p>
             </label>
 

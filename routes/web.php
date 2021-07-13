@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Cabinet;
 use App\Http\Controllers\Site;
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', Site\IndexController::class)->name('site.index');
 
@@ -28,3 +29,10 @@ Route::get('/ajax/subscribe', Site\Ajax\SubscribeController::class)->name('site.
 Route::get('/ajax/sale', Site\Ajax\SaleController::class)->name('site.sale.email');
 Route::get('/ajax/contact', Site\Ajax\ContactController::class)->name('site.contact.email');
 Route::get('/ajax/cart', Site\Ajax\CartController::class)->name('site.cart');
+
+Route::middleware([
+    'auth',
+    'verified'
+])->prefix('cabinet')->group(static function () {
+    Route::get('/', Cabinet\IndexController::class)->name('cabinet.index');
+});

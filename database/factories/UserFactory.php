@@ -19,6 +19,7 @@ class UserFactory extends Factory
      */
     #[ArrayShape([
         'name' => "string",
+        'firm' => "string",
         'email' => "mixed",
         'email_verified_at' => "\Illuminate\Support\Carbon",
         'last_login_at' => "\Illuminate\Support\Carbon",
@@ -31,6 +32,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'firm' => $this->faker->company(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'last_login_at' => now(),

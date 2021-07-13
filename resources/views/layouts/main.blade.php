@@ -64,6 +64,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     {!! config('site.code.head') !!}
+    @livewireStyles
 </head>
 
 <body>
@@ -75,6 +76,7 @@
 </div>
 
 @yield('footer')
+@livewireScripts
 </body>
 <div id="overlay_megamenu"></div>
 <div id="overlay_mobile"></div>
