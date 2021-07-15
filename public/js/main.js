@@ -1293,7 +1293,7 @@ $(document).ready(function () {
     // табы личного кабинета
     let cabinetPageTabId;
     $(
-        ".cabinet-page .menu a, .cabinet-page .menu2 a, .cabinet-page .mobile-menu a"
+        ".cabinet-page .menu a, .cabinet-page .menu2 a, .cabinet-page .mobile-menu a, .cabinet-page a.separate"
     ).on("click", function (event) {
         event.preventDefault();
         cabinetPageTabId = $(this).data("tab");

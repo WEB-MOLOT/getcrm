@@ -20,5 +20,5 @@
         </div>
     @endforeach
 
-    <a href="#" class="bottom-link">Все продукты</a>
+    <a href="#" class="bottom-link separate" data-tab="products">Все продукты</a>
 </div>
