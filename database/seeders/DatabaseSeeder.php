@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             SolutionSeeder::class,
             ServiceSeeder::class,
             UserProductSeeder::class,
+            UserDocumentSeeder::class,
         ]);
     }
 

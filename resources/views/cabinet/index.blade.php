@@ -141,13 +141,13 @@
                 </div>
                 <div class="account__tab" data-tab="profile">
                     <div class="profile">
-                        <livewire:profile></livewire:profile>
-                        <livewire:subscribe></livewire:subscribe>
-                        <livewire:password></livewire:password>
+                        <livewire:profile/>
+                        <livewire:subscribe/>
+                        <livewire:password/>
                     </div>
                 </div>
                 <div class="account__tab" data-tab="products">
-                    <x-cabinet.tabs.products></x-cabinet.tabs.products>
+                    <x-cabinet.tabs.products/>
                 </div>
                 <div class="account__tab" data-tab="prices">
                     <div class="prices-page">
@@ -1259,103 +1259,7 @@
                     </div>
                 </div>
                 <div class="account__tab" data-tab="docs">
-                    <div class="docs">
-                        <div class="name">
-                            Документация
-                        </div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <td></td>
-                                <td>Дата окончания подписки</td>
-                                <td>Дата продления подписки</td>
-                                <td>Формат</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Счет №1 <a class="link"></a></td>
-                                <td>
-                                    <div class="n">Дата окончания подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Дата продления подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Формат</div>
-                                    <a href="#" class="pdf">.PDF</a>
-                                    <a href="#" class="xls">.XLS</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Счет №2 <a class="link"></a></td>
-                                <td>
-                                    <div class="n">Дата окончания подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Дата продления подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Формат</div>
-                                    <a href="#" class="pdf">.PDF</a>
-                                    <a href="#" class="xls">.XLS</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Счет №3 <a class="link"></a></td>
-                                <td>
-                                    <div class="n">Дата окончания подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Дата продления подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Формат</div>
-                                    <a href="#" class="pdf">.PDF</a>
-                                    <a href="#" class="xls">.XLS</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Счет №4 <a class="link"></a></td>
-                                <td>
-                                    <div class="n">Дата окончания подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Дата продления подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Формат</div>
-                                    <a href="#" class="pdf">.PDF</a>
-                                    <a href="#" class="xls">.XLS</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Счет №5 <a class="link"></a></td>
-                                <td>
-                                    <div class="n">Дата окончания подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Дата продления подписки</div>
-                                    24.10.2020
-                                </td>
-                                <td>
-                                    <div class="n">Формат</div>
-                                    <a href="#" class="pdf">.PDF</a>
-                                    <a href="#" class="xls">.XLS</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <x-cabinet.tabs.documents/>
                 </div>
             </div>
         </div>
