@@ -13,6 +13,14 @@ class Subscribe extends Component
 
     protected User $user;
 
+    protected array $rules = [
+        'subscribeEmail' => 'email|nullable'
+    ];
+
+    protected array $validationAttributes = [
+        'subscribeEmail' => 'Адрес для подписки',
+    ];
+
     public function __construct($id = null)
     {
         $this->user = auth()->user();
@@ -43,8 +51,13 @@ class Subscribe extends Component
         ]);
     }
 
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function updatedSubscribeEmail(): void
     {
+        $this->validateOnly('subscribeEmail');
+
         $this->user->update([
             'subscribe_email' => $this->subscribeEmail,
         ]);

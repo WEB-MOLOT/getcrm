@@ -10,7 +10,6 @@
     </div>
     <div class="top-text">
         Рассылка с последними новостями, продуктами, и т.д
-        {{ $subscribeEmail }}
     </div>
     <div class="field mail2">
         {{--        <a class="add"></a>--}}
@@ -22,6 +21,7 @@
         </p>
         <div class="field__input-wrap">
             <input type="text" wire:model="subscribeEmail"/>
+            @error('subscribeEmail') <span class="error">{{ $message }}</span> @enderror
             {{--            <span class="field__input-remove">+</span>--}}
         </div>
     </div>
