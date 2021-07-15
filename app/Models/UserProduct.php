@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserProduct extends Model
 {
     /** @var int За сколько дней до конца лицензии начинать помечать продукт */
-    public const MARK = 20;
+    public const MARK = 90;
 
     use HasFactory,
         SoftDeletes;
@@ -35,7 +35,7 @@ class UserProduct extends Model
 
     public function hasMark(): bool
     {
-        return $this->isActive() && $this->getProgress() < self::MARK;
+        return $this->isActive() && $this->getRemainingDays() < self::MARK;
     }
 
     public function getProgressClass(): string
