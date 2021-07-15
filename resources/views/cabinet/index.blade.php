@@ -133,7 +133,7 @@
                                     <!-- /end-->
 
                                 </div>
-                                <a href="#" class="bottom-link">все решения</a>
+                                <a href="#" class="bottom-link separate" data-tab="future">все решения</a>
                             </div>
                         </div>
                     </div>
