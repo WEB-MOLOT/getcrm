@@ -14,7 +14,7 @@ class UserProductFactory extends Factory
         return [
             'user_id' => null,
             'name' => $this->faker->country,
-            'finished_at' => $this->faker->dateTimeBetween('-1 month', '+3 months'),
+            'finished_at' => $this->faker->dateTimeBetween('-1 month', '+9 months'),
             'created_at' => null,
             'code' => 'CIS ' . $this->faker->numberBetween(100000, 999999),
         ];
