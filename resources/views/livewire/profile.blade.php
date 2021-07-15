@@ -5,6 +5,11 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if($errors->isNotEmpty())
+            <div class="alert alert-danger">
+                Произошла ошибка при обновление данных профиля.
+            </div>
+        @endif
     </div>
     <form wire:submit.prevent="save">
         <div class="name">
@@ -35,7 +40,7 @@
             {{--            </div>--}}
         </div>
         <div class="field mail">
-            <a class="add"></a>
+            {{--<a class="add"></a>--}}
             <p>E-mail:</p>
             <input type="text" wire:model="email"/>
             @error('email') <span class="error">{{ $message }}</span> @enderror

@@ -19,13 +19,22 @@ class Profile extends Component
 
     protected User $user;
 
+    protected array $validationAttributes = [
+        'name' => 'ФИО',
+        'firm' => 'Организация',
+        'position' => 'Должность',
+        'email' => 'E-mail',
+        'phones' => 'Телефон',
+    ];
+
     protected function rules(): array
     {
         return [
             'name' => 'required|string|min:6',
             'firm' => 'required|string|min:6',
-            'position' => 'string|min:6',
-            'email' => 'required|string|email|min:6|unique:users,email,id,' . auth()->id(),
+            'position' => 'nullable|string|min:6',
+            'email' => 'required|string|email|min:6|unique:users,email,' . auth()->id(),
+            'phones' => 'nullable|string|min:6',
         ];
     }
 
@@ -45,14 +54,14 @@ class Profile extends Component
         $this->phones = $this->user->phones;
     }
 
-    public function render(): string
+    public function render()
     {
         return view('livewire.profile');
     }
 
     public function save()
     {
-        //$this->validate();
+        $this->validate();
 
         $this->user->update([
             'name' => $this->name,
