@@ -40,17 +40,17 @@ class UserProduct extends Model
 
     public function getProgressClass(): string
     {
-        $progress = $this->getProgress();
+        $remainingDays = $this->getRemainingDays();
 
-        if ($progress < 20) {
-            return '';
+        if ($remainingDays > 270) {
+            return 'green';
         }
 
-        if ($progress < 60) {
+        if ($remainingDays > 90) {
             return 'yel';
         }
 
-        return 'green';
+        return '';
     }
 
     public function isActive(): bool
