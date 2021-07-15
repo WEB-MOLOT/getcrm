@@ -15,13 +15,15 @@ class CreateUsersTable extends Migration
             $table->string('position')->nullable()->comment('Должность');
             $table->string('phones')->nullable()->comment('Телефоны');
             $table->string('email')->unique()->comment('Адрес электронной почты');
+            $table->boolean('has_subscription')->default(0)->index()->comment('Включена ли подписка');
+            $table->string('subscribe_email')->nullable()->comment('Адрес электронной почты для подписки на рассылку');
+            $table->boolean('is_admin')->default(0)->index()->comment('Администратор');
+            $table->foreignId('company_id')->nullable()->comment('Компания')->constrained();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('last_login_at')->comment('Дата последнего входа');
             $table->string('password')->comment('Пароль');
             $table->rememberToken();
             $table->timestamps();
-            $table->boolean('is_admin')->default(0)->index()->comment('Администратор');
-            $table->foreignId('company_id')->nullable()->comment('Компания')->constrained();
             $table->softDeletes()->index();
         });
     }

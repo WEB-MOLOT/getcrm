@@ -1,20 +1,27 @@
+<?php
+/**
+ * @var string|null $subscribeEmail
+ * @var bool $hasSubscription
+ */
+?>
 <div class="block">
     <div class="name">
         Рассылка
     </div>
     <div class="top-text">
         Рассылка с последними новостями, продуктами, и т.д
+        {{ $subscribeEmail }}
     </div>
     <div class="field mail2">
         {{--        <a class="add"></a>--}}
         <p>
-            <input type="checkbox" class="chkbx" id="c"/><label
+            <input type="checkbox" class="chkbx" wire:model="hasSubscription" id="c"/><label
                 for="c"
             ><span></span
                 ></label>
         </p>
         <div class="field__input-wrap">
-            <input type="text"/>
+            <input type="text" wire:model="subscribeEmail"/>
             {{--            <span class="field__input-remove">+</span>--}}
         </div>
     </div>

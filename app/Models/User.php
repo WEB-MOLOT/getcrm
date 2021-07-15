@@ -23,6 +23,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'firm',
         'email',
+        'subscribe_email',
+        'has_subscription',
         'phones',
         'position',
         'password',
@@ -40,12 +42,23 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'last_login_at' => 'datetime',
         'is_admin' => 'boolean',
+        'has_subscription' => 'boolean',
         'phones' => 'string',
     ];
 
     public function isAdmin(): bool
     {
         return $this->is_admin;
+    }
+
+    public function hasSubscription(): bool
+    {
+        return $this->has_subscription;
+    }
+
+    public function setSubscribeEmailAttribute($value)
+    {
+        $this->attributes['subscribe_email'] = empty($value) ? null : $value;
     }
 
     public function products(): HasMany
