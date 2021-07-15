@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\PasswordChangedMail;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Password extends Component
@@ -40,5 +42,7 @@ class Password extends Component
         ]);
 
         session()->flash('success', 'Пароль обновлен.');
+
+        Mail::to(auth()->user()->email)->send(new PasswordChangedMail());
     }
 }
