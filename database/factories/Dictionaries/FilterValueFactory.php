@@ -2,17 +2,18 @@
 
 namespace Database\Factories\Dictionaries;
 
-use App\Models\Dictionaries\Filter;
+use App\Models\Dictionaries\FilterValue;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FilterFactory extends Factory
+class FilterValueFactory extends Factory
 {
-    protected $model = Filter::class;
+    protected $model = FilterValue::class;
 
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->country,
+            'filter_id' => null,
+            'name' => $this->faker->unique()->city,
             'order' => 100,
         ];
     }

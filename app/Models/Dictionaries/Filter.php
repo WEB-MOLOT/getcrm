@@ -6,10 +6,10 @@ use App\Casts\FilterTypeCast;
 use App\Enums\FilterType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Filter
- * @property FilterType $type
  * @package App\Models\Dictionaries
  */
 class Filter extends Model
@@ -19,12 +19,12 @@ class Filter extends Model
     protected $table = 'data_filters';
 
     protected $fillable = [
-        'type',
-        'label',
-        'key',
+        'name',
+        'order',
     ];
 
-    protected $casts = [
-        'type' => FilterTypeCast::class,
-    ];
+    public function values(): HasMany
+    {
+        return $this->hasMany(FilterValue::class, 'filter_id');
+    }
 }
