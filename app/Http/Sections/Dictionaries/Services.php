@@ -87,7 +87,7 @@ class Services extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-        $card = AdminForm::card([
+        $card = AdminForm::card()->addBody([
             AdminFormElement::text('name', 'Название')
                 ->required(),
             AdminFormElement::textarea('description', 'Описание')
