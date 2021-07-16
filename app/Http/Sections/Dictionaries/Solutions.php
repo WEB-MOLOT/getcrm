@@ -7,11 +7,14 @@ use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -82,18 +85,41 @@ class Solutions extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-        return AdminForm::card()->addBody([
+        $card = AdminForm::card();
+
+        $form = AdminForm::elements([
             AdminFormElement::text('name', 'Название')
                 ->required(),
             AdminFormElement::textarea('description', 'Описание')
                 ->required(),
         ]);
+
+        $tabs = AdminDisplay::tabbed();
+
+        $tabs->appendTab($form, 'Решение', true);
+
+        if ($id) {
+            $functionalities = AdminForm::elements([
+                '<p>После изменения функционала надо обязательно сохранить изменения в базу (кнопка Сохранить внизу формы).</p>',
+                AdminFormElement::hasMany('functionalities', [
+                    AdminFormElement::text('name', 'Название функционала')
+                ]),
+            ]);
+            $tabs->appendTab($functionalities, 'Функционал', false);
+        }
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$tabs]);
     }
 
     /**
      * @param array $payload
      * @return FormInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function onCreate(array $payload = []): FormInterface
     {

@@ -4,15 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilterValuesTable extends Migration
+class CreateSolutionFunctionalitiesTable extends Migration
 {
     public function up(): void
     {
-        Schema::create('data_filter_values', function (Blueprint $table) {
+        Schema::create('data_solution_functionalities', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('filter_id')->comment('Фильтр')
-                ->constrained('data_filters')
+            $table->foreignId('solution_id')->comment('Решение')
+                ->constrained('data_solutions')
                 ->onDelete('cascade');
 
             $table->string('name')->comment('Значение');
@@ -24,6 +24,6 @@ class CreateFilterValuesTable extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('data_filter_values');
+        Schema::dropIfExists('data_solution_functionalities');
     }
 }
