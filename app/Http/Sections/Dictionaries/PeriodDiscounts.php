@@ -97,8 +97,6 @@ class PeriodDiscounts extends Section implements Initializable
     {
         $card = AdminForm::card();
 
-        $period = PeriodDiscount::find($id);
-
         $form = AdminForm::elements([
             AdminFormElement::number('from_period', 'Сумма от')
                 ->required(),
