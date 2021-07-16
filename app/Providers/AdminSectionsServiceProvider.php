@@ -37,6 +37,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\Dictionaries\Service::class => 'App\Http\Sections\Dictionaries\Services',
         \App\Models\Dictionaries\Solution::class => 'App\Http\Sections\Dictionaries\Solutions',
         \App\Models\Dictionaries\Filter::class => 'App\Http\Sections\Dictionaries\Filters',
+        \App\Models\Dictionaries\FilterValue::class => 'App\Http\Sections\Dictionaries\FiltersValues',
         \App\Models\Dictionaries\License::class => 'App\Http\Sections\Dictionaries\Licenses',
         \App\Models\Dictionaries\PeriodDiscount::class => 'App\Http\Sections\Dictionaries\PeriodDiscounts',
         \App\Models\Dictionaries\Platform::class => 'App\Http\Sections\Dictionaries\Platforms',

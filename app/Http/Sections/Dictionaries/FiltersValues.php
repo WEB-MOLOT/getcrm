@@ -6,27 +6,24 @@ use AdminColumn;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
-use AdminNavigation;
-use AdminSection;
-use App\Models\Dictionaries\FilterValue;
+use App\Models\Dictionaries\Filter;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
-use SleepingOwl\Admin\Contracts\Initializable;
 use SleepingOwl\Admin\Form\Buttons\Cancel;
 use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
- * Class Filters
+ * Class FiltersValues
  *
- * @property \App\Models\Dictionaries\Filter $model
+ * @property \App\Models\Dictionaries\FilterValue $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Filters extends Section implements Initializable
+class FiltersValues extends Section
 {
     /**
      * @var bool
@@ -36,46 +33,39 @@ class Filters extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Фильтры';
+    protected $title;
 
     /**
      * @var string
      */
-    protected $alias = 'dictionaries/filters';
+    protected $alias;
 
     /**
-     * Initialize class.
-     */
-    public function initialize()
-    {
-        $page = AdminNavigation::getPages()->findById('dictionaries');
-
-        $page->addPage(
-            $this->makePage(100)->setIcon('fas fa-filter')
-        );
-    }
-
-    /**
+     * @param array $payload
      *
      * @return DisplayInterface
      */
-    public function onDisplay(): DisplayInterface
+    public function onDisplay(array $payload = []): DisplayInterface
     {
+        $filterId = $payload['filter_id'] ?? null;
+
         $columns = [
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('name', 'Название'),
+            AdminColumn::text('name', 'Значение'),
             AdminColumn::order(),
         ];
 
         $display = AdminDisplay::table()
             ->paginate(100)
             ->setColumns($columns)
+            ->setNewEntryButtonText('Добавить значение фильтра')
+            ->setParameter('filter_id', $filterId)
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
-        $display->setApply(function (Builder $query) {
-            $query->oldest('order');
+        $display->setApply(function (Builder $query) use ($filterId) {
+            $query->oldest('order')->where('filter_id', '=', $filterId);
         });
 
         return $display;
@@ -84,36 +74,35 @@ class Filters extends Section implements Initializable
     /**
      * @param int|null $id
      * @param array $payload
+     *
      * @return FormInterface
+     * @throws Exception
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-        $card = AdminForm::card();
+        $filterId = request()->get('filter_id');
 
-        $form = AdminForm::elements([
-            AdminFormElement::text('name', 'Название')
+        $card = AdminForm::card()->addBody([
+            AdminFormElement::select('filter_id', 'Фильтр')
+                ->setModelForOptions(Filter::class, 'name')
+                ->setLoadOptionsQueryPreparer(static function ($element, Builder $query) use ($filterId) {
+                    return $query->where('id', '=', $filterId);
+                })
+                ->setDefaultValue($filterId)
+                ->required(),
+            AdminFormElement::text('name', 'Значение')
                 ->required(),
         ]);
-
-        $tabs = AdminDisplay::tabbed();
-
-        $tabs->appendTab($form, 'Фильтр', true);
-
-        if ($id) {
-            $values = AdminSection::getModel(FilterValue::class)->fireDisplay(['filter_id' => $id]);
-            $tabs->appendTab($values, 'Значения', false);
-        }
 
         $card->getButtons()->setButtons([
             'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
             'cancel' => (new Cancel()),
         ]);
 
-        return $card->addBody([$tabs]);
+        return $card;
     }
 
     /**
-     * /**
      * @param array $payload
      * @return FormInterface
      * @throws Exception
