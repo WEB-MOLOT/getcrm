@@ -13,6 +13,7 @@ class PageFactory extends Factory
     {
         return [
             'slug' => $this->faker->unique()->userName,
+            'slug' => $this->faker->word,
         ];
     }
 }

@@ -2,12 +2,26 @@
 
 namespace App\Models;
 
+use App\Casts\MenuTypeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use SleepingOwl\Admin\Traits\OrderableModel;
 
 class Menu extends Model
 {
+    use HasFactory,
+        OrderableModel;
+
     protected $table = 'menus';
 
-    use HasFactory;
+    protected $fillable = [
+        'type',
+        'page_id',
+        'name',
+        'order',
+    ];
+
+    protected $casts = [
+        'type' => MenuTypeCast::class,
+    ];
 }

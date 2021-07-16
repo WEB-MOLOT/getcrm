@@ -21,6 +21,7 @@ class Page extends Model
 
     protected $fillable = [
         'slug',
+        'name',
     ];
 
     public function seoData(): HasOne

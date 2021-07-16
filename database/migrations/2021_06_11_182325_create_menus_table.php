@@ -10,6 +10,12 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedSmallInteger('type')->comment('');
+            $table->foreignId('page_id')->comment('Страница')->constrained();
+            $table->string('name')->comment('Пункт меню');
+            $table->unsignedSmallInteger('order')->default(100)->comment('Сортировка');
+
             $table->timestamps();
         });
     }

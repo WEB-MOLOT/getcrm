@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             UserProductSeeder::class,
             UserDocumentSeeder::class,
+            MenuSeeder::class,
         ]);
     }
 

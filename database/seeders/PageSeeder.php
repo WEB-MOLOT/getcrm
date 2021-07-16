@@ -14,6 +14,7 @@ class PageSeeder extends Seeder
             /** @var Page $page */
             $page = Page::factory()->create([
                 'slug' => $slug,
+                'name' => $params['name'],
             ]);
             if (array_key_exists('blocks', $params)) {
                 $page->blocks()->createMany($params['blocks']);
@@ -22,8 +23,11 @@ class PageSeeder extends Seeder
     }
 
     protected array $pages = [
-        'about' => [],
+        'about' => [
+            'name' => 'О компании',
+        ],
         'contacts' => [
+            'name' => '',
             'blocks' => [
                 [
                     'slug' => 'phone',
@@ -37,14 +41,32 @@ class PageSeeder extends Seeder
                 ],
             ],
         ],
-        'customer' => [],
-        'form' => [],
-        'index' => [],
-        'job' => [],
-        'landing' => [],
-        'price' => [],
-        'privacy' => [],
-        'service' => [],
-        'solution' => [],
+        'customer' => [
+            'name' => 'Что такое CX',
+        ],
+        'news' => [
+            'name' => 'Новости',
+        ],
+        'form' => [
+            'name' => 'Отдел продаж',
+        ],
+        'index' => [
+            'name' => 'Главная',
+        ],
+        'job' => [
+            'name' => 'Вакансии',
+        ],
+        'success_stories' => [
+            'name' => 'Истории успеха',
+        ],
+        'dimarke' => [
+            'name' => 'ДИМАРКЭ',
+        ],
+        'price' => [
+            'name' => 'Расчет цены',
+        ],
+        'privacy' => [
+            'name' => 'Политика конфиденциальности',
+        ],
     ];
 }
