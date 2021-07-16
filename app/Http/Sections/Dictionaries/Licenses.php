@@ -4,12 +4,17 @@ namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use App\Models\Dictionaries\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -44,7 +49,7 @@ class Licenses extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('dictionaries');
 
         $page->addPage(
-            $this->makePage(500)->setIcon('fab fa-dev')
+            $this->makePage(500)->setIcon('fas fa-passport')
         );
     }
 
@@ -58,7 +63,16 @@ class Licenses extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+
+            AdminColumn::text('name', 'Наименование'),
+            AdminColumn::text('service.name', 'Сервис'),
+            AdminColumn::text('metric', 'Метрика'),
+            AdminColumn::text('metric_value', 'Значение метрики'),
+            AdminColumn::text('metric_period', 'Срок метрики, мес.'),
+            AdminColumn::text('price', 'Цена ($), в год'),
+            AdminColumn::text('quantity', 'Кол-во'),
+            AdminColumn::text('support', 'Техподдержка'),
+            AdminColumn::text('line', 'Линия бизнеса'),
         ];
 
         $display = AdminDisplay::table()
@@ -80,7 +94,27 @@ class Licenses extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
+        $card = AdminForm::card();
 
+        $form = AdminForm::elements([
+            AdminFormElement::text('name', 'Название')->required(),
+            AdminFormElement::select('service_id', 'Сервис')->required()
+                ->setModelForOptions(Service::class, 'name'),
+            AdminFormElement::text('metric', 'Метрика')->required(),
+            AdminFormElement::text('metric_value', 'Значение метрики')->required(),
+            AdminFormElement::number('metric_period', 'Срок метрики, мес.')->required(),
+            AdminFormElement::number('price', 'Цена ($), в год')->required(),
+            AdminFormElement::number('quantity', 'Кол-во')->required(),
+            AdminFormElement::text('support', 'Техподдержка')->required(),
+            AdminFormElement::text('line', 'Линия бизнеса')->required(),
+        ]);
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$form]);
     }
 
     /**
@@ -99,7 +133,7 @@ class Licenses extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -107,7 +141,7 @@ class Licenses extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -117,13 +151,5 @@ class Licenses extends Section implements Initializable
     public function isDeletable(Model $model): bool
     {
         return false;
-    }
-
-    /**
-     * @return void
-     */
-    public function onRestore(int $id)
-    {
-        // remove if unused
     }
 }

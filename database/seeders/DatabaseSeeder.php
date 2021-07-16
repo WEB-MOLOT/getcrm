@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             Dictionaries\ServiceSeeder::class,
             Dictionaries\AmountDiscountSeeder::class,
             Dictionaries\PeriodDiscountSeeder::class,
+            Dictionaries\LicenseSeeder::class,
             PageSeeder::class,
             CompanySeeder::class,
             SettingSeeder::class,

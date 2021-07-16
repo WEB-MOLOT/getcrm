@@ -78,7 +78,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
             [
                 'title' => 'Справочники',
                 'id' => 'dictionaries',
-                'icon' => 'fab fa-dev',
+                'icon' => 'fas fa-book',
                 'priority' => 300,
             ],
             [
