@@ -7,7 +7,6 @@ use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
-use App\Models\Dictionaries\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
@@ -61,19 +60,17 @@ class Filters extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::custom('Группа фильтров', static function (Filter $item) {
-                return $item->type->label();
-            }),
-            AdminColumn::text('label', 'E-mail'),
+            AdminColumn::text('name', 'Название'),
+            AdminColumn::order(),
         ];
 
         $display = AdminDisplay::table()
-            ->paginate(40)
+            ->paginate(100)
             ->setColumns($columns)
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
-            $query->latest('id');
+            $query->oldest('order');
         });
 
         return $display;
@@ -87,7 +84,7 @@ class Filters extends Section implements Initializable
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
         return AdminForm::card()->addBody([
-            AdminFormElement::text('label', 'Значение')
+            AdminFormElement::text('name', 'Название')
                 ->required(),
         ]);
     }
@@ -107,7 +104,7 @@ class Filters extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**

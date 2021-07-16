@@ -7,6 +7,7 @@ use App\Enums\FilterType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use SleepingOwl\Admin\Traits\OrderableModel;
 
 /**
  * Class Filter
@@ -14,7 +15,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Filter extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        OrderableModel;
 
     protected $table = 'data_filters';
 

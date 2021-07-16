@@ -63,7 +63,7 @@ return [
 
     'middleware' => [
         'web',
-        'auth.basic',
+        'auth',
         'is_admin',
     ],
 

@@ -5,10 +5,12 @@ namespace App\Models\Dictionaries;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use SleepingOwl\Admin\Traits\OrderableModel;
 
 class FilterValue extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        OrderableModel;
 
     protected $table = 'data_filter_values';
 

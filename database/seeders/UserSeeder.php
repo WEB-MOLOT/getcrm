@@ -24,6 +24,10 @@ class UserSeeder extends Seeder
             'email' => 'user@getcrm.ru',
         ]);
 
+        User::factory(1)->admin()->create([
+            'email' => 'master@getcrm.ru',
+        ]);
+
         for ($i = 0; $i < 5; $i++) {
             User::factory()->customer()->create([
                 'company_id' => random_int(0, 1) ? $companies->random()->id : null,
