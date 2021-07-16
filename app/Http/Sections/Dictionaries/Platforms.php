@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -84,7 +86,7 @@ class Platforms extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-        return AdminForm::card()->addBody([
+        $card = AdminForm::card([
             AdminFormElement::text('name', 'Название')
                 ->required(),
             AdminFormElement::textarea('description', 'Описание')
@@ -93,6 +95,13 @@ class Platforms extends Section implements Initializable
                 ->setModelForOptions(Solution::class, 'name')
                 ->required(),
         ]);
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card;
     }
 
     /**
