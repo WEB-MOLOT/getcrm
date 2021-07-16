@@ -4,12 +4,18 @@ namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use App\Enums\UnitType;
+use App\Models\Dictionaries\PeriodDiscount;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -44,7 +50,7 @@ class PeriodDiscounts extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('dictionaries');
 
         $page->addPage(
-            $this->makePage(700)->setIcon('fab fa-dev')
+            $this->makePage(700)->setIcon('fas fa-percent')
         );
     }
 
@@ -58,16 +64,25 @@ class PeriodDiscounts extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::custom('От', static function (PeriodDiscount $item) {
+                $period = trans_choice($item->from_unit->pluralization(), $item->from_period);
+                return $item->from_period . ' ' . $period;
+            }),
+            AdminColumn::custom('До', static function (PeriodDiscount $item) {
+                $period = trans_choice($item->to_unit->pluralization(), $item->to_period);
+                return $item->to_period . ' ' . $period;
+            }),
+            AdminColumn::text('discount', 'Скидка, в %'),
+            AdminColumn::order(),
         ];
 
         $display = AdminDisplay::table()
-            ->paginate(40)
+            ->paginate(100)
             ->setColumns($columns)
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
-            $query->latest('id');
+            $query->oldest('order');
         });
 
         return $display;
@@ -80,7 +95,36 @@ class PeriodDiscounts extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
+        $card = AdminForm::card();
 
+        $period = PeriodDiscount::find($id);
+
+        $form = AdminForm::elements([
+            AdminFormElement::number('from_period', 'Сумма от')
+                ->required(),
+            AdminFormElement::select('from_unit', 'Единица измерения')
+                ->setSortable(false)
+                ->setOptions(UnitType::labels())
+                ->required(),
+            AdminFormElement::number('to_period', 'Сумма до')
+                ->required(),
+            AdminFormElement::select('to_unit', 'Единица измерения')
+                ->setSortable(false)
+                ->setOptions(UnitType::labels())
+                ->required(),
+            AdminFormElement::number('discount', 'Скидка, в %')
+                ->setMin(1)
+                ->setMax(100)
+                ->setStep(1)
+                ->required(),
+        ]);
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$form]);
     }
 
     /**
@@ -99,7 +143,7 @@ class PeriodDiscounts extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -107,7 +151,7 @@ class PeriodDiscounts extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -117,13 +161,5 @@ class PeriodDiscounts extends Section implements Initializable
     public function isDeletable(Model $model): bool
     {
         return false;
-    }
-
-    /**
-     * @return void
-     */
-    public function onRestore(int $id)
-    {
-        // remove if unused
     }
 }

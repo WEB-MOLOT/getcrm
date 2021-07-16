@@ -3,7 +3,6 @@
 namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
-use AdminColumnEditable;
 use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
@@ -63,9 +62,9 @@ class AmountDiscounts extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumnEditable::text('from_amount', 'Сумма от'),
-            AdminColumnEditable::text('to_amount', 'Сумма до'),
-            AdminColumnEditable::text('discount', 'Скидка, в %'),
+            AdminColumn::text('from_amount', 'Сумма от'),
+            AdminColumn::text('to_amount', 'Сумма до'),
+            AdminColumn::text('discount', 'Скидка, в %'),
             AdminColumn::order(),
         ];
 
