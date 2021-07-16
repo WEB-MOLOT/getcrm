@@ -10,6 +10,12 @@ class CreateAmountDiscountsTable extends Migration
     {
         Schema::create('data_amount_discounts', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedInteger('from_amount')->comment('Сумма от');
+            $table->unsignedInteger('to_amount')->comment('Сумма до');
+            $table->unsignedInteger('discount')->comment('Скидка');
+            $table->unsignedInteger('order')->default(100)->comment('Порядок сортировки');
+
             $table->timestamps();
         });
     }

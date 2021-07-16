@@ -3,13 +3,19 @@
 namespace App\Http\Sections\Dictionaries;
 
 use AdminColumn;
+use AdminColumnEditable;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -44,12 +50,11 @@ class AmountDiscounts extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('dictionaries');
 
         $page->addPage(
-            $this->makePage(600)->setIcon('fab fa-dev')
+            $this->makePage(600)->setIcon('fas fa-percent')
         );
     }
 
     /**
-     *
      * @return DisplayInterface
      */
     public function onDisplay(): DisplayInterface
@@ -58,16 +63,19 @@ class AmountDiscounts extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumnEditable::text('from_amount', 'Сумма от'),
+            AdminColumnEditable::text('to_amount', 'Сумма до'),
+            AdminColumnEditable::text('discount', 'Скидка, в %'),
+            AdminColumn::order(),
         ];
 
         $display = AdminDisplay::table()
-            ->paginate(40)
+            ->paginate(100)
             ->setColumns($columns)
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
         $display->setApply(function (Builder $query) {
-            $query->latest('id');
+            $query->oldest('order');
         });
 
         return $display;
@@ -80,13 +88,32 @@ class AmountDiscounts extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
+        $card = AdminForm::card();
 
+        $form = AdminForm::elements([
+            AdminFormElement::number('from_amount', 'Сумма от')
+                ->required(),
+            AdminFormElement::number('to_amount', 'Сумма до')
+                ->required(),
+            AdminFormElement::number('discount', 'Скидка, в %')
+                ->setMin(1)
+                ->setMax(100)
+                ->setStep(1)
+                ->required(),
+        ]);
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$form]);
     }
 
     /**
      * @param array $payload
      * @return FormInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function onCreate(array $payload = []): FormInterface
     {
@@ -99,7 +126,7 @@ class AmountDiscounts extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -107,7 +134,7 @@ class AmountDiscounts extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**
