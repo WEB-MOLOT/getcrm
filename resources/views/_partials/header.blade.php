@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \Illuminate\Support\Collection $topMenu
+ * @var \Illuminate\Support\Collection $burgerMenu
+ */
+?>
 <header id="header" class="header">
     <div class="header_dropdown">
         <div class="header_dropdown_menu">
@@ -144,13 +150,13 @@
                     </div>
                 </div>
             </div>
-            <ul>
-                <li><a href="{{ route('site.about.index') }}">О компании</a></li>
-                <li><a href="{{ route('site.news.index') }}">Новости</a></li>
-                <li><a href="{{ route('site.job.index') }}">Вакансии</a></li>
-                <li><a href="{{ route('site.stories.index') }}">Истории успеха</a></li>
-                <li><a href="{{ route('site.contacts.index') }}">Контакты</a></li>
-            </ul>
+            @if($burgerMenu->isNotEmpty())
+                <ul>
+                    @foreach($burgerMenu as $item)
+                        <li><a href="{{ $item['url'] }}">{{ $item['name'] }}</a></li>
+                    @endforeach
+                </ul>
+            @endif
         </div>
     </div>
     <div class="header_inside d_flex a_items_center j_content_between">
@@ -888,12 +894,11 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <a href="{{ route('site.price.index') }}">Расчет цены</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('site.form.index') }}">Отдел продаж</a>
-                    </li>
+                    @if($topMenu->isNotEmpty())
+                        @foreach($topMenu as $item)
+                            <li><a href="{{ $item['url'] }}">{{ $item['name'] }}</a></li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>

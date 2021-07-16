@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var \Illuminate\Support\Collection $footerMenu
+ */
+?>
 <footer id="footer" class="footer">
     <div class="footer_inside d_flex a_items_center j_content_between">
         <div class="footer_inside_item footer_inside_item__logo">
@@ -13,10 +18,13 @@
         </div>
         <div class="footer_inside_item footer_inside_item__menu">
             <div class="footer_menu">
-                <ul class="d_flex f_wrap">
-                    <li><a href="{{ route('site.price.index') }}">Расчет цены</a></li>
-                    <li><a href="{{ route('site.form.index') }}">Отдел продаж</a></li>
-                </ul>
+                @if($footerMenu->isNotEmpty())
+                    <ul class="d_flex f_wrap">
+                        @foreach($footerMenu as $item)
+                            <li><a href="{{ $item['url'] }}">{{ $item['name'] }}</a></li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
         <div class="footer_inside_item footer_inside_item__form">
