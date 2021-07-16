@@ -41,7 +41,7 @@ class Filters extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'dictionaries/filters';
+    protected $alias = 'dictionaries_filters';
 
     /**
      * Initialize class.

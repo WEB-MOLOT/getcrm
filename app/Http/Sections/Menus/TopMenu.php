@@ -27,7 +27,7 @@ class TopMenu extends DefaultMenu implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'menus/top';
+    protected $alias = 'menu_top';
 
     /**
      * Initialize class.

@@ -40,7 +40,7 @@ class Services extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'dictionaries/services';
+    protected $alias = 'dictionaries_services';
 
     /**
      * Initialize class.

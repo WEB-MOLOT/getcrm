@@ -34,7 +34,7 @@ class ContactsPage extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'pages/contacts';
+    protected $alias = 'pages_contacts';
 
     /**
      * Initialize class.

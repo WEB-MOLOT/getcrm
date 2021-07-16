@@ -27,7 +27,7 @@ class FooterMenu extends DefaultMenu implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'menus/footer';
+    protected $alias = 'menu_footer';
 
     /**
      * Initialize class.

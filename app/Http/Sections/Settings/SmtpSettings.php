@@ -37,7 +37,7 @@ class SmtpSettings extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'settings/smtp';
+    protected $alias = 'settings_smtp';
 
     /**
      * Initialize class.

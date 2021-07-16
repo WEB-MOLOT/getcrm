@@ -28,7 +28,7 @@ class BurgerMenu extends DefaultMenu implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'menus/burger';
+    protected $alias = 'menu_burger';
 
     protected int $type = MenuType::BURGER;
 

@@ -37,7 +37,7 @@ class SiteSettings extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'settings/site';
+    protected $alias = 'settings_site';
 
     /**
      * Initialize class.

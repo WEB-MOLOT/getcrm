@@ -38,7 +38,7 @@ class Customers extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'crm_customers';
 
     /**
      * Initialize class.

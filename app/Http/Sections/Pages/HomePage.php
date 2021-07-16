@@ -34,7 +34,7 @@ class HomePage extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias = 'pages/home';
+    protected $alias = 'pages_home';
 
     /**
      * Initialize class.

@@ -39,7 +39,7 @@ class Companies extends Section implements Initializable
     /**
      * @var string
      */
-    protected $alias;
+    protected $alias = 'crm_companies';
 
     /**
      * Initialize class.
