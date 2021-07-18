@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Отдельная новость
      *
      * @param Request $request
      * @param NewsItem $newsItem
@@ -22,14 +22,15 @@ class ItemController extends Controller
     {
         $data = [
             'newsItem' => $newsItem,
+            'seo' => $newsItem->seo,
             'prev' => NewsItem::query()
-                ->where('id', '<', $newsItem->id)
-                ->latest('id')
+                ->where('published_at', '<', $newsItem->published_at)
+                ->latest('published_at')
                 ->limit(1)
                 ->first(),
             'next' => NewsItem::query()
-                ->where('id', '>', $newsItem->id)
-                ->oldest('id')
+                ->where('published_at', '>', $newsItem->published_at)
+                ->oldest('published_at')
                 ->limit(1)
                 ->first(),
         ];

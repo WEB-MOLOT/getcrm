@@ -1,6 +1,7 @@
 <?php
 /**
  * @var NewsItem $newsItem
+ * @var \App\Models\SeoData $seo
  * @var ?NewsItem $prev
  * @var ?NewsItem $next
  */
@@ -10,9 +11,11 @@ use App\Models\NewsItem;
 ?>
 @extends('layouts.site')
 
-@section('title')
-    {{ $newsItem->title }}
-@endsection
+@section('title', $newsItem->getSeoTitle())
+
+@section('keywords', $newsItem->getSeoKeywords())
+
+@section('description', $newsItem->getSeoDescription())
 
 @section('footer')
     @include('_partials.modals.subscription')
@@ -51,7 +54,7 @@ use App\Models\NewsItem;
                         </svg>
                     </a>
                     <div class="date">
-                        {{ $newsItem->created_at->format('d.m.Y') }}
+                        {{ $newsItem->published_at->format('d.m.Y') }}
                     </div>
                     <h2>{{ $newsItem->title }}</h2>
                     <div class="text">

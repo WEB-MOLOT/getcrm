@@ -1,17 +1,31 @@
-<!DOCTYPE html>
+<?php
+/**
+ * @var \App\Models\SeoData $seo
+ */
+?>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    @if(config('site.noindex'))
+    @if(config('site.noindex') || ($seo->disable_index ?? false))
         <meta name="robots" content="noindex, nofollow"/>
     @endif
 
-    <meta name="keywords" content="{{ config('site.keywords') }}"/>
-    <meta name="description" content="{{ config('site.description') }}"/>
+    @hasSection('keywords')
+        <meta name="keywords" content="@yield('keywords')"/>
+    @else
+        <meta name="keywords" content="{{ $seo->keywords ?? config('site.keywords') }}"/>
+    @endif
 
-    <!-- CSRF Token -->
+    @hasSection('description')
+        <meta name="description" content="@yield('description')"/>
+    @else
+        <meta name="description" content="{{ $seo->description ?? config('site.description') }}"/>
+    @endif
+
+<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link type="text/css" media="all" rel="stylesheet" href="/css/slick.css"/>

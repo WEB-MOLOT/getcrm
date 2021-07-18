@@ -1,6 +1,7 @@
 <?php
 /**
  * @var Collection|NewsItem[]|LengthAwarePaginator $newsItems
+ * @var \App\Models\SeoData $seo
  */
 
 use App\Models\NewsItem;
@@ -10,9 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 ?>
 @extends('layouts.site')
 
-@section('title')
-    Новости
-@endsection
+@section('title', $seo->title ?? 'Новости')
 
 @section('footer')
 
@@ -38,7 +37,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
                     <div class="item">
                         <a href="{{ route('site.news.item', $item) }}" class="link"></a>
                         <div class="date">
-                            {{ $item->created_at->format('d.m.Y') }}
+                            {{ $item->published_at->format('d.m.Y') }}
                         </div>
                         <a href="{{ route('site.news.item', $item) }}" class="name"
                         >{{ $item->title }}</a

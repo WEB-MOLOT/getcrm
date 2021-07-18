@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\NewsItem;
+use App\Models\SeoData;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Seeder;
 
@@ -11,7 +12,9 @@ class NewsItemSeeder extends Seeder
     public function run(): void
     {
         /** @var Collection|NewsItem[] $news */
-        $news = NewsItem::factory(20)->create();
+        $news = NewsItem::factory(20)
+            ->has(SeoData::factory(), 'seo')
+            ->create();
 
         $startYear = 2018;
 

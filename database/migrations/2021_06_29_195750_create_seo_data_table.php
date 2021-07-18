@@ -6,17 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSeoDataTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('seo_data', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('page_id')->comment('Страница')->constrained();
+            $table->morphs('seoable');
             $table->string('title')->nullable()->comment('Тег title');
             $table->string('keywords')->nullable()->comment('Тег meta[keywords]');
             $table->string('description')->nullable()->comment('Тег meta[description]');
@@ -27,12 +22,7 @@ class CreateSeoDataTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('seo_data');
     }

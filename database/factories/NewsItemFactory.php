@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\NewsItem;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class NewsItemFactory extends Factory
 {
@@ -16,17 +15,13 @@ class NewsItemFactory extends Factory
     /**
      * @return array
      */
-    #[ArrayShape([
-        'title' => "string",
-        'description' => "string",
-        'content' => "array|string",
-        'image' => "string"
-    ])]
     public function definition(): array
     {
         $imagePath = public_path('storage/news');
 
         return [
+            'published_at' => $this->faker->optional()->dateTimeBetween('-2 weeks', '+1 week'),
+            'slug' => $this->faker->unique()->slug,
             'title' => trim($this->faker->sentence, '.'),
             'description' => $this->faker->sentence(14, true),
             'content' => '<p>' . implode('</p><p>', $this->faker->paragraphs(12)) . '</p>',

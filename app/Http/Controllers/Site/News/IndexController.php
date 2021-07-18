@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Список новостей
      *
      * @param Request $request
      * @return Application|Factory|View
@@ -20,7 +20,7 @@ class IndexController extends Controller
     public function __invoke(Request $request): View|Factory|Application
     {
         /** @var NewsItem $news */
-        $news = NewsItem::query()->latest('id')->paginate(10);
+        $news = NewsItem::query()->published()->paginate(10);
 
         $data = [
             'newsItems' => $news,

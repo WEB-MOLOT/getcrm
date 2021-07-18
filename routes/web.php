@@ -9,7 +9,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', Site\IndexController::class)->name('site.index');
 
 Route::get('/news', Site\News\IndexController::class)->name('site.news.index');
-Route::get('/news/{newsItem}', Site\News\ItemController::class)->name('site.news.item');
+Route::get('/news/{newsItem:slug}', Site\News\ItemController::class)->name('site.news.item');
 
 Route::get('/success_stories', Site\Stories\IndexController::class)->name('site.stories.index');
 Route::get('/success_stories/{successStory}', Site\Stories\ItemController::class)->name('site.stories.item');

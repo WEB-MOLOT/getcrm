@@ -7,22 +7,17 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SeoDataFactory extends Factory
 {
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = SeoData::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+    public function definition(): array
     {
         return [
-            //
+            'seoable_id' => null,
+            'seoable_type' => null,
+            'title' => $this->faker->optional()->sentence,
+            'keywords' => implode(', ', $this->faker->optional()->words() ?: []),
+            'description' => $this->faker->optional()->sentence(2, true),
+            'disable_index' => $this->faker->boolean(),
         ];
     }
 }
