@@ -7,7 +7,9 @@ use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
+use AdminSection;
 use App\Models\Company;
+use App\Models\Customer;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +17,8 @@ use Illuminate\Http\UploadedFile;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -86,7 +90,9 @@ class Companies extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-        return AdminForm::card()->addBody([
+        $card = AdminForm::card();
+
+        $form = AdminForm::elements([
             AdminFormElement::text('name', 'Название компании')
                 ->required(),
             AdminFormElement::image('logo', 'Логотип')
@@ -95,6 +101,22 @@ class Companies extends Section implements Initializable
                 })
                 ->required(),
         ]);
+
+        $tabs = AdminDisplay::tabbed();
+
+        $tabs->appendTab($form, 'Компания', true);
+
+        if ($id) {
+            $values = AdminSection::getModel(Customer::class)->fireDisplay(['company_id' => $id]);
+            $tabs->appendTab($values, 'Пользователи', false);
+        }
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$tabs]);
     }
 
     /**

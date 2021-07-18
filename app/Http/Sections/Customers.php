@@ -62,11 +62,14 @@ class Customers extends Section implements Initializable
     }
 
     /**
+     * @param array $payload
      * @return DisplayInterface
      * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      */
-    public function onDisplay(): DisplayInterface
+    public function onDisplay(array $payload): DisplayInterface
     {
+        $companyId = $payload['company_id'] ?? null;
+
         $columns = [
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
@@ -74,12 +77,15 @@ class Customers extends Section implements Initializable
                 ->setSearchable(false)
                 ->setOrderable(false),
             AdminColumn::text('company.name', 'Компания')
+                ->setWidth('200px')
                 ->setSearchable(false)
                 ->setOrderable(false),
             AdminColumn::text('name', 'Имя')
+                ->setWidth('300px')
                 ->setSearchable(true)
                 ->setOrderable(false),
             AdminColumn::text('email', 'Логин/E-mail')
+                ->setWidth('200px')
                 ->setSearchable(true)
                 ->setOrderable(false),
             AdminColumnEditable::checkbox('is_active')
@@ -99,27 +105,38 @@ class Customers extends Section implements Initializable
         $display = AdminDisplay::datatables()
             ->paginate(40)
             ->setColumns($columns)
+            ->setNewEntryButtonText('Добавить пользователя')
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
-        $display->setApply(function (Builder $query) {
+        $display->setApply(function (Builder $query) use ($companyId) {
             $query->latest('id');
-        })->setNewEntryButtonText('Добавить пользователя');
 
-        $display->setColumnFilters([
+            if ($companyId) {
+                $query->where('company_id', '=', $companyId);
+            }
+        });
 
-            AdminColumnFilter::select()
-                ->setModelForOptions(Company::class, 'name')
-                ->setLoadOptionsQueryPreparer(function (Select $element, Builder $query) {
-                    return $query;
-                })
-                ->setDisplay('name')
-                ->setColumnName('company_id')
-                ->setPlaceholder('Фильтр по компании')
-            ,
-        ]);
-        $display->getColumnFilters()->setPlacement('card.heading');
+        if (empty($companyId)) {
+            $display->setColumnFilters([
 
-        $display->setDisplaySearch(true);
+                AdminColumnFilter::select()
+                    ->setModelForOptions(Company::class, 'name')
+                    ->setLoadOptionsQueryPreparer(function (Select $element, Builder $query) {
+                        return $query;
+                    })
+                    ->setDisplay('name')
+                    ->setColumnName('company_id')
+                    ->setPlaceholder('Фильтр по компании')
+                ,
+            ]);
+            $display->getColumnFilters()->setPlacement('card.heading');
+
+            $display->setDisplaySearch(true);
+        }
+
+        if ($companyId) {
+            $display->setParameter('company_id', $companyId);
+        }
 
         return $display;
     }
