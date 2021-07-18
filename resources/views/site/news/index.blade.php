@@ -2,6 +2,7 @@
 /**
  * @var Collection|NewsItem[]|LengthAwarePaginator $newsItems
  * @var \App\Models\SeoData $seo
+ * @var int $year
  */
 
 use App\Models\NewsItem;
@@ -74,9 +75,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
                 </div>
                 <div class="years">
                     <span>Новости за:</span>
-                    <a href="#" class="active">2020</a>
-                    <a href="#">2019</a>
-                    <a href="#">2018</a>
+                    @for($i = (int)now()->format('Y'); $i >= 2018; $i--)
+                        <a href="{{ route('site.news.index', ['year' => $i]) }}" {{ $i === $year ? ' class=active' : '' }}>{{ $i }}</a>
+                    @endfor
                 </div>
             </div>
         </div>

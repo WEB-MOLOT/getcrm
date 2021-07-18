@@ -58,4 +58,9 @@ class NewsItem extends Model
             ->where('published_at', '<=', now())
             ->latest('published_at');
     }
+
+    public function scopeYear(Builder $query, string $year): Builder
+    {
+        return $query->whereYear('published_at', $year);
+    }
 }

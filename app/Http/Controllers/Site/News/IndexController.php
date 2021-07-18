@@ -19,11 +19,14 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
+        $year = (int)$request->get('year', now()->format('Y'));
+
         /** @var NewsItem $news */
-        $news = NewsItem::query()->published()->paginate(10);
+        $news = NewsItem::query()->published()->year($year)->paginate(10);
 
         $data = [
             'newsItems' => $news,
+            'year' => $year,
         ];
 
         return view('site.news.index', $data);
