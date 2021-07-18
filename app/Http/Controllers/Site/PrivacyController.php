@@ -23,7 +23,7 @@ class PrivacyController extends Controller
         $page = Page::query()->where('slug', '=', 'privacy')->firstOrFail();
 
         /** @var SeoData $seo */
-        $seo = $page->seoData()->first();
+        $seo = $page->seo()->first();
 
         $data = [
             'page' => $page,

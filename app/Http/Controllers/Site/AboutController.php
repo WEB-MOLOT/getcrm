@@ -23,7 +23,7 @@ class AboutController extends Controller
         $page = Page::query()->where('slug', '=', 'about')->firstOrFail();
 
         /** @var SeoData $seo */
-        $seo = $page->seoData()->first();
+        $seo = $page->seo()->first();
 
         $data = [
             'page' => $page,

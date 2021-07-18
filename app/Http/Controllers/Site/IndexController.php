@@ -24,7 +24,7 @@ class IndexController extends Controller
         $page = Page::query()->where('slug', '=', 'index')->firstOrFail();
 
         /** @var SeoData $seo */
-        $seo = $page->seoData()->first();
+        $seo = $page->seo()->first();
 
         /** @var NewsItem $news */
         $news = NewsItem::query()->latest('id')->limit(10)->get();

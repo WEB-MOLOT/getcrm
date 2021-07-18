@@ -23,7 +23,7 @@ class ContactsController extends Controller
         $page = ContactsPage::firstOrFail();
 
         /** @var SeoData $seo */
-        $seo = $page->seoData()->first();
+        $seo = $page->seo()->first();
 
         $data = [
             'page' => $page,

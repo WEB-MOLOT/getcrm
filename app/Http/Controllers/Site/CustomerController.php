@@ -23,7 +23,7 @@ class CustomerController extends Controller
         $page = Page::query()->where('slug', '=', 'customer')->firstOrFail();
 
         /** @var SeoData $seo */
-        $seo = $page->seoData()->first();
+        $seo = $page->seo()->first();
 
         $data = [
             'page' => $page,

@@ -24,7 +24,7 @@ class JobController extends Controller
         $page = Page::query()->where('slug', '=', 'job')->firstOrFail();
 
         /** @var SeoData $seo */
-        $seo = $page->seoData()->first();
+        $seo = $page->seo()->first();
 
         $vacancies = Vacancy::query()->latest('id')->get();
 

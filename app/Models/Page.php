@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model
@@ -24,9 +24,9 @@ class Page extends Model
         'name',
     ];
 
-    public function seoData(): HasOne
+    public function seo(): MorphOne
     {
-        return $this->hasOne(SeoData::class, 'page_id', 'id');
+        return $this->morphOne(SeoData::class, 'seoable');
     }
 
     public function blocks(): HasMany

@@ -23,7 +23,7 @@ class ServiceController extends Controller
         $page = Page::query()->where('slug', '=', 'service')->firstOrFail();
 
         /** @var SeoData $seo */
-        $seo = $page->seoData()->first();
+        $seo = $page->seo()->first();
 
         $data = [
             'page' => $page,
