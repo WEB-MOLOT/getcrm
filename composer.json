@@ -30,7 +30,13 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "classmap": [
+            "vendor-override"
+        ],
+        "exclude-from-classmap": [
+            "vendor\\laravelrus\\sleepingowl\\src\\Display\\Column\\Control.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
