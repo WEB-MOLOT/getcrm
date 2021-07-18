@@ -29,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'position',
         'password',
         'is_admin',
+        'is_active',
         'company_id',
         'last_login_at',
     ];
@@ -42,6 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'last_login_at' => 'datetime',
         'is_admin' => 'boolean',
+        'is_active' => 'boolean',
         'has_subscription' => 'boolean',
         'phones' => 'string',
     ];
@@ -49,6 +51,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isAdmin(): bool
     {
         return $this->is_admin;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->is_active;
     }
 
     public function hasSubscription(): bool

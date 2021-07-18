@@ -3,17 +3,26 @@
 namespace App\Http\Sections;
 
 use AdminColumn;
+use AdminColumnEditable;
 use AdminColumnFilter;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
+use AdminSection;
 use App\Models\Company;
 use App\Models\Customer;
+use App\Models\Dictionaries\FilterValue;
+use App\Models\UserProduct;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
 use SleepingOwl\Admin\Display\Column\Filter\Select;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -53,7 +62,6 @@ class Customers extends Section implements Initializable
     }
 
     /**
-     *
      * @return DisplayInterface
      * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      */
@@ -71,12 +79,13 @@ class Customers extends Section implements Initializable
             AdminColumn::text('name', 'Имя')
                 ->setSearchable(true)
                 ->setOrderable(false),
-            AdminColumn::text('email', 'Логин')
+            AdminColumn::text('email', 'Логин/E-mail')
                 ->setSearchable(true)
                 ->setOrderable(false),
-            AdminColumn::text('email', 'E-mail')
-                ->setSearchable(true)
-                ->setOrderable(false),
+            AdminColumnEditable::checkbox('is_active')
+                ->setCheckedLabel('Активен')
+                ->setUncheckedLabel('Блок')
+                ->setLabel('Активность'),
             AdminColumn::datetime('last_login_at', 'Дата последнего входа')
                 ->setSearchable(false)
                 ->setFormat('d.m.Y H:i:s')
@@ -97,6 +106,7 @@ class Customers extends Section implements Initializable
         })->setNewEntryButtonText('Добавить пользователя');
 
         $display->setColumnFilters([
+
             AdminColumnFilter::select()
                 ->setModelForOptions(Company::class, 'name')
                 ->setLoadOptionsQueryPreparer(function (Select $element, Builder $query) {
@@ -118,16 +128,78 @@ class Customers extends Section implements Initializable
      * @param int|null $id
      * @param array $payload
      * @return FormInterface
+     * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
+        $card = AdminForm::card();
 
+        $passwordElement = AdminFormElement::password('password', 'Пароль')
+            ->hashWithBcrypt();
+
+        if ($id === null) {
+            $passwordElement->required()->addValidationRule('min:8');
+        } else {
+            $passwordElement->setHelpText('Оставьте поле пустым если не хотите менять пароль пользователю.');
+        }
+
+        $isVisible = function () use ($id) {
+            return $id !== null;
+        };
+
+        $form = AdminForm::elements([
+            AdminFormElement::text('name', 'ФИО')
+                ->required(),
+            AdminFormElement::text('email', 'E-mail')
+                ->unique()
+                ->addValidationRule('email')
+                ->required(),
+            AdminFormElement::selectajax('company_id', 'Компания из CRM')
+                ->setModelForOptions(Company::class, 'name'),
+            AdminFormElement::checkbox('is_active', 'Пользователь активен')
+                ->setHelpText('Уберите галочку если надо заблокировать пользователя'),
+            $passwordElement,
+            AdminFormElement::text('firm', 'Компания указанная пользователем')
+                ->setVisibilityCondition($isVisible)
+                ->setReadonly(true),
+            AdminFormElement::text('position', 'Должность')
+                ->setVisibilityCondition($isVisible)
+                ->setReadonly(true),
+            AdminFormElement::text('phones', 'Номер телефона')
+                ->setVisibilityCondition($isVisible)
+                ->setReadonly(true),
+            AdminFormElement::checkbox('has_subscription', 'Подписан на новости')
+                ->setVisibilityCondition($isVisible)
+                ->setReadonly(true),
+            AdminFormElement::text('subscribe_email', 'Адрес электронной почты для подписки')
+                ->setVisibilityCondition($isVisible)
+                ->setReadonly(true),
+        ]);
+
+        $tabs = AdminDisplay::tabbed();
+
+        $tabs->appendTab($form, 'Пользователь', true);
+
+        if ($id) {
+            $userProducts = AdminSection::getModel(UserProduct::class)->fireDisplay(['user_id' => $id]);
+            $tabs->appendTab($userProducts, 'Продукты и подписки', false);
+
+            $userLicenses = AdminSection::getModel(FilterValue::class)->fireDisplay(['filter_id' => 1]);
+            $tabs->appendTab($userLicenses, 'Лицензии', false);
+        }
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$tabs]);
     }
 
     /**
      * @param array $payload
      * @return FormInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function onCreate(array $payload = []): FormInterface
     {
@@ -140,7 +212,7 @@ class Customers extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -148,7 +220,7 @@ class Customers extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -157,7 +229,7 @@ class Customers extends Section implements Initializable
      */
     public function isDeletable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**

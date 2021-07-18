@@ -101,7 +101,7 @@ class Administrators extends Section implements Initializable
         }
 
         $form = AdminForm::elements([
-            AdminFormElement::text('name', 'Имя')
+            AdminFormElement::text('name', 'ФИО')
                 ->required(),
             AdminFormElement::text('email', 'E-mail')
                 ->unique()

@@ -11,7 +11,7 @@ class CreateUserDocumentsTable extends Migration
         Schema::create('user_documents', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->comment('Пользователь')->constrained();
+            $table->foreignId('user_id')->comment('Пользователь')->constrained()->cascadeOnDelete();;
             $table->string('number')->comment('Номер счета');
             $table->date('date_end')->nullable()->comment('Дата окончания подписки');
             $table->date('date_renew')->nullable()->comment('Дата продления подписки');

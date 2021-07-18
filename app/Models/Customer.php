@@ -15,6 +15,11 @@ class Customer extends User
         static::addGlobalScope('customer', function (Builder $builder) {
             $builder->where('is_admin', '=', 0);
         });
+
+        static::creating(function (Customer $user) {
+            $user->is_admin = 0;
+            $user->email_verified_at = now();
+        });
     }
 
     public function company(): BelongsTo

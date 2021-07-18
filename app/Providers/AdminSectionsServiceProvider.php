@@ -14,11 +14,14 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\NewsItem::class => 'App\Http\Sections\NewsItems',
         \App\Models\Vacancy::class => 'App\Http\Sections\Vacancies',
         \App\Models\Administrator::class => 'App\Http\Sections\Administrators',
-        \App\Models\Customer::class => 'App\Http\Sections\Customers',
         \App\Models\Company::class => 'App\Http\Sections\Companies',
         \App\Models\Service::class => 'App\Http\Sections\Services',
         \App\Models\Solution::class => 'App\Http\Sections\Solutions',
         \App\Models\SuccessStory::class => 'App\Http\Sections\SuccessStories',
+
+        \App\Models\Customer::class => 'App\Http\Sections\Customers',
+        \App\Models\UserProduct::class => 'App\Http\Sections\UserProducts',
+        \App\Models\UserDocument::class => 'App\Http\Sections\UserDocuments',
 
         \App\Models\Settings\SiteSetting::class => 'App\Http\Sections\Settings\SiteSettings',
         \App\Models\Settings\SmtpSetting::class => 'App\Http\Sections\Settings\SmtpSettings',

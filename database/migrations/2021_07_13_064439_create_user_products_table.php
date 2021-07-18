@@ -11,7 +11,7 @@ class CreateUserProductsTable extends Migration
         Schema::create('user_products', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->comment('Пользователь')->constrained();
+            $table->foreignId('user_id')->comment('Пользователь')->constrained()->cascadeOnDelete();
             $table->string('name')->comment('Название продукта');
             $table->timestamp('finished_at')->index()->comment('Дата окончания лицензии или подписки');
             $table->string('code')->comment('Код лицензии');
