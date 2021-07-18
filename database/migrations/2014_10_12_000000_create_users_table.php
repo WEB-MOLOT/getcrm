@@ -11,7 +11,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('ФИО');
-            $table->string('firm')->comment('Компания');
+            $table->string('firm')->nullable()->comment('Компания');
             $table->string('position')->nullable()->comment('Должность');
             $table->string('phones')->nullable()->comment('Телефоны');
             $table->string('email')->unique()->comment('Адрес электронной почты');
@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_admin')->default(0)->index()->comment('Администратор');
             $table->foreignId('company_id')->nullable()->comment('Компания')->constrained();
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('last_login_at')->comment('Дата последнего входа');
+            $table->timestamp('last_login_at')->nullable()->comment('Дата последнего входа');
             $table->string('password')->comment('Пароль');
             $table->rememberToken();
             $table->timestamps();

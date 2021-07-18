@@ -43,11 +43,16 @@ class LoginController extends Controller
     /**
      * @param Request $request
      * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function authenticated(Request $request, $user)
     {
         $user->update([
             'last_login_at' => now(),
         ]);
+
+        if ($user->isAdmin()) {
+            return response()->redirectTo('/admin');
+        }
     }
 }

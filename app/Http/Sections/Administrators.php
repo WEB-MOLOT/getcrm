@@ -4,12 +4,16 @@ namespace App\Http\Sections;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
 use AdminNavigation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -59,8 +63,7 @@ class Administrators extends Section implements Initializable
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
             AdminColumn::text('name', 'Имя'),
-            AdminColumn::text('email', 'Логин'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::text('email', 'Логин/E-mail'),
             AdminColumn::datetime('last_login_at', 'Дата последнего входа')
                 ->setFormat('d.m.Y H:i:s'),
             AdminColumn::datetime('created_at', 'Дата регистрации')
@@ -86,7 +89,33 @@ class Administrators extends Section implements Initializable
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
+        $card = AdminForm::card();
 
+        $passwordElement = AdminFormElement::password('password', 'Пароль')
+            ->hashWithBcrypt();
+
+        if ($id === null) {
+            $passwordElement->required()->addValidationRule('min:8');
+        } else {
+            $passwordElement->setHelpText('Оставьте поле пустым если не хотите менять пароль пользователю.');
+        }
+
+        $form = AdminForm::elements([
+            AdminFormElement::text('name', 'Имя')
+                ->required(),
+            AdminFormElement::text('email', 'E-mail')
+                ->unique()
+                ->addValidationRule('email')
+                ->required(),
+            $passwordElement,
+        ]);
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$form]);
     }
 
     /**
