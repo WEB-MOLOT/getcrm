@@ -77,15 +77,15 @@ class Customers extends Section implements Initializable
                 ->setSearchable(false)
                 ->setOrderable(false),
             AdminColumn::text('company.name', 'Компания')
-                ->setWidth('200px')
+                ->setWidth('250px')
                 ->setSearchable(false)
                 ->setOrderable(false),
             AdminColumn::text('name', 'Имя')
-                ->setWidth('300px')
+                ->setWidth('400px')
                 ->setSearchable(true)
                 ->setOrderable(false),
             AdminColumn::text('email', 'Логин/E-mail')
-                ->setWidth('200px')
+                ->setWidth('300px')
                 ->setSearchable(true)
                 ->setOrderable(false),
             AdminColumnEditable::checkbox('is_active')
