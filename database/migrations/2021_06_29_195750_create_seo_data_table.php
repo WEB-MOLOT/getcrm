@@ -23,7 +23,7 @@ class CreateSeoDataTable extends Migration
             $table->boolean('disable_index')->default(0)->comment('Запретить индексацию страницы');
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

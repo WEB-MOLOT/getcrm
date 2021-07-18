@@ -17,7 +17,7 @@ class CreateUserProductsTable extends Migration
             $table->string('code')->comment('Код лицензии');
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

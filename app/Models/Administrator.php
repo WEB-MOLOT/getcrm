@@ -13,11 +13,11 @@ class Administrator extends User
 
     protected static function booted()
     {
-        static::addGlobalScope('admin', function (Builder $builder) {
+        static::addGlobalScope('admin', static function (Builder $builder) {
             $builder->where('is_admin', '=', 1);
         });
 
-        static::creating(function (Administrator $user) {
+        static::creating(static function (Administrator $user) {
             $user->is_admin = 1;
             $user->email_verified_at = now();
         });

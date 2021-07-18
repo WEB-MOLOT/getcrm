@@ -19,7 +19,7 @@ class CreateUserDocumentsTable extends Migration
             $table->string('xlsx')->nullable()->comment('Файл в формате xlsx');
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

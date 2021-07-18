@@ -19,6 +19,7 @@ class CreateFilterValuesTable extends Migration
             $table->unsignedSmallInteger('order')->default(0)->comment('Порядок сортировки');
 
             $table->timestamps();
+            $table->softDeletes()->index();
         });
     }
 

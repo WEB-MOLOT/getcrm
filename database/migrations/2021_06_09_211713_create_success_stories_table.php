@@ -17,7 +17,7 @@ class CreateSuccessStoriesTable extends Migration
             $table->text('tasks')->nullable()->comment('Проблематика и вызовы');
             $table->text('solution')->nullable()->comment('Решение');
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

@@ -25,6 +25,7 @@ class CreateLicensesTable extends Migration
             $table->string('line')->comment('Линия бизнеса');
 
             $table->timestamps();
+            $table->softDeletes()->index();
         });
     }
 

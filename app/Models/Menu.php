@@ -6,12 +6,14 @@ use App\Casts\MenuTypeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use SleepingOwl\Admin\Traits\OrderableModel;
 
 class Menu extends Model
 {
     use HasFactory,
-        OrderableModel;
+        OrderableModel,
+        SoftDeletes;
 
     protected $table = 'menus';
 

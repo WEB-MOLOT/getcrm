@@ -13,7 +13,7 @@ class CreateCompaniesTable extends Migration
             $table->string('name')->comment('Название');
             $table->string('logo')->nullable()->comment('Логотип');
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

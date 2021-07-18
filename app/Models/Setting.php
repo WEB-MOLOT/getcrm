@@ -8,6 +8,7 @@ use App\Enums\SettingSection;
 use App\Enums\SettingType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Setting
@@ -17,7 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Setting extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        SoftDeletes;
 
     protected $table = 'settings';
 

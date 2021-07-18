@@ -17,6 +17,7 @@ class CreateMenusTable extends Migration
             $table->unsignedSmallInteger('order')->default(100)->comment('Сортировка');
 
             $table->timestamps();
+            $table->softDeletes()->index();
         });
     }
 

@@ -13,6 +13,7 @@ class CreateDataSolutionsTable extends Migration
             $table->string('name')->comment('Название');
             $table->text('description')->comment('Описание');
             $table->timestamps();
+            $table->softDeletes()->index();
         });
     }
 

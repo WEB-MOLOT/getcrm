@@ -19,6 +19,7 @@ class CreatePeriodDiscountsTable extends Migration
             $table->unsignedInteger('order')->default(100)->comment('Порядок сортировки');
 
             $table->timestamps();
+            $table->softDeletes()->index();
         });
     }
 

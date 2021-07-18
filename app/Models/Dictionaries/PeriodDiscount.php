@@ -6,6 +6,7 @@ use App\Casts\UnitTypeCast;
 use App\Enums\UnitType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use SleepingOwl\Admin\Traits\OrderableModel;
 
 /**
@@ -17,7 +18,8 @@ use SleepingOwl\Admin\Traits\OrderableModel;
 class PeriodDiscount extends Model
 {
     use HasFactory,
-        OrderableModel;
+        OrderableModel,
+        SoftDeletes;
 
     protected $table = 'data_period_discounts';
 

@@ -11,7 +11,7 @@ class CreateFaqItemsTable extends Migration
         Schema::create('faq_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

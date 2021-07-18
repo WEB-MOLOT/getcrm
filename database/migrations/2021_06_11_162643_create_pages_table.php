@@ -13,7 +13,7 @@ class CreatePagesTable extends Migration
             $table->string('name')->comment('Имя страницы');
             $table->string('slug')->unique()->comment('Уникальная метка');
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

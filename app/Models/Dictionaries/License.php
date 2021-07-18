@@ -5,10 +5,12 @@ namespace App\Models\Dictionaries;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class License extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        SoftDeletes;
 
     protected $table = 'data_licenses';
 

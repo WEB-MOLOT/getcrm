@@ -13,6 +13,7 @@ class CreatePlatformsTable extends Migration
             $table->string('name')->comment('Название');
             $table->text('description')->comment('Описание');
             $table->timestamps();
+            $table->softDeletes()->index();
         });
 
         Schema::create('platform_solution', function (Blueprint $table) {

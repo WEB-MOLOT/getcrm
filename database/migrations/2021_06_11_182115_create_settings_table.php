@@ -16,6 +16,7 @@ class CreateSettingsTable extends Migration
             $table->text('value')->nullable()->comment('Значение');
             $table->string('title')->comment('Заголовок');
             $table->timestamps();
+            $table->softDeletes()->index();
         });
     }
 

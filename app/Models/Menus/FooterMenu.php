@@ -6,20 +6,22 @@ use App\Enums\MenuType;
 use App\Models\Menu;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use SleepingOwl\Admin\Traits\OrderableModel;
 
 class FooterMenu extends Menu
 {
     use HasFactory,
-        OrderableModel;
+        OrderableModel,
+        SoftDeletes;
 
     protected static function booted()
     {
-        static::addGlobalScope('ancient', function (Builder $builder) {
+        static::addGlobalScope('ancient', static function (Builder $builder) {
             $builder->where('type', '=', MenuType::FOOTER);
         });
 
-        static::creating(function (Menu $menu) {
+        static::creating(static function (Menu $menu) {
             $menu->type = MenuType::FOOTER;
         });
     }

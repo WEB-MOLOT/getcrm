@@ -15,7 +15,7 @@ class CreateSuccessStoryResultsTable extends Migration
             $table->string('description')->nullable()->comment('Описание');
             $table->foreignId('success_story_id')->comment('')->constrained();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

@@ -14,7 +14,7 @@ class CreateSuccessStoryBadgesTable extends Migration
             $table->string('value')->nullable()->nullable()->comment('Значение');
             $table->foreignId('success_story_id')->comment('')->constrained();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

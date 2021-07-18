@@ -23,7 +23,7 @@ class CreatePageBlocksTable extends Migration
             ]);
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

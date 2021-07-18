@@ -16,7 +16,7 @@ class CreateSolutionsTable extends Migration
             $table->string('video')->nullable()->comment('Видео');
             $table->text('description')->nullable()->comment('Описание');
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 
