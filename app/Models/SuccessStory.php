@@ -67,7 +67,7 @@ class SuccessStory extends Model
         return $this->morphOne(SeoData::class, 'seoable');
     }
 
-    public function getSeoDefaultTitle(): string
+    protected function getSeoDefaultTitle(): string
     {
         return $this->title;
     }
