@@ -8,12 +8,15 @@ use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
 use App\Models\Vacancy;
+use Exception;
 use HTML;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -48,7 +51,7 @@ class Vacancies extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('content');
 
         $page->addPage(
-            $this->makePage(300)->setIcon('fab fa-dev')
+            $this->makePage(300)->setIcon('fas fa-id-card')
         );
     }
 
@@ -101,11 +104,13 @@ class Vacancies extends Section implements Initializable
     /**
      *
      * @return FormInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function onEdit(): FormInterface
     {
-        return AdminForm::card()->addBody([
+        $card = AdminForm::card();
+
+        $form = AdminForm::elements([
             AdminFormElement::text('title', 'Заголовок')
                 ->required(),
             AdminFormElement::wysiwyg('content', 'Описание')
@@ -115,11 +120,22 @@ class Vacancies extends Section implements Initializable
             AdminFormElement::text('params->employment', 'Занятость'),
             AdminFormElement::text('hh', 'Ссылка на HH'),
         ]);
+
+        $tabs = AdminDisplay::tabbed();
+
+        $tabs->appendTab($form, 'Вакансия', true);
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$tabs]);
     }
 
     /**
      * @return FormInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function onCreate(): FormInterface
     {
