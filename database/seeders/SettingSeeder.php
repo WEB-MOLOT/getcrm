@@ -92,12 +92,12 @@ class SettingSeeder extends Seeder
     protected array $smtpSettings = [
         'mail.mailers.smtp.host' => [
             'type' => 'text',
-            'value' => 'smtp.mailersend.net',
+            'value' => 'smtp.elasticemail.com',
             'title' => 'Хост',
         ],
         'mail.mailers.smtp.port' => [
             'type' => 'number',
-            'value' => '587',
+            'value' => '2525',
             'title' => 'Порт',
         ],
         'mail.mailers.smtp.encryption' => [
@@ -107,12 +107,12 @@ class SettingSeeder extends Seeder
         ],
         'mail.mailers.smtp.username' => [
             'type' => 'text',
-            'value' => 'MS_X2G5Op@4test.xyz',
+            'value' => 'pulpirzvk@gmail.com',
             'title' => 'Имя пользователя',
         ],
         'mail.mailers.smtp.password' => [
             'type' => 'text',
-            'value' => 'oiGp6s8Cbm1jIRdR',
+            'value' => '231F4B39A61762FF8D043A6A61117D2AA851',
             'title' => 'Пароль',
         ],
     ];
