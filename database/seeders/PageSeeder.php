@@ -11,11 +11,20 @@ use App\Models\Pages\LandingPage;
 use App\Models\Pages\PrivacyPage;
 use App\Models\SeoData;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class PageSeeder extends Seeder
 {
     public function run(): void
     {
+        Artisan::call('test:spreadsheet');
+
+        $file = storage_path('app/content.xlsx');
+
+        $spreadsheet = IOFactory::load($file);
+
         foreach ($this->pages as $slug => $params) {
             /** @var Page $page */
             $page = Page::factory()
@@ -25,7 +34,11 @@ class PageSeeder extends Seeder
                 ]);
 
             if (array_key_exists('blocks', $params)) {
-                $page->blocks()->createMany($params['blocks']);
+                if ($params['blocks'] === 'xlsx') {
+                    $this->loadFromSpreadsheet($page, $spreadsheet);
+                } else {
+                    $page->blocks()->createMany($params['blocks']);
+                }
             }
 
             if (array_key_exists('model', $params)) {
@@ -36,6 +49,21 @@ class PageSeeder extends Seeder
                 $pageModel->seo()->save(SeoData::factory()->makeOne());
             }
 
+        }
+    }
+
+    protected function loadFromSpreadsheet(Page $page, Spreadsheet $spreadsheet)
+    {
+        // открыть нужный лист
+        $sheet = $spreadsheet->getSheetByName($page->slug);
+        $data = $sheet->toArray();
+        foreach ($data as $line) {
+            $page->blocks()->create([
+                'slug' => $line[0],
+                'label' => $line[1],
+                'type' => constant(BlockType::class . '::' . $line[2]),
+                'content' => $line[3],
+            ]);
         }
     }
 
@@ -324,14 +352,7 @@ class PageSeeder extends Seeder
         'privacy' => [
             'name' => 'Политика конфиденциальности',
             'model' => PrivacyPage::class,
-            'blocks' => [
-                [
-                    'label' => 'Контент страницы',
-                    'slug' => 'content',
-                    'type' => BlockType::EDITOR,
-                    'content' => 'Политика конфиденциальности... Политика конфиденциальности... Политика конфиденциальности... Политика конфиденциальности... Политика конфиденциальности... Политика конфиденциальности...',
-                ],
-            ],
+            'blocks' => 'xlsx',
         ],
     ];
 }
