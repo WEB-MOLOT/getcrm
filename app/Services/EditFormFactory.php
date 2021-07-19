@@ -10,7 +10,7 @@ use App\Models\Page;
 use Exception;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Display\DisplayTabbed;
-use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
+use SleepingOwl\Admin\Form\Buttons\Save;
 use SleepingOwl\Admin\Form\FormCard;
 
 class EditFormFactory
@@ -37,7 +37,7 @@ class EditFormFactory
             ->addSeoForm();
 
         $editForm->card->getButtons()->setButtons([
-            'save_and_continue' => (new SaveAndClose())->setText('Сохранить'),
+            'save_and_continue' => (new Save())->setText('Сохранить'),
         ]);
 
         return $editForm->card->addBody([$editForm->tabs]);

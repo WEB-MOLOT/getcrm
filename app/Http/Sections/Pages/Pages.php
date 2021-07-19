@@ -19,6 +19,11 @@ use SleepingOwl\Admin\Section;
  */
 class Pages extends Section
 {
+    protected $redirect = [
+        'edit' => 'display',
+        'create' => 'edit'
+    ];
+
     /**
      * @var bool
      */
@@ -44,6 +49,13 @@ class Pages extends Section
         $page = $this->getPageModel();
 
         return EditFormFactory::create($page);
+    }
+
+    public function getDisplayUrl(array $parameters = []): string
+    {
+        array_unshift($parameters, $this->getAlias());
+
+        return '/admin/' . $this->alias;
     }
 
     /**
