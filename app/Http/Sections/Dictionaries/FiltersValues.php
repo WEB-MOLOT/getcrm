@@ -38,7 +38,7 @@ class FiltersValues extends Section
     /**
      * @var string
      */
-    protected $alias = 'dictionaries_filters';
+    protected $alias = 'dictionaries_filter_value';
 
     /**
      * @param array $payload
