@@ -153,7 +153,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'imagesUploadDirectory' => 'storage',
+    'imagesUploadDirectory' => 'storage/images',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,7 +172,13 @@ return [
     */
 
     'imagesAllowedExtensions' => [
-        'jpe', 'jpeg', 'jpg', 'png', 'bmp', 'ico', 'gif',
+        'jpe',
+        'jpeg',
+        'jpg',
+        'png',
+        'bmp',
+        'ico',
+        'gif',
     ],
 
     /*
@@ -181,7 +187,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'imagesAllowSvg' => false,
+    'imagesAllowSvg' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -197,7 +203,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'filesUploadDirectory' => 'files/uploads',
+    'filesUploadDirectory' => 'storage/files',
 
     /*
     |--------------------------------------------------------------------------
@@ -324,15 +330,33 @@ return [
             ],
 
             'toolbar' => [
-                'undo', 'redo', '|',
-//                'heading', '|',
-//                'bold', 'italic', 'blockQuote', 'link', 'bulletedList', 'numberedList', '|',
+                'undo',
+                'redo',
+                '|',
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'blockQuote',
+                'link',
+                'bulletedList',
+                'numberedList',
+                '|',
+                'ImageUpload',
+                'imageTextAlternative',
+                'imageStyle:full',
+                'imageStyle:side',
+                '|',
 //                'CKFinder', 'ImageUpload', 'imageTextAlternative', 'MediaEmbed', 'imageStyle:full', 'imageStyle:side', '|',
-//                'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells', '|',
+                'insertTable',
+                'tableColumn',
+                'tableRow',
+                'mergeTableCells',
+                '|',
             ],
 
-            'uploadUrl'                 => '/storage/images_admin',
-            'filebrowserUploadUrl'      => '/storage/images_admin',
+            'uploadUrl' => '/storage/images',
+            'filebrowserUploadUrl' => '/storage/images',
         ],
     ],
 
