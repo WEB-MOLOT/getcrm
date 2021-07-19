@@ -30,9 +30,11 @@ class StoryResultFactory extends Factory
 
         return [
             'before' => config('dev.load_images') ? 'storage/stories/before/'
-                . $this->faker->image(dir: $beforePath, width: 328, height: 627, category: 'animals', fullPath: false) : null,
+                . $this->faker->image(dir: $beforePath, width: 328, height: 627, category: 'animals', fullPath: false)
+                : 'storage/html/img/before.png',
             'after' => config('dev.load_images') ? 'storage/stories/after/'
-                . $this->faker->image(dir: $afterPath, width: 328, height: 627, category: 'animals', fullPath: false) : null,
+                . $this->faker->image(dir: $afterPath, width: 328, height: 627, category: 'animals', fullPath: false)
+                : 'storage/html/img/before.png',
             'description' => $this->faker->sentence(10),
             'success_story_id' => null,
         ];
