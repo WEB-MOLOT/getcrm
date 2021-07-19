@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "laravelrus/sleepingowl": "8.*",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "phpoffice/phpspreadsheet": "^1.18"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
