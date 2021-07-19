@@ -6,9 +6,9 @@
 ?>
 @extends('layouts.site')
 
-@section('title')
-    Контакты
-@endsection
+@section('title', $page->getSeoTitle())
+@section('keywords', $page->getSeoKeywords())
+@section('description', $page->getSeoDescription())
 
 @section('footer')
     @include('_partials.modals.subscription')
@@ -18,7 +18,7 @@
     <script src="/js/jquery.maskedinput.min.js"></script>
     <script>
         $(function () {
-            $("#phone").mask("{{ $page->phone() }}");
+            $("#phone").mask("{{ $page->phone }}");
         });
     </script>
 @endpush
@@ -37,7 +37,7 @@
 @section('content')
     <div class="contacts-page">
         <div class="container">
-            <h1>Контакты</h1>
+            <h1>{{ $page->name() }}</h1>
         </div>
         <div class="map-block">
             <div class="map">
@@ -50,7 +50,7 @@
             </div>
             <div class="contacts">
                 <img src="/img/contacts.png" class="image"/>
-                <a href="tel:{{ $page->clearedPhone() }}">{{ $page->phone() }}</a>
+                <a href="tel:{{ $page->clearedPhone() }}">{{ $page->phone }}</a>
                 <div class="hours">
                     <span></span>
                     <span></span>
@@ -61,7 +61,7 @@
                     <span class="other"></span>
                     пн-пт с 9:00 до 18:00
                 </div>
-                <p>109544, г. Москва ул. Бульвар Энтузиастов, д.2</p>
+                <p>{{ $page->address }}</p>
             </div>
         </div>
         <div class="container">

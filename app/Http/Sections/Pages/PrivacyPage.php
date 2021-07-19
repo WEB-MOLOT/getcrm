@@ -4,17 +4,17 @@ namespace App\Http\Sections\Pages;
 
 use AdminNavigation;
 use App\Models\Page;
-use App\Models\Pages\ContactsPage as ModelPage;
+use App\Models\Pages\PrivacyPage as ModelPage;
 use SleepingOwl\Admin\Contracts\Initializable;
 
 /**
  * Class ContactsPage
  *
- * @property \App\Models\Pages\ContactsPage $model
+ * @property \App\Models\Pages\PrivacyPage $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class ContactsPage extends Pages implements Initializable
+class PrivacyPage extends Pages implements Initializable
 {
     /**
      * @var bool
@@ -24,12 +24,12 @@ class ContactsPage extends Pages implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Контакты';
+    protected $title = 'Политика конфиденциальности';
 
     /**
      * @var string
      */
-    protected $alias = 'pages_contacts';
+    protected $alias = 'pages_privacy';
 
     /**
      * Initialize class.
@@ -39,7 +39,7 @@ class ContactsPage extends Pages implements Initializable
         $page = AdminNavigation::getPages()->findById('content');
 
         $page->addPage(
-            $this->makePage(300)->setIcon('fas fa-address-card')
+            $this->makePage(900)->setIcon('fas fa-user-secret')
         );
     }
 

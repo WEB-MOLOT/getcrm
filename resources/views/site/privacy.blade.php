@@ -1,8 +1,14 @@
+<?php
+/**
+ * @var \App\Models\Pages\PrivacyPage $page
+ * @var \App\Models\SeoData $seo
+ */
+?>
 @extends('layouts.site')
 
-@section('title')
-    Политика конфиденциальности
-@endsection
+@section('title', $page->getSeoTitle())
+@section('keywords', $page->getSeoKeywords())
+@section('description', $page->getSeoDescription())
 
 @section('footer')
     @include('_partials.modals')
@@ -20,5 +26,14 @@
 @endsection
 
 @section('content')
-
+    <div class="news-page">
+        <div class="container">
+            <h1>{{ $page->name() }}</h1>
+        </div>
+        <div class="news-post">
+            <div class="post">
+                {!! $page->content !!}
+            </div>
+        </div>
+    </div>
 @endsection

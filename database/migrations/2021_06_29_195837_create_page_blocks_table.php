@@ -11,11 +11,12 @@ class CreatePageBlocksTable extends Migration
         Schema::create('page_blocks', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('page_id')->comment('')->constrained();
-            $table->string('type')->comment('');
-            $table->string('slug')->comment('');
-            $table->boolean('is_visible')->default(1)->comment('');
-            $table->text('content')->nullable()->comment('');
+            $table->foreignId('page_id')->comment('Страница')->constrained();
+            $table->string('label')->comment('Заголовок для поля');
+            $table->string('type')->comment('Тип');
+            $table->string('slug')->comment('Слаг');
+            $table->boolean('is_visible')->default(1)->comment('Отображать на странице');
+            $table->text('content')->nullable()->comment('Содержание');
 
             $table->unique([
                 'page_id',

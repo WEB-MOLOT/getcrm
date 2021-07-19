@@ -30,8 +30,10 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\Menus\FooterMenu::class => 'App\Http\Sections\Menus\FooterMenu',
         \App\Models\Menus\BurgerMenu::class => 'App\Http\Sections\Menus\BurgerMenu',
 
+        \App\Models\Page::class => 'App\Http\Sections\Pages\Pages',
         \App\Models\Pages\AboutPage::class => 'App\Http\Sections\Pages\AboutPage',
         \App\Models\Pages\ContactsPage::class => 'App\Http\Sections\Pages\ContactsPage',
+        \App\Models\Pages\PrivacyPage::class => 'App\Http\Sections\Pages\PrivacyPage',
         \App\Models\Pages\CustomExperiencePage::class => 'App\Http\Sections\Pages\CustomExperiencePage',
         \App\Models\Pages\HomePage::class => 'App\Http\Sections\Pages\HomePage',
         \App\Models\Pages\LandingPage::class => 'App\Http\Sections\Pages\LandingPage',

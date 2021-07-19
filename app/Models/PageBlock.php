@@ -3,10 +3,16 @@
 namespace App\Models;
 
 use App\Casts\BlockTypeCast;
+use App\Enums\BlockType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class PageBlock
+ * @package App\Models
+ * @property BlockType $type
+ */
 class PageBlock extends Model
 {
     use HasFactory,
@@ -15,6 +21,7 @@ class PageBlock extends Model
     protected $fillable = [
         'page_id',
         'type',
+        'label',
         'slug',
         'is_visible',
         'content',
