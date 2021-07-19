@@ -52,7 +52,7 @@ class LoginController extends Controller
         ]);
 
         if ($user->isAdmin()) {
-            return response()->redirectTo('/admin');
+            return response()->redirectTo('/admin/crm_customers');
         }
     }
 }
