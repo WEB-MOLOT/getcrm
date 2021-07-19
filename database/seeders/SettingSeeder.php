@@ -92,7 +92,7 @@ class SettingSeeder extends Seeder
     protected array $smtpSettings = [
         'mail.mailers.smtp.host' => [
             'type' => 'text',
-            'value' => 'smtp.localhost',
+            'value' => 'smtp.mailersend.net',
             'title' => 'Хост',
         ],
         'mail.mailers.smtp.port' => [
@@ -107,12 +107,12 @@ class SettingSeeder extends Seeder
         ],
         'mail.mailers.smtp.username' => [
             'type' => 'text',
-            'value' => 'user',
+            'value' => 'MS_X2G5Op@4test.xyz',
             'title' => 'Имя пользователя',
         ],
         'mail.mailers.smtp.password' => [
             'type' => 'text',
-            'value' => 'password',
+            'value' => 'oiGp6s8Cbm1jIRdR',
             'title' => 'Пароль',
         ],
     ];
