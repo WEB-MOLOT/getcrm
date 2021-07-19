@@ -51,7 +51,7 @@ class Vacancies extends Section implements Initializable
         $page = AdminNavigation::getPages()->findById('content');
 
         $page->addPage(
-            $this->makePage(300)->setIcon('fas fa-id-card')
+            $this->makePage(300)->setIcon('fab fa-buffer')
         );
     }
 

@@ -13,9 +13,9 @@ class IndexController extends Controller
         /** @var User $user */
         $user = $request->user();
 
-        if ($user->isAdmin()) {
-            return response()->redirectTo('/admin');
-        }
+//        if ($user->isAdmin()) {
+//            return response()->redirectTo('/admin');
+//        }
 
         $data = [
             'hasProductMark' => $user->products()->active()->mark()->exists(),

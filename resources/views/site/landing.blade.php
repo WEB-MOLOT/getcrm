@@ -1,8 +1,14 @@
+<?php
+/**
+ * @var \App\Models\Pages\LandingPage $page
+ * @var \App\Models\SeoData $seo
+ */
+?>
 @extends('layouts.site')
 
-@section('title')
-    Лендинг
-@endsection
+@section('title', $page->getSeoTitle())
+@section('keywords', $page->getSeoKeywords())
+@section('description', $page->getSeoDescription())
 
 @section('footer')
     @include('_partials.modals.callback')
@@ -45,7 +51,7 @@
                     <div class="landing-main__col landing-main__col--text">
                         <h1 class="landing-main__title">
                   <span class="landing-main__title-top"
-                  >ДиМарКЭ - Платформа цифрового маркетинга</span
+                  >{{ $page->name() }}</span
                   >
                             <span class="landing-main__title-bottom"
                             >Инновационный инструмент для увеличения продаж.</span

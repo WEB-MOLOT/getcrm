@@ -16,8 +16,9 @@ class UserSeeder extends Seeder
     {
         $companies = Company::all();
 
-        User::factory(1)->customer()->create([
+        User::factory(1)->admin()->create([
             'email' => 'admin@getcrm.ru',
+            'firm' => 'GETCRM',
         ]);
 
         User::factory(1)->customer()->create([
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
 
         User::factory(1)->admin()->create([
             'email' => 'master@getcrm.ru',
+            'firm' => 'GETCRM',
         ]);
 
         for ($i = 0; $i < 5; $i++) {
