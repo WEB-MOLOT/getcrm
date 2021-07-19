@@ -1,17 +1,12 @@
 <?php
 /**
- * @var SuccessStory[]|Collection $stories
+ * @var \App\Models\SuccessStory[]|\Illuminate\Database\Eloquent\Collection $stories
+ * @var \App\Models\SeoData $seo
  */
-
-use App\Models\SuccessStory;
-use Illuminate\Database\Eloquent\Collection;
-
 ?>
 @extends('layouts.site')
 
-@section('title')
-    Истории
-@endsection
+@section('title', $seo->title ?? 'Истории')
 
 @section('footer')
     @include('_partials.modals.subscription')
@@ -36,7 +31,7 @@ use Illuminate\Database\Eloquent\Collection;
                 @foreach($stories as $story)
                     <div
                         class="item"
-                        style="background: url('{{ $story->getLogoUrl() }}') center/cover;"
+                        style="background: url('{{ $story->getImageUrl() }}') center/cover;"
                     >
                         <a href="{{ route('site.stories.item', $story) }}" class="link2"></a>
                         <a href="{{ route('site.stories.item', $story) }}" class="link">
@@ -66,7 +61,7 @@ use Illuminate\Database\Eloquent\Collection;
                             </p>
                             <div class="flex2">
                                 @for($i = $story->badges->count(); $i < 5; $i++)
-                                    <div class="block empty"></div>
+                                    <div class="block empty" style="visibility: hidden"></div>
                                 @endfor
                                 @foreach($story->badges as $key => $badge)
                                     <div class="block b{{ $key }}">

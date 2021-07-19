@@ -2,16 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\SuccessStoryResult;
+use App\Models\StoryResult;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use JetBrains\PhpStorm\ArrayShape;
 
-class SuccessStoryResultFactory extends Factory
+class StoryResultFactory extends Factory
 {
     /**
      * @var string
      */
-    protected $model = SuccessStoryResult::class;
+    protected $model = StoryResult::class;
 
     /**
      * @return array

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Список историй успеха
      *
      * @param Request $request
      * @return Application|Factory|View
@@ -20,7 +20,10 @@ class IndexController extends Controller
     public function __invoke(Request $request): View|Factory|Application
     {
         $data = [
-            'stories' => SuccessStory::query()->with('badges', 'results')->paginate(4),
+            'stories' => SuccessStory::query()
+                ->with('badges')
+                ->latest('id')
+                ->paginate(100),
         ];
 
         return view('site.history.index', $data);

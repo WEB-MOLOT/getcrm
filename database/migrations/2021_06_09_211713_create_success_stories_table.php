@@ -12,10 +12,8 @@ class CreateSuccessStoriesTable extends Migration
             $table->id();
             $table->string('title')->comment('Заголовок');
             $table->string('image')->nullable()->comment('Изображение');
-            $table->string('logo')->nullable()->comment('Логотип');
-            $table->tinyText('short_about')->nullable()->comment('Краткая информация о компании');
-            $table->text('tasks')->nullable()->comment('Проблематика и вызовы');
-            $table->text('solution')->nullable()->comment('Решение');
+            $table->string('logo')->nullable()->comment('Логотип на странице списка');
+            $table->string('logo2')->nullable()->comment('Логотип на странице истории');
             $table->timestamps();
             $table->softDeletes()->index();
         });

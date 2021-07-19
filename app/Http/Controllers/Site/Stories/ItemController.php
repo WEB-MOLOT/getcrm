@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * История успеха
      *
      * @param Request $request
      * @param SuccessStory $successStory
@@ -21,8 +21,9 @@ class ItemController extends Controller
     public function __invoke(Request $request, SuccessStory $successStory): View|Factory|Application
     {
         $data = [
-            'story' => $successStory->load('badges'),
-            'lastResult' => $successStory->lastResult,
+            'story' => $successStory->load('badges', 'shorts', 'tasks', 'solutions'),
+            'seo' => $successStory->seo,
+            'result' => $successStory->result,
         ];
 
         return view('site.history.item', $data);

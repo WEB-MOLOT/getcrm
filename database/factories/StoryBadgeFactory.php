@@ -2,16 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\SuccessStoryBadge;
+use App\Models\StoryBadge;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use JetBrains\PhpStorm\ArrayShape;
 
-class SuccessStoryBadgeFactory extends Factory
+class StoryBadgeFactory extends Factory
 {
     /**
      * @var string
      */
-    protected $model = SuccessStoryBadge::class;
+    protected $model = StoryBadge::class;
 
     /**
      * @return array

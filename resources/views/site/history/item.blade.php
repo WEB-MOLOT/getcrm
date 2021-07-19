@@ -1,18 +1,17 @@
 <?php
 /**
- * @var SuccessStory $story
- * @var SuccessStoryResult $lastResult
+ * @var \App\Models\SuccessStory $story
+ * @var \App\Models\StoryResult $result
+ * @var \App\Models\SeoData $seo
  */
-
-use App\Models\SuccessStory;
-use App\Models\SuccessStoryResult;
-
 ?>
 @extends('layouts.site')
 
-@section('title')
-    {{ $story->title }}
-@endsection
+@section('title', $story->getSeoTitle())
+
+@section('keywords', $story->getSeoKeywords())
+
+@section('description', $story->getSeoDescription())
 
 @section('footer')
     @include('_partials.modals.subscription')
@@ -54,10 +53,10 @@ use App\Models\SuccessStoryResult;
                     </a>
                     <h2>Информация о компании</h2>
                     <div class="top-info">
-                        <div><img src="{{ $story->getLogoUrl() }}" alt=""/></div>
+                        <div><img src="{{ $story->getLogo2Url() }}" alt=""/></div>
                         <div>
-                            @foreach($story->short_about as $line)
-                                <p>{{ $line }}</p>
+                            @foreach($story->shorts as $item)
+                                <p>{{ $item->line }}</p>
                             @endforeach
                         </div>
                     </div>
@@ -65,16 +64,16 @@ use App\Models\SuccessStoryResult;
                         <div class="list">
                             <p>Проблематика и вызовы</p>
                             <ul>
-                                @foreach($story->tasks as $line)
-                                    <li>{{ $line }}</li>
+                                @foreach($story->tasks as $item)
+                                    <li>{{ $item->line }}</li>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="list">
                             <p>Решение</p>
                             <ul class="other">
-                                @foreach($story->solution as $line)
-                                    <li>{{ $line }}</li>
+                                @foreach($story->solutions as $item)
+                                    <li>{{ $item->line }}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -83,11 +82,11 @@ use App\Models\SuccessStoryResult;
                     <div class="flex before-after">
                         <div class="item">
                             <p>До</p>
-                            <img src="{{ $lastResult->getBeforeUrl() }}" alt=""/>
+                            <img src="{{ $result->getBeforeUrl() }}" alt=""/>
                         </div>
                         <div class="item">
                             <p>После</p>
-                            <img src="{{ $lastResult->getAfterUrl() }}" alt=""/>
+                            <img src="{{ $result->getAfterUrl() }}" alt=""/>
                         </div>
                         <div class="item">
                             @foreach($story->badges as $key => $badge)
@@ -101,7 +100,7 @@ use App\Models\SuccessStoryResult;
                         </div>
                     </div>
                     <div class="bottom-text">
-                        {{ $lastResult->description }}
+                        {{ $result->description }}
                     </div>
                 </div>
             </div>
