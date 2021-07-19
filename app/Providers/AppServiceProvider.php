@@ -33,13 +33,16 @@ class AppServiceProvider extends ServiceProvider
 
     protected function getConfigFromDb()
     {
-        Setting::all()->each(static function (Setting $setting) {
-            $value = match ($setting->type->value()) {
-                SettingType::NUMBER => intval($setting->value),
-                SettingType::CHECKBOX => $setting->value === '1',
-                default => $setting->value === '' ? null : $setting->value,
-            };
-            config()->set($setting->name, $value);
-        });
+        // TODO: переделать, это временное решение
+        if (!$this->app->runningInConsole()) {
+            Setting::all()->each(static function (Setting $setting) {
+                $value = match ($setting->type->value()) {
+                    SettingType::NUMBER => intval($setting->value),
+                    SettingType::CHECKBOX => $setting->value === '1',
+                    default => $setting->value === '' ? null : $setting->value,
+                };
+                config()->set($setting->name, $value);
+            });
+        }
     }
 }
