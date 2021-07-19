@@ -26,26 +26,6 @@ class ContactsPage extends Page
         });
     }
 
-    public function getPhoneAttribute(): ?string
-    {
-        return $this->block('phone');
-    }
-
-    public function setPhoneAttribute($value): void
-    {
-        $this->saveBlock('phone', $value);
-    }
-
-    public function getAddressAttribute(): ?string
-    {
-        return $this->block('address');
-    }
-
-    public function setAddressAttribute($value): void
-    {
-        $this->saveBlock('address', $value);
-    }
-
     public function clearedPhone(): string
     {
         return preg_replace('/[^0-9+]/', '', $this->phone);

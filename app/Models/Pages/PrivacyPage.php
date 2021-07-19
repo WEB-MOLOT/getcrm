@@ -24,14 +24,4 @@ class PrivacyPage extends Page
             $builder->where('slug', '=', 'privacy');
         });
     }
-
-    public function getContentAttribute(): ?string
-    {
-        return $this->block('content');
-    }
-
-    public function setContentAttribute($value): void
-    {
-        $this->saveBlock('content', $value);
-    }
 }

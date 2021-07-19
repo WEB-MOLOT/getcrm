@@ -69,4 +69,35 @@ class Page extends Model
             ? $block->content
             : null;
     }
+
+    /**
+     * Автоматизация создания геттеров для перехвата работы с блоками
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        if (in_array($key, $this->appends)) {
+            return $this->block($key);
+        }
+
+        return parent::__get($key);
+    }
+
+    /**
+     * Автоматизация создания сеттеров для перехвата работы с блоками
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function __set($key, $value)
+    {
+        if (in_array($key, $this->appends)) {
+            $this->saveBlock($key, $value);
+        } else {
+            parent::__get($key);
+        }
+    }
 }
