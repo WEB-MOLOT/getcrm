@@ -36,7 +36,8 @@
             "vendor-override"
         ],
         "exclude-from-classmap": [
-            "vendor\\laravelrus\\sleepingowl\\src\\Display\\Column\\Control.php"
+            "vendor\\laravelrus\\sleepingowl\\src\\Display\\Column\\Control.php",
+            "vendor\\laravelrus\\sleepingowl\\src\\Form\\Element\\NamedFormElement.php"
         ]
     },
     "autoload-dev": {
