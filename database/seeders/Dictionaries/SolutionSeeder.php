@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Dictionaries;
 
+use App\Models\Dictionaries\Filter;
 use App\Models\Dictionaries\Solution;
 use App\Models\Dictionaries\SolutionFunctionality;
 use Illuminate\Database\Seeder;
@@ -10,6 +11,8 @@ class SolutionSeeder extends Seeder
 {
     public function run(): void
     {
+        $filters = Filter::query()->oldest('order')->with('values')->get();
+
         foreach ($this->solutions as $solution) {
             /** @var Solution $solution */
             $solution = Solution::factory()->create([
@@ -17,6 +20,18 @@ class SolutionSeeder extends Seeder
             ]);
 
             $solution->functionalities()->saveMany(SolutionFunctionality::factory(10)->make());
+
+            for ($i = 1; $i <= 3; $i++) {
+                $params = collect();
+
+                foreach ($filters as $filter) {
+                    $params->put($filter->id, (string)$filter->values->random()->id);
+                }
+
+                $solution->filters()->create([
+                    'params' => $params->toArray(),
+                ]);
+            }
         }
     }
 

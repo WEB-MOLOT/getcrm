@@ -34,4 +34,9 @@ class Solution extends Model
     {
         return $this->belongsToMany(Service::class);
     }
+
+    public function filters(): HasMany
+    {
+        return $this->hasMany(SolutionFilter::class);
+    }
 }

@@ -7,9 +7,12 @@ use AdminDisplay;
 use AdminForm;
 use AdminFormElement;
 use AdminNavigation;
+use App\Models\Dictionaries\Filter;
+use App\Models\Dictionaries\FilterValue;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
@@ -82,6 +85,7 @@ class Solutions extends Section implements Initializable
      * @param int|null $id
      * @param array $payload
      * @return FormInterface
+     * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
@@ -99,6 +103,7 @@ class Solutions extends Section implements Initializable
         $tabs->appendTab($form, 'Решение', true);
 
         if ($id) {
+            // Функционал
             $functionalities = AdminForm::elements([
                 '<p>После изменения функционала надо обязательно сохранить изменения в базу (кнопка Сохранить внизу формы).</p>',
                 AdminFormElement::hasMany('functionalities', [
@@ -106,6 +111,33 @@ class Solutions extends Section implements Initializable
                 ]),
             ]);
             $tabs->appendTab($functionalities, 'Функционал', false);
+
+            // Связь с фильтрами
+            $filters = Filter::query()->oldest('order')->get();
+            $filterValues = FilterValue::all()->groupBy('filter_id');
+
+            $filtersElements = [
+                '<h4 class="subform_header">Фильтры</h4>',
+            ];
+            foreach ($filters as $filter) {
+                /** @var Collection $currentFilterValues */
+                $currentFilterValues = $filterValues->get($filter->id);
+                $options = $currentFilterValues->map(static function (FilterValue $item) {
+                    return [
+                        'id' => $item->id,
+                        'value' => $item->name,
+                    ];
+                })->pluck('value', 'id')->toArray();
+
+                $filtersElements[] = AdminFormElement::select('params->' . $filter->id, $filter->name)
+                    ->setOptions($options);
+            }
+
+            $filtersForms = AdminForm::elements([
+                '<p>После изменения функционала надо обязательно сохранить изменения в базу (кнопка Сохранить внизу формы).</p>',
+                AdminFormElement::hasMany('filters', $filtersElements),
+            ]);
+            $tabs->appendTab($filtersForms, 'Варианты фильтров', false);
         }
 
         $card->getButtons()->setButtons([
