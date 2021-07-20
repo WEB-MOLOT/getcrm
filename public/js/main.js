@@ -2193,6 +2193,7 @@ $(document).ready(function () {
     const sliderCheck = document.querySelector(".actual_slider");
     if (sliderCheck != null) {
         $(".actual_slider").each(function () {
+            var filter_id = $(this).data('filter');
             var items = $(this)
                 .find(".actual_slider--range")
                 .attr("data-labels")
@@ -2202,6 +2203,10 @@ $(document).ready(function () {
                 range: "min",
                 min: 0,
                 max: items.length - 1,
+                change: function (event, ui) {
+                    console.log(ui.value,)
+                    Livewire.emit('sliderChanged', filter_id, items[ui.value])
+                }
             }).slider("pips", {
                 rest: "label",
                 labels: items,
