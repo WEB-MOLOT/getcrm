@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class PriceController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Страница калькулятора (расчет цен)
      *
      * @param Request $request
      * @return Application|Factory|View
