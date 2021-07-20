@@ -10,6 +10,12 @@ class CreateFaqItemsTable extends Migration
     {
         Schema::create('faq_items', function (Blueprint $table) {
             $table->id();
+
+            $table->morphs('faqable');
+
+            $table->string('question')->comment('Вопрос');
+            $table->text('answer')->comment('Ответ');
+
             $table->timestamps();
             $table->softDeletes()->index();
         });

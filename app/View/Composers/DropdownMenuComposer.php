@@ -11,9 +11,9 @@ class DropdownMenuComposer
 {
     public function compose(View $view): void
     {
-        $serviceMenu = Service::query()->orderByDesc('order')->get();
+        $serviceMenu = Service::query()->orderBy('order')->get();
 
-        $solutionMenu = Solution::query()->orderByDesc('order')->get();
+        $solutionMenu = Solution::query()->orderBy('order')->get();
 
         $view->with('serviceMenu', $serviceMenu)
             ->with('solutionMenu', $solutionMenu);

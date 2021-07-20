@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+
 /**
  * Trait SeoTrait
  * @package App\Models
@@ -9,6 +11,11 @@ namespace App\Models;
  */
 trait SeoTrait
 {
+    public function seo(): MorphOne
+    {
+        return $this->morphOne(SeoData::class, 'seoable');
+    }
+
     public function getSeoTitle(): ?string
     {
         $value = $this->seo->title;

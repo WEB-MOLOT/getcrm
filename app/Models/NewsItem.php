@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NewsItem extends Model
@@ -35,11 +34,6 @@ class NewsItem extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
-    }
-
-    public function seo(): MorphOne
-    {
-        return $this->morphOne(SeoData::class, 'seoable');
     }
 
     protected function getSeoDefaultTitle(): string

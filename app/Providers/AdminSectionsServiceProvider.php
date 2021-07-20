@@ -22,6 +22,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         \App\Models\Customer::class => 'App\Http\Sections\Customers',
         \App\Models\UserProduct::class => 'App\Http\Sections\UserProducts',
         \App\Models\UserDocument::class => 'App\Http\Sections\UserDocuments',
+        \App\Models\Review::class => 'App\Http\Sections\Reviews',
 
         \App\Models\Settings\SiteSetting::class => 'App\Http\Sections\Settings\SiteSettings',
         \App\Models\Settings\SmtpSetting::class => 'App\Http\Sections\Settings\SmtpSettings',

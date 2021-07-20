@@ -15,4 +15,13 @@ class Company extends Model
         'name',
         'logo',
     ];
+
+    public function getLogoUrl(): ?string
+    {
+        if ($this->logo) {
+            return url($this->logo);
+        }
+
+        return null;
+    }
 }

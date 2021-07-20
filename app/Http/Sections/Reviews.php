@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Sections\Dictionaries;
+namespace App\Http\Sections;
 
 use AdminColumn;
 use AdminDisplay;
 use AdminForm;
-use AdminFormElement;
-use App\Models\Dictionaries\Filter;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -17,13 +15,13 @@ use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
- * Class FiltersValues
+ * Class Reviews
  *
- * @property \App\Models\Dictionaries\FilterValue $model
+ * @property \App\Models\Review $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class FiltersValues extends Section
+class Reviews extends Section
 {
     /**
      * @var bool
@@ -33,12 +31,12 @@ class FiltersValues extends Section
     /**
      * @var string
      */
-    protected $title = 'Значения фильтров';
+    protected $title = 'Отзывы';
 
     /**
      * @var string
      */
-    protected $alias = 'dictionaries_filter_value';
+    protected $alias = 'reviews';
 
     /**
      * @param array $payload
@@ -47,25 +45,40 @@ class FiltersValues extends Section
      */
     public function onDisplay(array $payload = []): DisplayInterface
     {
-        $filterId = $payload['filter_id'] ?? null;
+        $reviewableId = $payload['id'] ?? null;
+        $reviewableType = $payload['type'] ?? null;
 
         $columns = [
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('name', 'Значение'),
-            AdminColumn::order(),
+            AdminColumn::text('customer.company.name', 'Компания'),
+            AdminColumn::text('customer.name', 'Пользователь'),
+            AdminColumn::text('text', 'Отзыв'),
+            AdminColumn::text('score', 'Ср. оценка'),
+            AdminColumn::text('score_development', 'Качество разработки'),
+            AdminColumn::text('score_usability', 'Юзабилити'),
+            AdminColumn::text('score_team', 'Квалификация команды'),
+            AdminColumn::text('score_budget', 'Бюджет'),
+            AdminColumn::text('score_deadlines', 'Сроки'),
         ];
 
         $display = AdminDisplay::table()
+            ->with([
+                'customer',
+                'customer.company'
+            ])
             ->paginate(100)
             ->setColumns($columns)
-            ->setNewEntryButtonText('Добавить значение фильтра')
-            ->setParameter('filter_id', $filterId)
+            ->setNewEntryButtonText('Добавить отзыв')
+            ->setParameter('reviewable_id', $reviewableId)
+            ->setParameter('reviewable_type', $reviewableType)
             ->setHtmlAttribute('class', 'table-primary table-hover');
 
-        $display->setApply(function (Builder $query) use ($filterId) {
-            $query->oldest('order')->where('filter_id', '=', $filterId);
+        $display->setApply(function (Builder $query) use ($reviewableId, $reviewableType) {
+            $query->latest('id')
+                ->where('reviewable_type', '=', $reviewableType)
+                ->where('reviewable_id', '=', $reviewableId);
         });
 
         return $display;
@@ -80,19 +93,7 @@ class FiltersValues extends Section
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
-        $filterId = request()->get('filter_id');
-
-        $card = AdminForm::card()->addBody([
-            AdminFormElement::select('filter_id', 'Фильтр')
-                ->setModelForOptions(Filter::class, 'name')
-                ->setLoadOptionsQueryPreparer(static function ($element, Builder $query) use ($filterId) {
-                    return $query->where('id', '=', $filterId);
-                })
-                ->setDefaultValue($filterId)
-                ->required(),
-            AdminFormElement::text('name', 'Значение')
-                ->required(),
-        ]);
+        $card = AdminForm::card();
 
         $card->getButtons()->setButtons([
             'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
@@ -118,6 +119,6 @@ class FiltersValues extends Section
      */
     public function isDeletable(Model $model): bool
     {
-        return false;
+        return true;
     }
 }
