@@ -2,6 +2,8 @@
 /**
  * @var \Illuminate\Support\Collection $topMenu
  * @var \Illuminate\Support\Collection $burgerMenu
+ * @var \Illuminate\Support\Collection|\App\Models\Solution[] $solutionMenu
+ * @var \Illuminate\Support\Collection|\App\Models\Service[] $serviceMenu
  */
 ?>
 <header id="header" class="header">
@@ -214,417 +216,50 @@
                                             <div class="item">
                                                 <div class="item_menu">
                                                     <ul>
-                                                        <li
-                                                            class="active first_level"
-                                                            data-item="1"
-                                                        >
-                                                            <a href="#"
-                                                            >Система кросс-канальных коммуникаций
-                                                            </a>
-                                                            <div
-                                                                class="item_menu_variant item_menu_variant__wide active"
-                                                                data-item="1"
-                                                            >
+                                                        @foreach($solutionMenu as $item)
+                                                            <li class="{{ $loop->first ? ' active' : '' }} first_level"
+                                                                data-item="{{ $item->id }}">
+                                                                <a href="{{ route('site.solutions.show', $item) }}">
+                                                                    {{ $item->title }}
+                                                                </a>
                                                                 <div
-                                                                    class="row row_hd_dropdown_inside d_flex"
+                                                                    class="item_menu_variant item_menu_variant__wide {{ $loop->first ? ' active' : '' }}"
+                                                                    data-item="{{ $item->id }}"
                                                                 >
-                                                                    <div class="col col-2">
-                                                                        <div class="item">
-                                                                            <div class="item_variables">
-                                                                                <div class="item_variable">
-                                                                                    <ul>
-                                                                                        <li
-                                                                                            class="active second_level"
-                                                                                            data-item="1"
-                                                                                        >
-                                                                                            <a href="#"
-                                                                                            >Oracle Responsys</a
-                                                                                            >
-                                                                                            <div
-                                                                                                class="item_variable_info"
+                                                                    <div
+                                                                        class="row row_hd_dropdown_inside d_flex"
+                                                                    >
+                                                                        <div class="col col-2">
+                                                                            <div class="item">
+                                                                                <div class="item_variables">
+                                                                                    <div class="item_variable">
+                                                                                        <ul>
+                                                                                            <li
+                                                                                                class="{{ $loop->first ? ' active' : '' }} second_level"
                                                                                                 data-item="1"
                                                                                             >
-                                                                                                <div
-                                                                                                    class="item_variable_info--content"
+                                                                                                <a href="#"
+                                                                                                >{{ $item->id }}Oracle
+                                                                                                    Responsys</a
                                                                                                 >
-                                                                                                    <div
-                                                                                                        class="item_variable_info--image"
-                                                                                                    >
-                                                                                                        <img
-                                                                                                            src="/img/temp/bg_dropdown.png"
-                                                                                                            alt=""
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                    <div
-                                                                                                        class="item_variable_info--desc"
-                                                                                                    >
-                                                                                                        <p>
-                                                                                                            Lorem ipsum
-                                                                                                            dolor
-                                                                                                            sit amet,
-                                                                                                            consectetur
-                                                                                                            adipiscing
-                                                                                                            elit.
-                                                                                                            Eu, at
-                                                                                                            libero,
-                                                                                                            erat
-                                                                                                            malesuada
-                                                                                                            egestas
-                                                                                                            vitae
-                                                                                                            consectetur
-                                                                                                            purus
-                                                                                                            purus. Quam
-                                                                                                            consectetur
-                                                                                                            in in
-                                                                                                            eget
-                                                                                                            fringilla
-                                                                                                            tortor. Nunc
-                                                                                                            in ut
-                                                                                                            mattis diam.
-                                                                                                            Ullamcorper
-                                                                                                            cras
-                                                                                                            in turpis
-                                                                                                            nisi
-                                                                                                            tempus.
-                                                                                                        </p>
-                                                                                                        <p>
-                                                                                                            Lorem ipsum
-                                                                                                            dolor
-                                                                                                            sit amet,
-                                                                                                            consectetur
-                                                                                                            adipiscing
-                                                                                                            elit.
-                                                                                                            Ultrices ut
-                                                                                                            feugiat cras
-                                                                                                            dui
-                                                                                                            ut massa
-                                                                                                            blandit
-                                                                                                            augue enim.
-                                                                                                            Quis
-                                                                                                            eget tempus
-                                                                                                            dui
-                                                                                                            lectus
-                                                                                                            pretium.
-                                                                                                            Risus amet
-                                                                                                            dolor,
-                                                                                                            sed justo,
-                                                                                                            urna,
-                                                                                                            semper.
-                                                                                                            Eros,
-                                                                                                            neque sed
-                                                                                                            elementum
-                                                                                                            quisque
-                                                                                                            mauris,
-                                                                                                            dictumst
-                                                                                                            mattis.
-                                                                                                        </p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="first_level" data-item="2">
-                                                            <a href="#"
-                                                            >Система персонализации контента
-                                                                сайта</a
-                                                            >
-                                                            <div
-                                                                class="item_menu_variant item_menu_variant__wide"
-                                                                data-item="2"
-                                                            >
-                                                                <div
-                                                                    class="row row_hd_dropdown_inside d_flex"
-                                                                >
-                                                                    <div class="col col-2">
-                                                                        <div class="item">
-                                                                            <div class="item_variables">
-                                                                                <div class="item_variable">
-                                                                                    <ul>
-                                                                                        <li
-                                                                                            class="active second_level"
-                                                                                            data-item="1"
-                                                                                        >
-                                                                                            <a href="#"
-                                                                                            >Hover this please</a
-                                                                                            >
-                                                                                            <div
-                                                                                                class="item_variable_info"
-                                                                                                data-item="1"
-                                                                                            >
-                                                                                                <div
-                                                                                                    class="item_variable_info--content"
-                                                                                                >
-                                                                                                    <div
-                                                                                                        class="item_variable_info--image"
-                                                                                                    >
-                                                                                                        <img
-                                                                                                            src="/img/temp/bg_dropdown.png"
-                                                                                                            alt=""
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                    <div
-                                                                                                        class="item_variable_info--desc"
-                                                                                                    >
-                                                                                                        <p>
-                                                                                                            Lorem ipsum
-                                                                                                            dolor
-                                                                                                            sit amet,
-                                                                                                            consectetur
-                                                                                                            adipiscing
-                                                                                                            elit.
-                                                                                                            Eu, at
-                                                                                                            libero,
-                                                                                                            erat
-                                                                                                            malesuada
-                                                                                                            egestas
-                                                                                                            vitae
-                                                                                                            consectetur
-                                                                                                            purus
-                                                                                                            purus. Quam
-                                                                                                            consectetur
-                                                                                                            in in
-                                                                                                            eget
-                                                                                                            fringilla
-                                                                                                            tortor. Nunc
-                                                                                                            in ut
-                                                                                                            mattis diam.
-                                                                                                            Ullamcorper
-                                                                                                            cras
-                                                                                                            in turpis
-                                                                                                            nisi
-                                                                                                            tempus.
-                                                                                                        </p>
-                                                                                                        <p>
-                                                                                                            Lorem ipsum
-                                                                                                            dolor
-                                                                                                            sit amet,
-                                                                                                            consectetur
-                                                                                                            adipiscing
-                                                                                                            elit.
-                                                                                                            Ultrices ut
-                                                                                                            feugiat cras
-                                                                                                            dui
-                                                                                                            ut massa
-                                                                                                            blandit
-                                                                                                            augue enim.
-                                                                                                            Quis
-                                                                                                            eget tempus
-                                                                                                            dui
-                                                                                                            lectus
-                                                                                                            pretium.
-                                                                                                            Risus amet
-                                                                                                            dolor,
-                                                                                                            sed justo,
-                                                                                                            urna,
-                                                                                                            semper.
-                                                                                                            Eros,
-                                                                                                            neque sed
-                                                                                                            elementum
-                                                                                                            quisque
-                                                                                                            mauris,
-                                                                                                            dictumst
-                                                                                                            mattis.
-                                                                                                        </p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                                                                        <li
-                                                                                            class="second_level"
-                                                                                            data-item="2"
-                                                                                        >
-                                                                                            <a href="#"
-                                                                                            >Hover this please</a
-                                                                                            >
-                                                                                            <div
-                                                                                                class="item_variable_info"
+                                                                                            </li>
+                                                                                            <li
+                                                                                                class="second_level"
                                                                                                 data-item="2"
                                                                                             >
-                                                                                                <div
-                                                                                                    class="item_variable_info--content"
+                                                                                                <a href="#"
+                                                                                                >Oracle Responsys</a
                                                                                                 >
-                                                                                                    <div
-                                                                                                        class="item_variable_info--image"
-                                                                                                    >
-                                                                                                        <img
-                                                                                                            src="/img/temp/bg_dropdown.png"
-                                                                                                            alt=""
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                    <div
-                                                                                                        class="item_variable_info--desc"
-                                                                                                    >
-                                                                                                        <p>
-                                                                                                            Lorem ipsum
-                                                                                                            dolor
-                                                                                                            sit amet,
-                                                                                                            consectetur
-                                                                                                            adipiscing
-                                                                                                            elit.
-                                                                                                            Eu, at
-                                                                                                            libero,
-                                                                                                            erat
-                                                                                                            malesuada
-                                                                                                            egestas
-                                                                                                            vitae
-                                                                                                            consectetur
-                                                                                                            purus
-                                                                                                            purus. Quam
-                                                                                                            consectetur
-                                                                                                            in in
-                                                                                                            eget
-                                                                                                            fringilla
-                                                                                                            tortor. Nunc
-                                                                                                            in ut
-                                                                                                            mattis diam.
-                                                                                                            Ullamcorper
-                                                                                                            cras
-                                                                                                            in turpis
-                                                                                                            nisi
-                                                                                                            tempus.
-                                                                                                        </p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                                                                    </ul>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="first_level" data-item="3">
-                                                            <a href="#"
-                                                            >Система анализа поведения клиентов
-                                                                <br/>в цифровых ресурсах</a
-                                                            >
-
-                                                            <div
-                                                                class="item_menu_variant item_menu_variant__wide"
-                                                                data-item="3"
-                                                            >
-                                                                <div
-                                                                    class="row row_hd_dropdown_inside d_flex"
-                                                                >
-                                                                    <div class="col col-2">
-                                                                        <div class="item">
-                                                                            <div class="item_variables">
-                                                                                <div class="item_variable">
-                                                                                    <ul>
-                                                                                        <li
-                                                                                            class="active second_level"
-                                                                                            data-item="1"
-                                                                                        >
-                                                                                            <a href="#"
-                                                                                            >Hover this please</a
-                                                                                            >
-                                                                                            <div
-                                                                                                class="item_variable_info"
-                                                                                                data-item="1"
-                                                                                            >
-                                                                                                <div
-                                                                                                    class="item_variable_info--content"
-                                                                                                >
-                                                                                                    <div
-                                                                                                        class="item_variable_info--image"
-                                                                                                    >
-                                                                                                        <img
-                                                                                                            src="/img/temp/bg_dropdown.png"
-                                                                                                            alt=""
-                                                                                                        />
-                                                                                                    </div>
-                                                                                                    <div
-                                                                                                        class="item_variable_info--desc"
-                                                                                                    >
-                                                                                                        <p>
-                                                                                                            Lorem ipsum
-                                                                                                            dolor
-                                                                                                            sit amet,
-                                                                                                            consectetur
-                                                                                                            adipiscing
-                                                                                                            elit.
-                                                                                                            Eu, at
-                                                                                                            libero,
-                                                                                                            erat
-                                                                                                            malesuada
-                                                                                                            egestas
-                                                                                                            vitae
-                                                                                                            consectetur
-                                                                                                            purus
-                                                                                                            purus. Quam
-                                                                                                            consectetur
-                                                                                                            in in
-                                                                                                            eget
-                                                                                                            fringilla
-                                                                                                            tortor. Nunc
-                                                                                                            in ut
-                                                                                                            mattis diam.
-                                                                                                            Ullamcorper
-                                                                                                            cras
-                                                                                                            in turpis
-                                                                                                            nisi
-                                                                                                            tempus.
-                                                                                                        </p>
-                                                                                                        <p>
-                                                                                                            Lorem ipsum
-                                                                                                            dolor
-                                                                                                            sit amet,
-                                                                                                            consectetur
-                                                                                                            adipiscing
-                                                                                                            elit.
-                                                                                                            Ultrices ut
-                                                                                                            feugiat cras
-                                                                                                            dui
-                                                                                                            ut massa
-                                                                                                            blandit
-                                                                                                            augue enim.
-                                                                                                            Quis
-                                                                                                            eget tempus
-                                                                                                            dui
-                                                                                                            lectus
-                                                                                                            pretium.
-                                                                                                            Risus amet
-                                                                                                            dolor,
-                                                                                                            sed justo,
-                                                                                                            urna,
-                                                                                                            semper.
-                                                                                                            Eros,
-                                                                                                            neque sed
-                                                                                                            elementum
-                                                                                                            quisque
-                                                                                                            mauris,
-                                                                                                            dictumst
-                                                                                                            mattis.
-                                                                                                        </p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="first_level" data-item="4">
-                                                            <a href="#">CRM Программа лояльности</a>
-                                                        </li>
-                                                        <li class="first_level" data-item="5">
-                                                            <a href="#"
-                                                            >Автоматизации контакт-центра</a
-                                                            >
-                                                        </li>
+                                                            </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
@@ -670,55 +305,46 @@
                                             <div class="item">
                                                 <div class="item_menu">
                                                     <ul>
-                                                        <li
-                                                            class="active first_level"
-                                                            data-item="1"
-                                                        >
-                                                            <a href="#"
-                                                            >Система кросс-канальных коммуникаций
-                                                            </a>
-                                                            <div
-                                                                class="item_menu_variant active"
-                                                                data-item="1"
+                                                        @foreach($serviceMenu as $item)
+                                                            <li
+                                                                class="{{ $loop->first ? ' active' : '' }} first_level"
+                                                                data-item="{{ $item->id }}"
                                                             >
+                                                                <a href="{{ route('site.services.show', $item) }}"
+                                                                >{{ $item->title }}
+                                                                </a>
                                                                 <div
-                                                                    class="row row_hd_dropdown_inside d_flex"
+                                                                    class="item_menu_variant {{ $loop->first ? ' active' : '' }}"
+                                                                    data-item="{{ $item->id }}"
                                                                 >
-                                                                    <div class="col col-1">
-                                                                        <div class="item">
-                                                                            <div class="item_variables_info">
-                                                                                <div
-                                                                                    class="item_variable_info active"
-                                                                                    data-item="1"
-                                                                                >
+                                                                    <div
+                                                                        class="row row_hd_dropdown_inside d_flex"
+                                                                    >
+                                                                        <div class="col col-1">
+                                                                            <div class="item">
+                                                                                <div class="item_variables_info">
                                                                                     <div
-                                                                                        class="item_variable_info--content"
+                                                                                        class="item_variable_info active"
+                                                                                        data-item="1"
                                                                                     >
                                                                                         <div
-                                                                                            class="item_variable_info--image"
+                                                                                            class="item_variable_info--content"
                                                                                         >
-                                                                                            <img
-                                                                                                src="/img/temp/bg_dropdown.png"
-                                                                                                alt=""
-                                                                                            />
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="item_variable_info--desc"
-                                                                                        >
-                                                                                            <p>
-                                                                                                Lorem ipsum dolor sit
-                                                                                                amet, consectetur
-                                                                                                adipiscing elit. Eu, at
-                                                                                                libero, erat malesuada
-                                                                                                egestas vitae
-                                                                                                consectetur purus purus.
-                                                                                                Quam consectetur in in
-                                                                                                eget fringilla tortor.
-                                                                                                Nunc in ut mattis diam.
-                                                                                                Ullamcorper cras in
-                                                                                                turpis nisi tempus.
-                                                                                            </p>
-                                                                                        </div>
+                                                                                            <div
+                                                                                                class="item_variable_info--image"
+                                                                                            >
+                                                                                                <img width="334"
+                                                                                                     src="{{ $item->getImageUrl() }}"
+                                                                                                     alt=""
+                                                                                                />
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="item_variable_info--desc"
+                                                                                            >
+                                                                                                <p>
+                                                                                                    {{ $item->description }}
+                                                                                                </p>
+                                                                                            </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -727,164 +353,7 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="first_level" data-item="2">
-                                                            <a href="#"
-                                                            >Система персонализации контента
-                                                                сайта</a
-                                                            >
-                                                            <div
-                                                                class="item_menu_variant"
-                                                                data-item="2"
-                                                            >
-                                                                <div
-                                                                    class="row row_hd_dropdown_inside d_flex"
-                                                                >
-                                                                    <div class="col col-1">
-                                                                        <div class="item">
-                                                                            <div class="item_variables_info">
-                                                                                <div
-                                                                                    class="item_variable_info active"
-                                                                                    data-item="1"
-                                                                                >
-                                                                                    <div
-                                                                                        class="item_variable_info--content"
-                                                                                    >
-                                                                                        <div
-                                                                                            class="item_variable_info--image"
-                                                                                        >
-                                                                                            <img
-                                                                                                src="/img/temp/bg_dropdown.png"
-                                                                                                alt=""
-                                                                                            />
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="item_variable_info--desc"
-                                                                                        >
-                                                                                            <p>
-                                                                                                Lorem ipsum dolor sit
-                                                                                                amet, consectetur
-                                                                                                adipiscing elit.
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="first_level" data-item="3">
-                                                            <a href="#"
-                                                            >Система анализа поведения клиентов
-                                                                <br/>в цифровых ресурсах</a
-                                                            >
-                                                            <div
-                                                                class="item_menu_variant"
-                                                                data-item="3"
-                                                            >
-                                                                <div
-                                                                    class="row row_hd_dropdown_inside d_flex"
-                                                                >
-                                                                    <div class="col col-1">
-                                                                        <div class="item">
-                                                                            <div class="item_variables_info">
-                                                                                <div
-                                                                                    class="item_variable_info active"
-                                                                                    data-item="1"
-                                                                                >
-                                                                                    <div
-                                                                                        class="item_variable_info--content"
-                                                                                    >
-                                                                                        <div
-                                                                                            class="item_variable_info--image"
-                                                                                        >
-                                                                                            <img
-                                                                                                src="/img/temp/bg_dropdown.png"
-                                                                                                alt=""
-                                                                                            />
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="item_variable_info--desc"
-                                                                                        >
-                                                                                            <p>
-                                                                                                Lorem ipsum dolor sit
-                                                                                                amet, consectetur
-                                                                                                adipiscing elit. Eu, at
-                                                                                                libero, erat malesuada
-                                                                                                egestas vitae
-                                                                                                consectetur purus purus.
-                                                                                                Quam consectetur in in
-                                                                                                eget fringilla tortor.
-                                                                                                Nunc in ut mattis diam.
-                                                                                                Ullamcorper cras in
-                                                                                                turpis nisi tempus.
-                                                                                            </p>
-                                                                                            <p>
-                                                                                                Lorem ipsum dolor sit
-                                                                                                amet, consectetur
-                                                                                                adipiscing elit.
-                                                                                                Ultrices ut feugiat cras
-                                                                                                dui ut massa blandit
-                                                                                                augue enim. Quis eget
-                                                                                                tempus dui lectus
-                                                                                                pretium. Risus amet
-                                                                                                dolor, sed justo, urna,
-                                                                                                semper. Eros, neque sed
-                                                                                                elementum quisque
-                                                                                                mauris, dictumst mattis.
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="item_variable_info"
-                                                                                    data-item="2"
-                                                                                >
-                                                                                    <div
-                                                                                        class="item_variable_info--content"
-                                                                                    >
-                                                                                        <div
-                                                                                            class="item_variable_info--image"
-                                                                                        >
-                                                                                            <img
-                                                                                                src="/img/temp/bg_dropdown.png"
-                                                                                                alt=""
-                                                                                            />
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="item_variable_info--desc"
-                                                                                        >
-                                                                                            <p>
-                                                                                                Lorem ipsum dolor sit
-                                                                                                amet, consectetur
-                                                                                                adipiscing elit. Eu, at
-                                                                                                libero, erat malesuada
-                                                                                                egestas vitae
-                                                                                                consectetur purus purus.
-                                                                                                Quam consectetur in in
-                                                                                                eget fringilla tortor.
-                                                                                                Nunc in ut mattis diam.
-                                                                                                Ullamcorper cras in
-                                                                                                turpis nisi tempus.
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="first_level" data-item="4">
-                                                            <a href="#">CRM Программа лояльности</a>
-                                                        </li>
-                                                        <li class="first_level" data-item="5">
-                                                            <a href="#"
-                                                            >Автоматизации контакт-центра</a
-                                                            >
-                                                        </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>

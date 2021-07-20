@@ -18,4 +18,13 @@ class Service extends Model
         'video',
         'description',
     ];
+
+    public function getImageUrl(): ?string
+    {
+        if ($this->image) {
+            return url($this->image);
+        }
+
+        return null;
+    }
 }

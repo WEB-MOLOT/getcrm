@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Composers\BurgerMenuComposer;
+use App\View\Composers\DropdownMenuComposer;
 use App\View\Composers\FooterMenuComposer;
 use App\View\Composers\TopMenuComposer;
 use Illuminate\Support\Facades\View;
@@ -20,5 +21,6 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('_partials.header', TopMenuComposer::class);
         View::composer('_partials.header', BurgerMenuComposer::class);
         View::composer('_partials.footer', FooterMenuComposer::class);
+        View::composer('_partials.header', DropdownMenuComposer::class);
     }
 }
