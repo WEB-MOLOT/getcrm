@@ -36,3 +36,8 @@ Route::middleware([
 ])->prefix('cabinet')->group(static function () {
     Route::get('/', Cabinet\IndexController::class)->name('cabinet.index');
 });
+
+Route::get('/test/magick', [
+    \App\Http\Controllers\TestController::class,
+    'magick'
+]);
