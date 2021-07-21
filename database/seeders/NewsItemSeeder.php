@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\NewsItem;
 use App\Models\SeoData;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -11,19 +12,57 @@ class NewsItemSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach ($this->items as $item) {
-            $newsItem = NewsItem::create($item);
-            $newsItem->seo()->save(new SeoData());
+//        foreach ($this->items as $item) {
+//            $newsItem = NewsItem::create($item);
+//            $newsItem->seo()->save(new SeoData());
+//
+//            $data = file_get_contents($newsItem->content);
+//
+//            $crawler = new Crawler($data);
+//
+//            $content = $crawler->filter('div.text')->first();
+//
+//            $newsItem->update([
+//                'content' => $content->html(),
+//            ]);
+//        }
 
-            $data = file_get_contents($newsItem->content);
+        foreach ($this->pages as $page) {
+            $data = file_get_contents($page);
 
             $crawler = new Crawler($data);
 
-            $content = $crawler->filter('div.text')->first();
+            /** @var Crawler $contents */
+            $contents = $crawler->filter('div.container > div.flex > div.item');
 
-            $newsItem->update([
-                'content' => $content->html(),
-            ]);
+            foreach ($contents as $content) {
+                $content = new Crawler($content);
+                $item = [
+                    'published_at' => $date = Carbon::createFromFormat('d.m.Y', $content->filter('div.date')->text()),
+                    'slug' => str_replace('http://getcrm.ru/', '', $content->filter('a.link')->first()->attr('href')),
+                    'title' => $title = $content->filter('a.name')->text(),
+                    'description' => trim(strip_tags(str_replace([
+                        $title,
+                        $date->format('d.m.Y')
+                    ], '', $content->html()))),
+                    'content' => $content->filter('a.link')->first()->attr('href'),
+                    'image' => 'http://getcrm.ru' . $content->filter('img')->attr('src'),
+                ];
+
+                $newsItem = NewsItem::create($item);
+                $newsItem->seo()->save(new SeoData());
+
+                $data = file_get_contents($newsItem->content);
+
+                $crawler = new Crawler($data);
+
+                $content = $crawler->filter('div.text')->first();
+
+                $newsItem->update([
+                    'content' => $content->html(),
+                ]);
+            }
+
         }
 
 //        /** @var Collection|NewsItem[] $news */
@@ -49,6 +88,13 @@ class NewsItemSeeder extends Seeder
 //            }
 //        }
     }
+
+    protected array $pages = [
+        'http://getcrm.ru/news/2018',
+        'http://getcrm.ru/news/2019',
+        'http://getcrm.ru/news/2020',
+        'http://getcrm.ru/news/2021',
+    ];
 
     protected array $items = [
         [
