@@ -23,11 +23,24 @@
     @include('_partials.modals.subscription')
 @endsection
 
+@push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+@endpush
+
 @push('js_bottom')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="/js/jquery.maskedinput.min.js"></script>
     <script>
         $(function () {
             $("#phone").mask("+7(999) 999-9999");
+        });
+    </script>
+    <script>
+        $('.js-video').click(function (event) {
+            let videoId = $(this).data('video');
+            event.preventDefault();
+            this.blur();
+            $('#' + videoId).modal()
         });
     </script>
 @endpush
@@ -59,7 +72,10 @@
                 </div>
                 <div class="middle-buttons">
                     <button data-solution="{{ $service->solution_id }}">добавить в проект</button>
-                    <button data-video="{{ $service->video }}">смотреть видео</button>
+                    <button data-video="video{{ $service->id }}" class="js-video">смотреть видео</button>
+                    <div id="video{{ $service->id }}" class="modal">
+                        {!! $service->video !!}
+                    </div>
                 </div>
                 <div class="mob-tabs">
                     <div class="block-name">

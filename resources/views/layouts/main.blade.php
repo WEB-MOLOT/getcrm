@@ -67,7 +67,11 @@
         rel="stylesheet"
         href="/css/landing.css?v6"
     />
-    <link type="text/css" media="all" rel="stylesheet" href="/css/abc.css?v1"/>
+
+    @stack('css')
+
+    <link type="text/css" media="all" rel="stylesheet" href="/css/abc.css?v2"/>
+
     <title>
         @hasSection('title')
             @yield('title') |
