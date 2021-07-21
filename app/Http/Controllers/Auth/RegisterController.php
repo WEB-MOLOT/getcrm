@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\RegistrationMail;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -51,6 +53,8 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         $this->guard()->login($user);
+
+        Mail::to($user->email)->send(new RegistrationMail());
 
         if ($response = $this->registered($request, $user)) {
             return $response;
