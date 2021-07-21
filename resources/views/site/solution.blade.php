@@ -75,7 +75,7 @@
                         @endforeach
                     </ul>
                     @foreach($solution->solution->platforms as $item)
-                        <div id="t{{ $item->id }}">
+                        <div id="t{{ $item->id }}" @if($loop->index !==0) style="display: none;" @endif>
                             <div class="flex">
                                 <div class="image">
                                     <img src="{{ $solution->getImageUrl() }}"/>
