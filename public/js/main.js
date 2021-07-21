@@ -1815,59 +1815,59 @@ $(document).ready(function () {
         },
     });
 
-    let leftList = document.querySelector(".aib_inside_check_list"),
-        rightFunctional = document.querySelector(".aib_inside_content_functional"),
-        leftZero = document.querySelector(".aib_inside_zero_left"),
-        rightZero = document.querySelector(".aib_inside_zero_right");
-
-    let firstData = 0,
-        secondData = 0,
-        thirdData = 0;
-
-    const sliretDataResult = () => {
-        if ((firstData == 0) & (secondData == 0) & (thirdData == 0)) {
-            leftZero.classList.add("selected");
-            leftList.classList.remove("selected");
-            rightFunctional.classList.remove("selected");
-            rightZero.classList.add("selected");
-            if (chechboxElements.find((item) => item.checked == true)) {
-                chechboxElements.forEach((item) => (item.checked = false));
-                rightFunctional.classList.remove("selected");
-                rightZero.classList.add("selected");
-            }
-        } else {
-            leftZero.classList.remove("selected");
-            leftList.classList.add("selected");
-        }
-    };
+    // let leftList = document.querySelector(".aib_inside_check_list"),
+    //     rightFunctional = document.querySelector(".aib_inside_content_functional"),
+    //     leftZero = document.querySelector(".aib_inside_zero_left"),
+    //     rightZero = document.querySelector(".aib_inside_zero_right");
+    //
+    // let firstData = 0,
+    //     secondData = 0,
+    //     thirdData = 0;
+    //
+    // const sliretDataResult = () => {
+    //     if ((firstData == 0) & (secondData == 0) & (thirdData == 0)) {
+    //         leftZero.classList.add("selected");
+    //         leftList.classList.remove("selected");
+    //         rightFunctional.classList.remove("selected");
+    //         rightZero.classList.add("selected");
+    //         if (chechboxElements.find((item) => item.checked == true)) {
+    //             chechboxElements.forEach((item) => (item.checked = false));
+    //             rightFunctional.classList.remove("selected");
+    //             rightZero.classList.add("selected");
+    //         }
+    //     } else {
+    //         leftZero.classList.remove("selected");
+    //         leftList.classList.add("selected");
+    //     }
+    // };
 
     // инпуты из секции Подобранные решения
-    let chechboxElements = Array.from(
-        document.querySelectorAll(".checkbox__wrapper")
-    );
-    chechboxElements.forEach((listItem) => {
-        listItem.addEventListener("mouseenter", (e) => {
-            if (e.target.classList.contains("checkbox__wrapper")) {
-                let listItemData = listItem.dataset.search;
-                let resultContent = [
-                    ...document.querySelectorAll(".aib_inside_content_functional"),
-                ];
-                let activeResultBlock = resultContent.find((item) =>
-                    item.classList.contains("selected")
-                );
-                if (activeResultBlock) {
-                    activeResultBlock.classList.remove("selected");
-                }
-
-                let resultContentBlock = resultContent.find(
-                    (item) => item.dataset.result === listItemData
-                );
-                rightZero.classList.remove("selected");
-                resultContentBlock.classList.add("selected");
-                resultContentBlock.scrollTo(0, 0);
-            }
-        });
-    });
+    // let chechboxElements = Array.from(
+    //     document.querySelectorAll(".checkbox__wrapper")
+    // );
+    // chechboxElements.forEach((listItem) => {
+    //     listItem.addEventListener("mouseenter", (e) => {
+    //         if (e.target.classList.contains("checkbox__wrapper")) {
+    //             let listItemData = listItem.dataset.search;
+    //             let resultContent = [
+    //                 ...document.querySelectorAll(".aib_inside_content_functional"),
+    //             ];
+    //             let activeResultBlock = resultContent.find((item) =>
+    //                 item.classList.contains("selected")
+    //             );
+    //             if (activeResultBlock) {
+    //                 activeResultBlock.classList.remove("selected");
+    //             }
+    //
+    //             let resultContentBlock = resultContent.find(
+    //                 (item) => item.dataset.result === listItemData
+    //             );
+    //             rightZero.classList.remove("selected");
+    //             resultContentBlock.classList.add("selected");
+    //             resultContentBlock.scrollTo(0, 0);
+    //         }
+    //     });
+    // });
 
     // скрипты лэндинга
 
@@ -2190,90 +2190,66 @@ $(document).ready(function () {
 
     // инициализация слайдеров на главной
 
-    const sliderCheck = document.querySelector(".actual_slider");
-    if (sliderCheck != null) {
-        $(".actual_slider").each(function () {
-            var filter_id = $(this).data('filter');
-            var items = $(this)
-                .find(".actual_slider--range")
-                .attr("data-labels")
-                .split(",");
-            var s = $(this).find(".actual_slider--range");
-            s.slider({
-                range: "min",
-                min: 0,
-                max: items.length - 1,
-                change: function (event, ui) {
-                    console.log(ui.value,)
-                    Livewire.emit('sliderChanged', filter_id, items[ui.value])
-                }
-            }).slider("pips", {
-                rest: "label",
-                labels: items,
-            });
-        });
-    }
+    // const actualCheck = document.querySelector(".aib_inside");
+    // if (actualCheck != null) {
+    //     $(".aib_inside").overlayScrollbars({
+    //         className: "os-theme-round-light",
+    //         sizeAutoCapable: true,
+    //         paddingAbsolute: true,
+    //         scrollbars: {
+    //             clickScrolling: true,
+    //         },
+    //     });
+    // }
 
-    const actualCheck = document.querySelector(".aib_inside");
-    if (actualCheck != null) {
-        $(".aib_inside").overlayScrollbars({
-            className: "os-theme-round-light",
-            sizeAutoCapable: true,
-            paddingAbsolute: true,
-            scrollbars: {
-                clickScrolling: true,
-            },
-        });
-    }
-
-    chechboxElements.forEach((listItem) => {
-        listItem.addEventListener("mouseenter", (e) => {
-            if (e.target.classList.contains("checkbox__wrapper")) {
-                let listItemData = listItem.dataset.search;
-                let resultContent = [
-                    ...document.querySelectorAll(".aib_inside_content_functional"),
-                ];
-                let activeResultBlock = resultContent.find((item) =>
-                    item.classList.contains("selected")
-                );
-                if (activeResultBlock) {
-                    activeResultBlock.classList.remove("selected");
-                }
-
-                let resultContentBlock = resultContent.find(
-                    (item) => item.dataset.result === listItemData
-                );
-                rightZero.classList.remove("selected");
-                resultContentBlock.classList.add("selected");
-                resultContentBlock.scrollTo(0, 0);
-            }
-        });
-    });
-
-    $(".actual_slider_first").on("slidechange", function (event, ui) {
-        if (+ui.value == 8) {
-            firstData = 0;
-        } else {
-            firstData = +ui.value;
-        }
-        sliretDataResult();
-    });
-
-    $(".actual_slider__second").on("slidechange", function (event, ui) {
-        if (+ui.value == 13) {
-            secondData = 0;
-        } else {
-            secondData = +ui.value;
-        }
-        sliretDataResult();
-    });
-
-    $(".actual_slider__third").on("slidechange", function (event, ui) {
-        if (+ui.value == 10) {
-            thirdData = 0;
-        } else {
-            thirdData = +ui.value;
-        }
-        sliretDataResult();
-    });
+    // chechboxElements.forEach((listItem) => {
+    //     listItem.addEventListener("mouseenter", (e) => {
+    //         if (e.target.classList.contains("checkbox__wrapper")) {
+    //             let listItemData = listItem.dataset.search;
+    //             let resultContent = [
+    //                 ...document.querySelectorAll(".aib_inside_content_functional"),
+    //             ];
+    //             let activeResultBlock = resultContent.find((item) =>
+    //                 item.classList.contains("selected")
+    //             );
+    //             if (activeResultBlock) {
+    //                 activeResultBlock.classList.remove("selected");
+    //             }
+    //
+    //             let resultContentBlock = resultContent.find(
+    //                 (item) => item.dataset.result === listItemData
+    //             );
+    //             rightZero.classList.remove("selected");
+    //             resultContentBlock.classList.add("selected");
+    //             resultContentBlock.scrollTo(0, 0);
+    //         }
+    //     });
+    // });
+    //
+    // $(".actual_slider_first").on("slidechange", function (event, ui) {
+    //     if (+ui.value == 8) {
+    //         firstData = 0;
+    //     } else {
+    //         firstData = +ui.value;
+    //     }
+    //     sliretDataResult();
+    // });
+    //
+    // $(".actual_slider__second").on("slidechange", function (event, ui) {
+    //     if (+ui.value == 13) {
+    //         secondData = 0;
+    //     } else {
+    //         secondData = +ui.value;
+    //     }
+    //     sliretDataResult();
+    // });
+    //
+    // $(".actual_slider__third").on("slidechange", function (event, ui) {
+    //     if (+ui.value == 10) {
+    //         thirdData = 0;
+    //     } else {
+    //         thirdData = +ui.value;
+    //     }
+    //     sliretDataResult();
+    // });
 });

@@ -34,7 +34,7 @@ class Stepper extends Component
     public function toggleFilterValue(int $filterId, string $valueName): void
     {
         /** @var Collection $filter */
-        $filter = $this->filters->get($filterId);
+        $filter = $this->filters->firstWhere('id', '=', $filterId);
 
         $value = $filter->values->firstWhere('name', '=', $valueName);
 

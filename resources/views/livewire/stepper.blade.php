@@ -1,8 +1,42 @@
 <?php
 /**
  * @var \Illuminate\Support\Collection|\App\Models\Dictionaries\Filter[] $filter
+ * @var \Illuminate\Support\Collection $pickedValues
  */
 ?>
+@push('js_bottom')
+    <script>
+        const sliderCheck = document.querySelector(".actual_slider");
+
+        const pickedValues = {!! json_encode($pickedValues->toArray()) !!};
+        console.log(pickedValues);
+
+        if (sliderCheck != null) {
+            $(".actual_slider").each(function () {
+                var filter_id = $(this).data('filter');
+                var items = $(this)
+                    .find(".actual_slider--range")
+                    .attr("data-labels")
+                    .split(",");
+                var s = $(this).find(".actual_slider--range");
+                s.slider({
+                    range: "min",
+                    min: 0,
+                    max: items.length - 1,
+                    value: 0,
+                    change: function (event, ui) {
+                        console.log(ui.value, filter_id)
+                        Livewire.emit('sliderChanged', filter_id, items[ui.value])
+                    }
+                }).slider("pips", {
+                    rest: "label",
+                    labels: items,
+                });
+            });
+        }
+    </script>
+@endpush
+
 <div class="actual_sliders_wrapper">
     <div class="actual_sliders ">
         @foreach($filters as $filter)
