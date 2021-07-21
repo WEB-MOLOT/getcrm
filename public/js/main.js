@@ -1752,6 +1752,12 @@ $(document).ready(function () {
         });
     }
     //Проверка формы с регистрацией
+    $('.js-clear-error').focus(function () {
+        let obj = $(this);
+        let name = obj.attr('name');
+        $('#error_' + name).addClass('display__none');
+    });
+
     if (modalRegistrationForm) {
         modalRegistrationForm
             .querySelector("form")
@@ -1772,7 +1778,21 @@ $(document).ready(function () {
                         'password': $(modalRegistrationForm).find('input[name=password]').val(),
                         'password_confirmation': $(modalRegistrationForm).find('input[name=password_confirmation]').val(),
                     },
+                    statusCode: {
+                        422: function (response) {
+                            let data = response.responseJSON;
+                            let errors = data.errors;
+                            console.log('422', errors);
+                            Object.keys(errors).forEach(function (name, key) {
+                                let fieldErrors = errors[name];
+                                let errorBlock = $('#error_' + name);
+                                errorBlock.html('<div class="error text-left">' + fieldErrors[0] + '</div>').removeClass('display__none');
+                                console.log(name, errors[name])
+                            });
+                        }
+                    },
                     success: function (data) {
+                        console.log(data);
                         modalRegistrationForm.classList.remove("opened");
                         successfulRegistrationModal.classList.add("opened");
                         setTimeout(

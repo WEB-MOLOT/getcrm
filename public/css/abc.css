@@ -24,6 +24,20 @@
     color: #fff;
 }
 
+.display__none {
+    display: none;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.errors {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
 .error {
     color: #ff2222;
 }
