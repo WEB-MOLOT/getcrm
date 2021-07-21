@@ -65,6 +65,15 @@ class Solution extends Model
         return $this->morphMany(FaqItem::class, 'faqable');
     }
 
+    public function getBookletUrl(): ?string
+    {
+        if ($this->booklet) {
+            return url($this->booklet);
+        }
+
+        return null;
+    }
+
     public function getImageUrl(): ?string
     {
         if ($this->image) {

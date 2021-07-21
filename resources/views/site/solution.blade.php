@@ -37,6 +37,10 @@
         });
     </script>
     <script>
+        $('.js-booklet').click(function (event) {
+            let url = $(this).data('url');
+            location.href = url;
+        });
         $('.js-video').click(function (event) {
             let videoId = $(this).data('video');
             event.preventDefault();
@@ -136,7 +140,8 @@
                                     </div>
                                     </div>
                                     <div class="buttons flex">
-                                        <button class="js-booklet" data-url="{{ $solution->booklet }}">Скачать буклет
+                                        <button class="js-booklet" data-url="{{ $solution->getBookletUrl() }}">Скачать
+                                            буклет
                                         </button>
                                         <button data-video="video{{ $solution->id }}" class="js-video">Смотреть демо
                                         </button>
