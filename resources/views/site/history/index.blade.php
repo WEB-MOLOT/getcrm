@@ -30,7 +30,8 @@
             <div class="content">
                 @foreach($stories as $story)
                     <div
-                        class="item"
+                        class="item click_history"
+                        data-url="{{ route('site.stories.item', $story) }}"
                         style="background: url('{{ $story->getImageUrl() }}') center/cover;"
                     >
                         <a href="{{ route('site.stories.item', $story) }}" class="link2"></a>
