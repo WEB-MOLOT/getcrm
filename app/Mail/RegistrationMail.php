@@ -17,6 +17,7 @@ class RegistrationMail extends Mailable
 
     public function build(): self
     {
-        return $this->text('emails.registration');
+        return $this->text('emails.registration')
+            ->subject('Регистрация в личном кабинете');
     }
 }
