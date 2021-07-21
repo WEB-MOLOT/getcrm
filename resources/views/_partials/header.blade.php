@@ -5,7 +5,14 @@
  * @var \Illuminate\Support\Collection|\App\Models\Solution[] $solutionMenu
  * @var \Illuminate\Support\Collection|\App\Models\Service[] $serviceMenu
  */
+
+//dd(session()->all());
 ?>
+@if (session()->has('warning'))
+    <div class="alert alert-warning">
+        {{ session('warning') }}
+    </div>
+@endif
 <header id="header" class="header">
     <div class="header_dropdown">
         <div class="header_dropdown_menu">
@@ -95,30 +102,31 @@
                         </svg>
                     </a>
                     <div class="content">
-                        <form action="#" class="mobile_ligin_form">
+                        <form action="{{ route('login') }}" method="POST" class="mobile_ligin_form">
+                            {{ csrf_field() }}
                             <h3 class="mobile_ligin_form__title">Личный кабинет</h3>
                             <input
                                 type="text"
-                                name="nane"
+                                name="email"
                                 placeholder="Логин"
                                 class="mobile_ligin_form__input"
                                 required=""
                             />
                             <input
                                 type="password"
-                                name="pass"
+                                name="password"
                                 placeholder="Пароль"
                                 class="mobile_ligin_form__input"
                                 required=""
                             />
-                            <a href="#" class="mobile_ligin_form__fogot"
+                            <a href="{{ route('password.request') }}" class="mobile_ligin_form__fogot"
                             >Забыли пароль?</a
                             >
-                            <button type="submit" name="sunmit">Войти</button>
+                            <button type="submit">Войти</button>
                         </form>
                     </div>
                 </div>
-                <div class="mobile__search">
+                <div class="mobile__search" style="display: none;">
                     <a href="#" id="mobile-search"
                     >
                         <svg
@@ -137,7 +145,7 @@
                         </svg>
                     </a>
                     <div class="content">
-                        <div class="search__wrapper">
+                        <div class="search__wrapper" style="display:none;">
                             <h3 class="mobile_ligin_form__title">Поиск по сайту</h3>
                             <form action="#" class="search_form">
                                 <input

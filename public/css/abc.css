@@ -14,6 +14,11 @@
     color: #fff;
 }
 
+.alert-warning {
+    background-color: #ffa200;
+    color: #fff;
+}
+
 .error {
     color: #ff2222;
 }
