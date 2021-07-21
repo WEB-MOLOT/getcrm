@@ -102,7 +102,7 @@ class Solutions extends Section implements Initializable
                     return 'storage/solutions/images';
                 })
                 ->required(),
-            AdminFormElement::text('video', 'Ссылка на видео')
+            AdminFormElement::text('video', 'Код для вставки')
                 ->required(),
             AdminFormElement::wysiwyg('description', 'Описание')
                 ->required(),

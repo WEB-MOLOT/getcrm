@@ -104,7 +104,7 @@ class Services extends Section implements Initializable
                     return 'storage/services/images';
                 })
                 ->required(),
-            AdminFormElement::text('video', 'Ссылка на видео')
+            AdminFormElement::text('video', 'Код для вставки')
                 ->required(),
             AdminFormElement::wysiwyg('description', 'Описание')
                 ->required(),
