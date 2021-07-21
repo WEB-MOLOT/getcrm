@@ -4,11 +4,19 @@ namespace App\Http\Sections;
 
 use AdminColumn;
 use AdminDisplay;
+use AdminForm;
+use AdminFormElement;
+use App\Models\Dictionaries\Solution as DictionarySolution;
+use App\Models\Review;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
+use SleepingOwl\Admin\Form\Buttons\Cancel;
+use SleepingOwl\Admin\Form\Buttons\SaveAndClose;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -42,11 +50,10 @@ class Solutions extends Section implements Initializable
     {
         $this->addToNavigation()
             ->setPriority(400)
-            ->setIcon('fab fa-dev');
+            ->setIcon('fas fa-project-diagram');
     }
 
     /**
-     *
      * @return DisplayInterface
      */
     public function onDisplay(): DisplayInterface
@@ -55,7 +62,8 @@ class Solutions extends Section implements Initializable
             AdminColumn::text('id', '#')
                 ->setWidth('50px')
                 ->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::text('email', 'E-mail'),
+            AdminColumn::text('title', 'Заголовок'),
+            AdminColumn::order(),
         ];
 
         $display = AdminDisplay::table()
@@ -74,10 +82,100 @@ class Solutions extends Section implements Initializable
      * @param int|null $id
      * @param array $payload
      * @return FormInterface
+     * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      */
     public function onEdit(?int $id = null, array $payload = []): FormInterface
     {
+        $card = AdminForm::card();
 
+        $tabs = AdminDisplay::tabbed();
+
+        // Решение
+        $form = AdminForm::elements([
+            AdminFormElement::select('solution_id', 'Связана с решением')
+                ->setModelForOptions(DictionarySolution::class, 'name')
+                ->required(),
+            AdminFormElement::text('subtitle', 'Подзаголовок')
+                ->required(),
+            AdminFormElement::image('image', 'Изображение')
+                ->setUploadPath(static function (UploadedFile $file) {
+                    return 'storage/solutions/images';
+                })
+                ->required(),
+            AdminFormElement::text('video', 'Ссылка на видео')
+                ->required(),
+            AdminFormElement::wysiwyg('description', 'Описание')
+                ->required(),
+            AdminFormElement::file('booklet', 'Буклет')
+                ->setUploadPath(static function (UploadedFile $file) {
+                    return 'storage/solutions/booklets';
+                })
+                ->required(),
+        ]);
+
+        $tabs->appendTab($form, 'Решение', true);
+
+        // Описания
+        $formDescriptions = AdminForm::elements([
+            AdminFormElement::hasMany('descriptions', [
+                AdminFormElement::image('icon', 'Иконка')
+                    ->setUploadPath(static function (UploadedFile $file) {
+                        return 'storage/solutions/icons';
+                    })
+                    ->required(),
+                AdminFormElement::wysiwyg('description', 'Описание')
+                    ->required(),
+            ]),
+        ]);
+
+        $tabs->appendTab($formDescriptions, 'Описания', false);
+
+        // FAQ
+        $formFaq = AdminForm::elements([
+            AdminFormElement::hasMany('faqItems', [
+                AdminFormElement::text('question', 'Вопрос')
+                    ->required(),
+                AdminFormElement::textarea('answer', 'Ответ')
+                    ->required(),
+            ]),
+        ]);
+
+        $tabs->appendTab($formFaq, 'FAQ', false);
+
+        // Эффекты
+        $formDescriptions = AdminForm::elements([
+            AdminFormElement::hasMany('effects', [
+                AdminFormElement::text('line1', 'Линия 1')
+                    ->required(),
+                AdminFormElement::text('line2', 'Линия 2')
+                    ->required(),
+                AdminFormElement::radio('fire', 'Эффект', [
+                    1 => 'Повышение',
+                    0 => 'Стандарт',
+                    -1 => 'Понижение',
+                ])
+                    ->setSortable(false)
+                    ->required(),
+            ])->setLimit(3),
+        ]);
+
+        $tabs->appendTab($formDescriptions, 'Эффекты', false);
+
+        // Отзывы
+        if ($id) {
+            $reviews = \AdminSection::getModel(Review::class)->fireDisplay([
+                'id' => $id,
+                'type' => Service::class,
+            ]);
+            $tabs->appendTab($reviews, 'Отзывы', false);
+        }
+
+        $card->getButtons()->setButtons([
+            'save_and_close' => (new SaveAndClose())->setText('Сохранить'),
+            'cancel' => (new Cancel()),
+        ]);
+
+        return $card->addBody([$tabs]);
     }
 
     /**
@@ -96,7 +194,7 @@ class Solutions extends Section implements Initializable
      */
     public function isEditable(Model $model): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -104,7 +202,7 @@ class Solutions extends Section implements Initializable
      */
     public function isCreatable(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -113,14 +211,6 @@ class Solutions extends Section implements Initializable
      */
     public function isDeletable(Model $model): bool
     {
-        return false;
-    }
-
-    /**
-     * @return void
-     */
-    public function onRestore(int $id)
-    {
-        // remove if unused
+        return true;
     }
 }

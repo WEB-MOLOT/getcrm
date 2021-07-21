@@ -4,25 +4,11 @@ namespace Database\Factories;
 
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use JetBrains\PhpStorm\ArrayShape;
 
 class ServiceFactory extends Factory
 {
-    /**
-     * @var string
-     */
     protected $model = Service::class;
 
-    /**
-     * @return array
-     */
-    #[ArrayShape([
-        'title' => "string",
-        'subtitle' => "string",
-        'image' => "string",
-        'video' => "string",
-        'description' => "string"
-    ])]
     public function definition(): array
     {
         $imagePath = public_path('storage/services/images');

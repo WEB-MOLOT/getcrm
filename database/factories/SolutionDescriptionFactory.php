@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\ServiceDescription;
+use App\Models\SolutionDescription;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ServiceDescriptionFactory extends Factory
+class SolutionDescriptionFactory extends Factory
 {
-    protected $model = ServiceDescription::class;
+    protected $model = SolutionDescription::class;
 
     /**
      * @throws Exception
@@ -16,8 +16,7 @@ class ServiceDescriptionFactory extends Factory
     public function definition(): array
     {
         return [
-            'service_id' => null,
-            'title' => $this->faker->sentence,
+            'solution_id' => null,
             'description' => $this->faker->sentences(random_int(2, 6), true),
             'icon' => $this->faker->randomElement([
                 'storage/html/img/tab1.svg',
@@ -36,6 +35,7 @@ class ServiceDescriptionFactory extends Factory
                 'storage/html/img/tab14.svg',
                 'storage/html/img/tab15.svg',
                 'storage/html/img/tab16.svg',
+
             ]),
         ];
     }

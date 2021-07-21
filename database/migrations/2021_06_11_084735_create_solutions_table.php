@@ -10,11 +10,15 @@ class CreateSolutionsTable extends Migration
     {
         Schema::create('solutions', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->comment('Название');
+
+            $table->foreignId('solution_id')->comment('')->constrained('data_solutions');
+
             $table->string('subtitle')->nullable()->comment('Подзаголовок');
             $table->string('image')->nullable()->comment('Изображение');
             $table->string('video')->nullable()->comment('Видео');
+            $table->string('booklet')->nullable()->comment('Буклет в PDF');
             $table->text('description')->nullable()->comment('Описание');
+            $table->unsignedSmallInteger('order')->default(100)->comment('Сортировка в меню');
             $table->timestamps();
             $table->softDeletes()->index();
         });

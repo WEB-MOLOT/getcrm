@@ -31,7 +31,7 @@ class ServiceSeeder extends Seeder
                     fn($sequence) => ['user_id' => $customers->random()->id],
                 )), 'reviews')
                 ->create([
-                    'solution_id' => $solutions->random()->id,
+                    'solution_id' => $solutions->pop()->id,
                 ]);
         }
     }

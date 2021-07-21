@@ -54,7 +54,6 @@ class Services extends Section implements Initializable
     }
 
     /**
-     *
      * @return DisplayInterface
      */
     public function onDisplay(): DisplayInterface
@@ -99,6 +98,11 @@ class Services extends Section implements Initializable
             AdminFormElement::text('title', 'Заголовок')
                 ->required(),
             AdminFormElement::text('subtitle', 'Подзаголовок')
+                ->required(),
+            AdminFormElement::image('image', 'Изображение')
+                ->setUploadPath(static function (UploadedFile $file) {
+                    return 'storage/services/images';
+                })
                 ->required(),
             AdminFormElement::text('video', 'Ссылка на видео')
                 ->required(),
