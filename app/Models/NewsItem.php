@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class NewsItem extends Model
 {
     use HasFactory,
-        SeoTrait,
+        HasSeo,
         SoftDeletes;
 
     protected $fillable = [

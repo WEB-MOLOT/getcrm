@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @package App\Models
  * @property SeoData $seo
  */
-trait SeoTrait
+trait HasSeo
 {
     public function seo(): MorphOne
     {

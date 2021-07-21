@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Page extends Model
 {
     use HasFactory,
-        SeoTrait,
+        HasSeo,
         SoftDeletes;
 
     protected $table = 'pages';

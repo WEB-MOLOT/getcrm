@@ -15,7 +15,7 @@ class Service extends Model
 {
     use HasFactory,
         OrderableModel,
-        SeoTrait,
+        HasSeo,
         SoftDeletes;
 
     protected $fillable = [

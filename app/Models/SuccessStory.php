@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class SuccessStory extends Model
 {
     use HasFactory,
-        SeoTrait,
+        HasSeo,
         SoftDeletes;
 
     protected $fillable = [
