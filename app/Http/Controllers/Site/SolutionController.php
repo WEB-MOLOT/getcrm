@@ -25,7 +25,7 @@ class SolutionController extends Controller
         /** @var Review[]|Collection $reviews */
         $reviews = $solution->reviews()->with([
             'customer',
-            'customer.company'
+            'customer.company',
         ])->moderated()->latest('id')->get();
 
         $data = [
