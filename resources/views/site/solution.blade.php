@@ -24,11 +24,24 @@
     @include('_partials.modals.subscription')
 @endsection
 
+@push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+@endpush
+
 @push('js_bottom')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="/js/jquery.maskedinput.min.js"></script>
     <script>
         $(function () {
             $("#phone").mask("+7(999) 999-9999");
+        });
+    </script>
+    <script>
+        $('.js-video').click(function (event) {
+            let videoId = $(this).data('video');
+            event.preventDefault();
+            this.blur();
+            $('#' + videoId).modal()
         });
     </script>
 @endpush
@@ -125,8 +138,11 @@
                                     <div class="buttons flex">
                                         <button class="js-booklet" data-url="{{ $solution->booklet }}">Скачать буклет
                                         </button>
-                                        <button class="js-video" data-url="{{ $solution->video }}">Смотреть демо
+                                        <button data-video="video{{ $solution->id }}" class="js-video">Смотреть демо
                                         </button>
+                                        <div id="video{{ $solution->id }}" class="modal">
+                                            {!! $solution->video !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
