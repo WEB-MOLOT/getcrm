@@ -5,14 +5,7 @@
  * @var \Illuminate\Support\Collection|\App\Models\Solution[] $solutionMenu
  * @var \Illuminate\Support\Collection|\App\Models\Service[] $serviceMenu
  */
-
-//dd(session()->all());
 ?>
-@if (session()->has('warning'))
-    <div class="alert alert-warning">
-        {{ session('warning') }}
-    </div>
-@endif
 <header id="header" class="header">
     <div class="header_dropdown">
         <div class="header_dropdown_menu">

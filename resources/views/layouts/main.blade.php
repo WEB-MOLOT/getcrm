@@ -87,6 +87,11 @@
 </head>
 
 <body>
+@if (session()->has('warning'))
+    <div class="alert alert-warning alert-top">
+        {{ session('warning') }}
+    </div>
+@endif
 
 <div class="wrapper">
     @yield('before_content')

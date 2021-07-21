@@ -4,6 +4,11 @@
     border-radius: 10px;
 }
 
+.alert.alert-top {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
 .alert-success {
     background-color: #00a500;
     color: #fff;
