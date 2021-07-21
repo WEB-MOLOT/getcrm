@@ -26,7 +26,7 @@ class VacancySeeder extends Seeder
             'content' => 'data/vacancies/1.txt',
             'hh' => 'https://hh.ru/vacancy/45232010',
             'params' => [
-                'salary' => '50 000 - 200 000 на руки',
+                'salary' => '150 000 - 200 000 на руки',
                 'experience' => '3-6 лет',
                 'employment' => 'Полная занятость, полный день',
             ],
