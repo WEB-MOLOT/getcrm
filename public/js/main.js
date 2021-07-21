@@ -1792,13 +1792,13 @@ $(document).ready(function () {
                         }
                     },
                     success: function (data) {
-                        console.log(data);
                         modalRegistrationForm.classList.remove("opened");
                         successfulRegistrationModal.classList.add("opened");
                         setTimeout(
                             () => modalRegistrationForm.querySelector("form").reset(),
-                            400
+                            100
                         );
+                        location.href = '/cabinet';
                     },
                 });
             });

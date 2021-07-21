@@ -324,18 +324,16 @@
             <input
                 type="text"
                 placeholder="ФИО"
-                name="error_name"
+                name="name"
                 class="form__input js-clear-error"
-                value="11"
                 required
             />
-            <div id="name" class="errors display__none"></div>
+            <div id="error_name" class="errors display__none"></div>
             <input
                 type="text"
                 placeholder="Компания"
                 name="firm"
                 class="form__input js-clear-error"
-                value="22"
                 required
             />
             <div id="error_firm" class="errors display__none"></div>
@@ -344,7 +342,6 @@
                 placeholder="E-mail"
                 name="email"
                 class="form__input js-clear-error"
-                value="user@getcrm.ru"
                 required
             />
             <div id="error_email" class="errors display__none"></div>
@@ -353,7 +350,6 @@
                 placeholder="Пароль"
                 name="password"
                 class="form__input js-clear-error"
-                value="11"
                 required
             />
             <div id="error_password" class="errors display__none"></div>
@@ -362,7 +358,6 @@
                 placeholder="Повторите пароль"
                 name="password_confirmation"
                 class="form__input js-clear-error"
-                value="22"
                 required
             />
             <div id="error_password_confirmation" class="errors display__none"></div>
