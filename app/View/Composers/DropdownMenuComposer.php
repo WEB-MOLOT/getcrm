@@ -13,8 +13,7 @@ class DropdownMenuComposer
     {
         $serviceMenu = Service::query()->orderBy('order')->get();
 
-        //$solutionMenu = Solution::query()->orderBy('order')->get();
-        $solutionMenu = Solution::query()->get();
+        $solutionMenu = Solution::query()->with('solution.platforms')->orderBy('order')->get();
 
         $view->with('serviceMenu', $serviceMenu)
             ->with('solutionMenu', $solutionMenu);

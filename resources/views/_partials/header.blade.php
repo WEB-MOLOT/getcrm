@@ -234,23 +234,16 @@
                                                                                 <div class="item_variables">
                                                                                     <div class="item_variable">
                                                                                         <ul>
-                                                                                            <li
-                                                                                                class="{{ $loop->first ? ' active' : '' }} second_level"
-                                                                                                data-item="1"
-                                                                                            >
-                                                                                                <a href="#"
-                                                                                                >{{ $item->id }}Oracle
-                                                                                                    Responsys</a
+                                                                                            @foreach($item->solution->platforms as $platform)
+                                                                                                <li
+                                                                                                    class="second_level"
+                                                                                                    data-item="{{ $platform->id }}"
                                                                                                 >
-                                                                                            </li>
-                                                                                            <li
-                                                                                                class="second_level"
-                                                                                                data-item="2"
-                                                                                            >
-                                                                                                <a href="#"
-                                                                                                >Oracle Responsys</a
-                                                                                                >
-                                                                                            </li>
+                                                                                                    <a href="{{ route('site.solutions.show', $item) }}#{{ $platform->id }}">
+                                                                                                        {{ $platform->name }}
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                            @endforeach
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
