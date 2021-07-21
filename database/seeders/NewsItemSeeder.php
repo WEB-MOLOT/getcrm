@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\NewsItem;
 use App\Models\SeoData;
 use Illuminate\Database\Seeder;
+use Symfony\Component\DomCrawler\Crawler;
 
 class NewsItemSeeder extends Seeder
 {
@@ -13,6 +14,16 @@ class NewsItemSeeder extends Seeder
         foreach ($this->items as $item) {
             $newsItem = NewsItem::create($item);
             $newsItem->seo()->save(new SeoData());
+
+            $data = file_get_contents($newsItem->content);
+
+            $crawler = new Crawler($data);
+
+            $content = $crawler->filter('div.text')->first();
+
+            $newsItem->update([
+                'content' => $content->html(),
+            ]);
         }
 
 //        /** @var Collection|NewsItem[] $news */
