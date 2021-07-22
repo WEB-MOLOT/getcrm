@@ -46,3 +46,7 @@
     max-width: 800px;
     text-align: center;
 }
+
+.mobile-app-page .reviews .content .r-item .result span.half {
+    background: url(../img/star2.svg);
+}

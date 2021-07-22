@@ -114,101 +114,16 @@
                     @endforeach
                 </div>
                 <div>
-                    <div class="reviews">
-                        <div class="block-name flex">
-                            <div>Что думают наши клиенты о предлагаемых решениях</div>
-                            <div class="rating">
-                                <span class="star"></span> {{ round($reviewsAvgScore, 1) }} <span class="arrow"></span>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="rating">
-                                <div class="r-item flex">
-                                    <p>Качество разработки</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Юзабилити</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Квалификация команды</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Бюджет</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Сроки</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="list">
-                                @foreach($reviews as $review)
-                                    <div class="item">
-                                        <div class="flex">
-                                            <div class="company">
-                                                @if($review->customer->company_id)
-                                                    <div>
-                                                        <span><img
-                                                                src="{{ $review->customer->company->getLogoUrl() }}"/></span>
-                                                    </div>
-                                                @endif
-                                                <div>
-                                                    {{ $review->customer->position }}
-                                                    <strong>{{ $review->customer->name }}</strong>
-                                                </div>
-                                            </div>
-                                            <div class="company-rating">
-                                                <span>{{ round($review->score, 1) }}</span>
-                                                оценки
-                                            </div>
-                                        </div>
-                                        <div class="text">
-                                            {{ $review->text }}
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <a class="bottom-link">Оставить отзыв</a>
-                        </div>
-                    </div>
+                    @include('_partials.products.reviews', [
+    'reviews' => $reviews,
+    'seo' => $seo,
+    'reviewsAvgScore' => $reviewsAvgScore,
+    'reviewsDevelopmentAvgScore' => $reviewsDevelopmentAvgScore,
+    'reviewsUsabilityAvgScore' => $reviewsUsabilityAvgScore,
+    'reviewsTeamAvgScore' => $reviewsTeamAvgScore,
+    'reviewsBudgetAvgScore' => $reviewsBudgetAvgScore,
+    'reviewsDeadlinesAvgScore' => $reviewsDeadlinesAvgScore,
+])
                     <div class="faq">
                         <div class="block-name">FAQ <span class="arrow"></span></div>
                         <div class="content">

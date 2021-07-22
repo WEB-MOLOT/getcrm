@@ -100,44 +100,44 @@
                                                     Срок внедрения
                                                 </div>
                                                 <div class="price">
-                                                6 мес.
+                                                    6 мес.
+                                                </div>
+                                            </div>
+                                            <div class="info-block">
+                                                <div class="name">
+                                                    Срок окупаемости
+                                                </div>
+                                                <div class="price">
+                                                    6 мес.
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="info-block">
-                                            <div class="name">
-                                                Срок окупаемости
-                                            </div>
-                                            <div class="price">
-                                                6 мес.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="info-block">
-                                            <div class="name">
-                                                Стоимость лицензий по BPO модели
-                                            </div>
-                                            <div class="price">
-                                                66 500$/год
-                                                <span
-                                                >на 10 операторов (без аналитики) Аренда в
+                                        <div class="col">
+                                            <div class="info-block">
+                                                <div class="name">
+                                                    Стоимость лицензий по BPO модели
+                                                </div>
+                                                <div class="price">
+                                                    66 500$/год
+                                                    <span
+                                                    >на 10 операторов (без аналитики) Аренда в
                               партнерском облаке</span
-                                                >
+                                                    >
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="info-block">
-                                            <div class="name">
-                                                ТСО на 5 лет
-                                            </div>
-                                            <div class="price">
-                                                656 тыс.$ <br/>
-                                                <span
-                                                >хостинг - мин. 500 000 р./год <br/>партнерская
+                                            <div class="info-block">
+                                                <div class="name">
+                                                    ТСО на 5 лет
+                                                </div>
+                                                <div class="price">
+                                                    656 тыс.$ <br/>
+                                                    <span
+                                                    >хостинг - мин. 500 000 р./год <br/>партнерская
                               поддержка – 15% от внедрения</span
-                                                >
+                                                    >
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     </div>
                                     <div class="buttons flex">
                                         <button class="js-booklet" data-url="{{ $solution->getBookletUrl() }}">Скачать
@@ -188,101 +188,16 @@
                 </div>
 
                 <div>
-                    <div class="reviews">
-                        <div class="block-name flex">
-                            <div>Что думают наши клиенты о предлагаемых решениях</div>
-                            <div class="rating">
-                                <span class="star"></span> {{ round($reviewsAvgScore, 1) }} <span class="arrow"></span>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="rating">
-                                <div class="r-item flex">
-                                    <p>Качество разработки</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Юзабилити</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Квалификация команды</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Бюджет</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                                <div class="r-item flex">
-                                    <p>Сроки</p>
-                                    <div class="result">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span class="half"></span>
-                                        <span class="none"></span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="list">
-                                @foreach($reviews as $review)
-                                    <div class="item">
-                                        <div class="flex">
-                                            <div class="company">
-                                                @if($review->customer->company_id)
-                                                    <div>
-                                                        <span><img
-                                                                src="{{ $review->customer->company->getLogoUrl() }}"/></span>
-                                                    </div>
-                                                @endif
-                                                <div>
-                                                    {{ $review->customer->position }}
-                                                    <strong>{{ $review->customer->name }}</strong>
-                                                </div>
-                                            </div>
-                                            <div class="company-rating">
-                                                <span>{{ round($review->score, 1) }}</span>
-                                                оценки
-                                            </div>
-                                        </div>
-                                        <div class="text">
-                                            {{ $review->text }}
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <a class="bottom-link">Оставить отзыв</a>
-                        </div>
-                    </div>
+                    @include('_partials.products.reviews', [
+    'reviews' => $reviews,
+    'seo' => $seo,
+    'reviewsAvgScore' => $reviewsAvgScore,
+    'reviewsDevelopmentAvgScore' => $reviewsDevelopmentAvgScore,
+    'reviewsUsabilityAvgScore' => $reviewsUsabilityAvgScore,
+    'reviewsTeamAvgScore' => $reviewsTeamAvgScore,
+    'reviewsBudgetAvgScore' => $reviewsBudgetAvgScore,
+    'reviewsDeadlinesAvgScore' => $reviewsDeadlinesAvgScore,
+])
                     <div class="faq">
                         <div class="block-name">FAQ <span class="arrow"></span></div>
                         <div class="content">
