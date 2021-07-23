@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Traits;
 
+use App\Models\SeoData;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**

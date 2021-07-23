@@ -2,8 +2,8 @@
 
 namespace App\Models\Pages;
 
-use App\Models\HasSeo;
 use App\Models\Page;
+use App\Models\Traits\HasSeo;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
