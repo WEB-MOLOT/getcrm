@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Dictionaries;
 use App\Models\Traits\HasSeo;
+use App\Models\Traits\ImageLink;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,6 +17,7 @@ class Service extends Model
 {
     use HasFactory,
         OrderableModel,
+        ImageLink,
         HasSeo,
         SoftDeletes;
 
@@ -56,11 +58,7 @@ class Service extends Model
 
     public function getImageUrl(): ?string
     {
-        if ($this->image) {
-            return url($this->image);
-        }
-
-        return null;
+        return $this->makeUrl($this->image);
     }
 
     protected function getSeoDefaultTitle(): string

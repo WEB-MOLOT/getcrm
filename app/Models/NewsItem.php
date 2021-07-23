@@ -3,16 +3,17 @@
 namespace App\Models;
 
 use App\Models\Traits\HasSeo;
+use App\Models\Traits\ImageLink;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
 class NewsItem extends Model
 {
     use HasFactory,
         HasSeo,
+        ImageLink,
         SoftDeletes;
 
     protected $fillable = [
@@ -30,11 +31,7 @@ class NewsItem extends Model
 
     public function getImageUrl(): string
     {
-        if (Str::startsWith($this->image, 'http')) {
-            return $this->image;
-        }
-
-        return '/' . $this->image;
+        return $this->makeUrl($this->image);
     }
 
     public function getRouteKeyName(): string

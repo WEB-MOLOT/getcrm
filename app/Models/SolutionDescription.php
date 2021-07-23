@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ImageLink;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SolutionDescription extends Model
 {
-    use HasFactory;
+    use ImageLink,
+        HasFactory;
 
     protected $fillable = [
         'solution_id',
@@ -17,10 +19,6 @@ class SolutionDescription extends Model
 
     public function getIconUrl(): ?string
     {
-        if ($this->icon) {
-            return url($this->icon);
-        }
-
-        return null;
+        return $this->makeUrl($this->icon);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\HasSeo;
+use App\Models\Traits\ImageLink;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,6 +14,7 @@ class SuccessStory extends Model
 {
     use HasFactory,
         HasSeo,
+        ImageLink,
         SoftDeletes;
 
     protected $fillable = [
@@ -24,17 +26,17 @@ class SuccessStory extends Model
 
     public function getLogoUrl(): string
     {
-        return '/' . $this->logo;
+        return $this->makeUrl($this->logo);
     }
 
     public function getLogo2Url(): string
     {
-        return '/' . $this->logo2;
+        return $this->makeUrl($this->logo2);
     }
 
     public function getImageUrl(): string
     {
-        return '/' . $this->image;
+        return $this->makeUrl($this->image);
     }
 
     public function badges(): HasMany

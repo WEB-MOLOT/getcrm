@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ImageLink;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserDocument extends Model
 {
     use HasFactory,
+        ImageLink,
         SoftDeletes;
 
     protected $fillable = [
@@ -33,11 +35,11 @@ class UserDocument extends Model
 
     public function getPdfUrl(): string
     {
-        return url('storage/users/documents/' . $this->pdf);
+        return $this->makeUrl($this->pdf);
     }
 
     public function getXlsxUrl(): string
     {
-        return url('storage/users/documents/' . $this->xlsx);
+        return $this->makeUrl($this->xlsx);
     }
 }

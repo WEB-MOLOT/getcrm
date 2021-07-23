@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ImageLink;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ServiceStandart extends Model
 {
-    use HasFactory;
+    use ImageLink,
+        HasFactory;
 
     protected $fillable = [
         'title',
@@ -16,10 +18,6 @@ class ServiceStandart extends Model
 
     public function getIconUrl(): ?string
     {
-        if ($this->icon) {
-            return url($this->icon);
-        }
-
-        return null;
+        return $this->makeUrl($this->icon);
     }
 }

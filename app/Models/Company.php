@@ -18,10 +18,6 @@ class Company extends Model
 
     public function getLogoUrl(): ?string
     {
-        if ($this->logo) {
-            return url($this->logo);
-        }
-
-        return null;
+        return $this->makeUrl($this->logo);
     }
 }
