@@ -17,6 +17,7 @@ class CreatePageBlocksTable extends Migration
             $table->string('slug')->comment('Слаг');
             $table->boolean('is_visible')->default(1)->comment('Отображать на странице');
             $table->text('content')->nullable()->comment('Содержание');
+            $table->unsignedSmallInteger('order')->comment('Порядок сортировки');
 
             $table->unique([
                 'page_id',

@@ -18,6 +18,8 @@ class PageBlock extends Model
     use HasFactory,
         SoftDeletes;
 
+    public const SEPARATOR = '||||||||';
+
     protected $fillable = [
         'page_id',
         'type',

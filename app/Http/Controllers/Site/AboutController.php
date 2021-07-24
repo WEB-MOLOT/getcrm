@@ -22,7 +22,7 @@ class AboutController extends Controller
         $page = AboutPage::firstOrFail();
 
         $data = [
-            'page' => $page,
+            'page' => $page->load('blocks'),
             'seo' => $page->seo,
         ];
 

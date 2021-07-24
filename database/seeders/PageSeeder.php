@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\BlockType;
 use App\Models\Page;
+use App\Models\PageBlock;
 use App\Models\Pages\AboutPage;
 use App\Models\Pages\ContactsPage;
 use App\Models\Pages\CustomExperiencePage;
@@ -47,6 +48,8 @@ class PageSeeder extends Seeder
                 $pageModel = (new $params['model']);
                 $pageModel = $pageModel->find($page->id);
                 $pageModel->seo()->save(SeoData::factory()->makeOne());
+            } else {
+                $page->seo()->save(SeoData::factory()->makeOne());
             }
 
         }
@@ -59,15 +62,49 @@ class PageSeeder extends Seeder
 
         if ($sheet) {
             $data = $sheet->toArray();
-            foreach ($data as $line) {
+            foreach ($data as $key => $line) {
                 $page->blocks()->create([
                     'slug' => $line[0],
                     'label' => $line[1],
                     'type' => constant(BlockType::class . '::' . $line[2]),
-                    'content' => $line[3],
+                    'content' => $this->getValue($line[2], $line),
+                    'order' => $key,
                 ]);
             }
         }
+    }
+
+    protected function getValue(string $type, array $line)
+    {
+        $startIndex = 3;
+
+        $elements = [];
+
+        $content = $line[$startIndex];
+
+        if (strtolower($type) === BlockType::LIST) {
+
+            while (array_key_exists($startIndex, $line)) {
+                $elements[] = json_encode(['name' => $line[$startIndex++]]);
+            }
+
+            $content = implode(PageBlock::SEPARATOR, $elements);
+        }
+
+        if (strtolower($type) === BlockType::LIST_WITH_ICON) {
+
+            while (array_key_exists($startIndex, $line)) {
+                $parts = explode('|||', $line[$startIndex++]);
+                $elements[] = json_encode([
+                    'name' => $parts[1],
+                    'icon' => $parts[0],
+                ]);
+            }
+
+            $content = '[' . implode(',', $elements) . ']';
+        }
+
+        return $content;
     }
 
     protected array $pages = [
@@ -85,7 +122,7 @@ class PageSeeder extends Seeder
         'customer' => [
             'name' => 'Что такое Customer Experience (CX)?',
             'model' => CustomExperiencePage::class,
-            'blocks' => 'xlsx',
+            //'blocks' => 'xlsx',
         ],
         'form' => [
             'name' => 'Отдел продаж',
@@ -93,15 +130,12 @@ class PageSeeder extends Seeder
         ],
         'index' => [
             'name' => 'Главная',
-            'blocks' => 'xlsx',
+            //'blocks' => 'xlsx',
         ],
         'dimarke' => [
             'name' => 'ДиМарКЭ - Платформа цифрового маркетинга',
             'model' => LandingPage::class,
-        ],
-        'price' => [
-            'name' => 'Расчет цены',
-            'blocks' => 'xlsx',
+            //'blocks' => 'xlsx',
         ],
         'privacy' => [
             'name' => 'Политика конфиденциальности',
@@ -109,7 +143,10 @@ class PageSeeder extends Seeder
             'blocks' => 'xlsx',
         ],
 
-        // Страницы списков
+        // Страницы списков и модульные страницы
+        'price' => [
+            'name' => 'Расчет цены',
+        ],
         'news' => [
             'name' => 'Новости',
         ],

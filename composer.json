@@ -38,7 +38,8 @@
         ],
         "exclude-from-classmap": [
             "vendor\\laravelrus\\sleepingowl\\src\\Display\\Column\\Control.php",
-            "vendor\\laravelrus\\sleepingowl\\src\\Form\\Element\\NamedFormElement.php"
+            "vendor\\laravelrus\\sleepingowl\\src\\Form\\Element\\NamedFormElement.php",
+            "vendor\\laravelrus\\sleepingowl\\src\\Form\\Related\\Forms\\HasManyLocal.php"
         ]
     },
     "autoload-dev": {

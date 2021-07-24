@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Editor\ListWithIcon;
+use App\Enums\BlockType;
 use App\Models\Traits\HasSeo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +26,8 @@ class Page extends Model
         'slug',
         'name',
     ];
+
+    protected array $objects = [];
 
     public function name(): string
     {
@@ -74,7 +78,16 @@ class Page extends Model
     public function __get($key)
     {
         if (in_array($key, $this->appends)) {
-            return $this->block($key);
+            $value = $this->block($key);
+
+            if (array_key_exists($key, $this->objects)) {
+                switch ($this->objects[$key]) {
+                    case BlockType::LIST_WITH_ICON:
+                        return (new ListWithIcon($value))->getItems();
+                }
+            }
+
+            return $value;
         }
 
         return parent::__get($key);

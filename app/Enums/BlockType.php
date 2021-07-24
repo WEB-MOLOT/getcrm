@@ -10,8 +10,10 @@ class BlockType extends AbstractEnum
     public const TEXTAREA = 'textarea';
     public const EDITOR = 'editor';
     public const LIST = 'list';
+    public const LIST_WITH_ICON = 'list_with_icon';
     public const IMAGE = 'image';
     public const VIDEO = 'video';
+    public const HEADER = 'header';
 
     public static function labels(): array
     {
@@ -20,8 +22,10 @@ class BlockType extends AbstractEnum
             self::TEXTAREA => 'Текстовая область',
             self::EDITOR => 'Редактор',
             self::LIST => 'Список',
+            self::LIST_WITH_ICON => 'Список с иконками',
             self::IMAGE => 'Изображение',
             self::VIDEO => 'Видео',
+            self::HEADER => 'Заголовок блока',
         ];
     }
 
@@ -32,8 +36,10 @@ class BlockType extends AbstractEnum
             self::TEXTAREA,
             self::EDITOR,
             self::LIST,
+            self::LIST_WITH_ICON,
             self::IMAGE,
             self::VIDEO,
+            self::HEADER,
         ];
     }
 }

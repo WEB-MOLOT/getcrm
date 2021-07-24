@@ -8,6 +8,7 @@ use AdminFormElement;
 use App\Enums\BlockType;
 use App\Models\Page;
 use Exception;
+use Illuminate\Http\UploadedFile;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Display\DisplayTabbed;
 use SleepingOwl\Admin\Form\Buttons\Save;
@@ -28,6 +29,9 @@ class EditFormFactory
         $this->tabs = AdminDisplay::tabbed();
     }
 
+    /**
+     * @throws Exception
+     */
     public static function create(Page $page): FormInterface
     {
         $editForm = new EditFormFactory($page);
@@ -69,14 +73,26 @@ class EditFormFactory
         $form = AdminForm::elements([
             AdminFormElement::text('name', 'Заголовок')
                 ->required(),
-            '<hr/>'
+            '<hr/>',
         ]);
 
-        foreach ($this->page->blocks as $block) {
+        foreach ($this->page->blocks->sortBy('order') as $block) {
             $element = match ($block->type->value()) {
-                BlockType::TEXT => AdminFormElement::text($block->slug, $block->label),
+                BlockType::TEXT, BlockType::VIDEO => AdminFormElement::text($block->slug, $block->label),
+                BlockType::HEADER => "<h4>{$block->label}</h4>" . ($block->content ? "<p>{$block->content}</p>" : ''),
+                BlockType::IMAGE => AdminFormElement::image($block->slug, $block->label),
                 BlockType::TEXTAREA => AdminFormElement::textarea($block->slug, $block->label),
                 BlockType::EDITOR => AdminFormElement::wysiwyg($block->slug, $block->label),
+                BlockType::LIST => AdminFormElement::hasManyLocal($block->slug, [
+                    AdminFormElement::text('name', 'Текст'),
+                ], $block->label),
+                BlockType::LIST_WITH_ICON => AdminFormElement::hasManyLocal($block->slug, [
+                    AdminFormElement::text('name', 'Текст'),
+                    AdminFormElement::image('icon', 'Иконка')
+                        ->setUploadPath(static function (UploadedFile $file) {
+                            return 'storage/contents';
+                        })
+                ], $block->label),
                 default => throw new Exception('Component not found'),
             };
 
