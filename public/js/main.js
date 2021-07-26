@@ -1314,7 +1314,7 @@ $(document).ready(function () {
         contactManagerModalWindowClose = document.querySelector(
             ".modal_connection .modal_connection__close"
         ),
-        personalAccountBtn = document.querySelector(".hr_lk--link"),
+        personalAccountBtn = document.querySelector(".js-cabinet"),
         loginModalWindow = document.querySelector(".modal_personal_account"),
         loginModalWindowClose = document.querySelector(
             ".modal_personal_account .modal_personal_account__close"

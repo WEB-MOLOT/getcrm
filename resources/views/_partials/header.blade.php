@@ -368,11 +368,11 @@
         <div class="header_right d_flex a_items_center">
             <div class="menutogle  d_flex a_items_center">
                 <div class="hr_lk">
-                    <a href="#" class="hr_lk--link"
+                    <a href="{{ route('cabinet.index') }}" class="hr_lk--link @guest js-cabinet @endif"
                     ><span>Личный кабинет</span></a
                     >
                 </div>
-                <div class="hr_search">
+                <div class="hr_search" style="display: none;">
                     <div class="hr_search_btn">
                         <svg
                             width="18"
