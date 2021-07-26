@@ -19,6 +19,8 @@ class ContactMail extends Mailable
 
     public function build(): self
     {
-        return $this->text('emails.contact');
+        return $this->text('emails.contact')
+            ->replyTo($this->data['mail'], $this->data['name'])
+            ->subject('Письмо с формы контактов на сайте');
     }
 }

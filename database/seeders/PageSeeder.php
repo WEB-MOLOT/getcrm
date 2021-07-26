@@ -104,7 +104,7 @@ class PageSeeder extends Seeder
             $content = '[' . implode(',', $elements) . ']';
         }
 
-        return $content;
+        return trim($content, " \t\n\r\0\x0B\"");
     }
 
     protected array $pages = [

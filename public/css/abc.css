@@ -47,6 +47,12 @@
     text-align: center;
 }
 
+.form_result {
+    margin-top: 20px;
+    color: #0f892f;
+    font-weight: bold;
+}
+
 .mobile-app-page .reviews .content .r-item .result span.half {
     background: url(../img/star2.svg);
 }

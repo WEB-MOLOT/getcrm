@@ -74,7 +74,7 @@ jQuery(function ($) {
                 success: function (result) {
                     // you can see the result from the console
                     // tab of the developer tools
-                    console.log(result);
+
                     if (result.type == "success") {
                         $(form).trigger("reset");
                     }

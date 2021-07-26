@@ -18,7 +18,7 @@
     <script src="/js/jquery.maskedinput.min.js"></script>
     <script>
         $(function () {
-            $("#phone").mask("{{ $page->phone }}");
+            $("#phone").mask("+7 (999) 999 99 99");
         });
     </script>
 @endpush
@@ -69,11 +69,12 @@
             <h2>Отправить сообщение</h2>
             <div class="form-block">
                 <img src="/img/contacts2.png"/>
-                <form>
-                    <input type="text" placeholder="Ваше имя" required/>
-                    <input type="email" placeholder="E-mail" required id="mail"/>
-                    <input type="text" placeholder="Телефон" required id="phone"/>
-                    <textarea placeholder="Сообщение" required></textarea>
+                <form data-url="{{ route('site.contact.email') }}" class="form_contact">
+                    {{ csrf_field() }}
+                    <input type="text" placeholder="Ваше имя" name="name" required/>
+                    <input type="email" placeholder="E-mail" required name="mail"/>
+                    <input type="text" placeholder="Телефон" required name="phone" id="phone"/>
+                    <textarea placeholder="Сообщение" name="text" required></textarea>
                     <div class="agree">
                         <input type="checkbox" class="checkbox" id="agree"/><label
                             for="agree"
@@ -84,6 +85,7 @@
                     <div class="button disabled">
                         <button>отправить</button>
                     </div>
+                    <div class="form_result"></div>
                 </form>
             </div>
         </div>
