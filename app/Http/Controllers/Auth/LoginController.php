@@ -31,6 +31,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        return response()->redirectTo('/');
+    }
+
     /**
      * Attempt to log the user into the application.
      *

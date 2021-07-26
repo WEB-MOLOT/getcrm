@@ -46,6 +46,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        return response()->redirectTo('/');
+    }
+
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
