@@ -10,7 +10,7 @@
 @endsection
 
 @section('footer')
-    @include('_partials.modals')
+    @include('_partials.modals.subscription')
 @endsection
 
 @push('js_bottom')

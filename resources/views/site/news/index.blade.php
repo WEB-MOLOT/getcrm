@@ -15,7 +15,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 @section('title', $seo->title ?? 'Новости')
 
 @section('footer')
-
+    @include('_partials.modals')
 @endsection
 
 @section('before_content')

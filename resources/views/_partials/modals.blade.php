@@ -248,6 +248,7 @@
     </div>
     <!-- Modal "Manager connection end" -->
 
+    @guest
     <!-- Modal "Personal account" -->
     <div class="modal_personal_account modal-block">
         <form action="{{ route('login') }}" method="POST" name="login" class="modal__login">
@@ -409,6 +410,7 @@
         </div>
     </div>
     <!-- Modal "Successful registration end" -->
+        @endguest
 
     @include('_partials.modals.subscription')
 </div>

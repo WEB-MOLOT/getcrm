@@ -11,7 +11,7 @@
 @section('description', $page->getSeoDescription())
 
 @section('footer')
-    @include('_partials.modals.subscription')
+    @include('_partials.modals')
 @endsection
 
 @push('js_bottom')

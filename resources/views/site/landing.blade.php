@@ -12,7 +12,7 @@
 
 @section('footer')
     @include('_partials.modals.callback')
-    @include('_partials.modals.subscription')
+    @include('_partials.modals')
     @include('_partials.modals.successful_license')
 @endsection
 

@@ -21,7 +21,7 @@
 
 @section('footer')
     @include('_partials.forms.reviews')
-    @include('_partials.modals.subscription')
+    @include('_partials.modals')
 @endsection
 
 @push('css')

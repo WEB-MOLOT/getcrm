@@ -14,7 +14,7 @@
 @section('description', $story->getSeoDescription())
 
 @section('footer')
-    @include('_partials.modals.subscription')
+    @include('_partials.modals')
 @endsection
 
 @section('before_content')
