@@ -80,7 +80,10 @@ class EditFormFactory
             $element = match ($block->type->value()) {
                 BlockType::TEXT, BlockType::VIDEO => AdminFormElement::text($block->slug, $block->label),
                 BlockType::HEADER => "<h4>{$block->label}</h4>" . ($block->content ? "<p>{$block->content}</p>" : ''),
-                BlockType::IMAGE => AdminFormElement::image($block->slug, $block->label),
+                BlockType::IMAGE => AdminFormElement::image($block->slug, $block->label)
+                    ->setUploadPath(static function () {
+                        return 'storage/contents';
+                    }),
                 BlockType::TEXTAREA => AdminFormElement::textarea($block->slug, $block->label),
                 BlockType::EDITOR => AdminFormElement::wysiwyg($block->slug, $block->label),
                 BlockType::LIST => AdminFormElement::hasManyLocal($block->slug, [
