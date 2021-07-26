@@ -98,9 +98,9 @@
         </div>
     </div>
     <a href="#" class="btn">
-        <img src="./img/pdf.png" alt=""/> ВЫГРУЗИТЬ PDF</a
+        <img src="/img/pdf.png" alt=""/> ВЫГРУЗИТЬ PDF</a
     >
     <a href="#" class="btn">
-        <img src="./img/dollar.png" alt=""/> РАСЧИТАТЬ ЦЕНУ</a
+        <img src="/img/dollar.png" alt=""/> РАСЧИТАТЬ ЦЕНУ</a
     >
 </div>
