@@ -66,11 +66,17 @@ class User extends Authenticatable/* implements MustVerifyEmail*/
         $this->attributes['subscribe_email'] = empty($value) ? null : $value;
     }
 
+    /**
+     * @return HasMany|UserProduct
+     */
     public function products(): HasMany
     {
         return $this->hasMany(UserProduct::class);
     }
 
+    /**
+     * @return HasMany|UserDocument
+     */
     public function documents(): HasMany
     {
         return $this->hasMany(UserDocument::class);

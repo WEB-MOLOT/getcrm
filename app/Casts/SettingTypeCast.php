@@ -9,7 +9,7 @@ use JetBrains\PhpStorm\Pure;
 class SettingTypeCast implements CastsAttributes
 {
     #[Pure]
-    public function get($model, string $key, $value, array $attributes)
+    public function get($model, string $key, $value, array $attributes): SettingSection
     {
         return new SettingSection($value);
     }

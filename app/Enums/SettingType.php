@@ -4,8 +4,6 @@
 namespace App\Enums;
 
 
-use JetBrains\PhpStorm\ArrayShape;
-
 class SettingType extends AbstractEnum
 {
     public const TEXT = 'text';
@@ -13,12 +11,6 @@ class SettingType extends AbstractEnum
     public const TEXTAREA = 'textarea';
     public const CHECKBOX = 'checkbox';
 
-    #[ArrayShape([
-        self::TEXT => "string",
-        self::NUMBER => "string",
-        self::TEXTAREA => "string",
-        self::CHECKBOX => "string",
-    ])]
     public static function labels(): array
     {
         return [

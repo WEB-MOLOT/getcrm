@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class UserProduct extends Model
 {
     /** @var int За сколько дней до конца лицензии начинать помечать продукт */

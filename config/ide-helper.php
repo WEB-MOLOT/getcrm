@@ -34,7 +34,7 @@ return [
     |
     */
 
-    'include_fluent' => false,
+    'include_fluent' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -267,7 +267,7 @@ return [
     | magic methods and properties.
     |
     */
-    'include_class_docblocks' => false,
+    'include_class_docblocks' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -302,7 +302,7 @@ return [
     |
     */
     'post_migrate' => [
-        // 'ide-helper:models --nowrite',
+        'ide-helper:models --nowrite --reset',
     ],
 
 ];

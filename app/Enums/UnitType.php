@@ -4,12 +4,15 @@
 namespace App\Enums;
 
 
+use JetBrains\PhpStorm\Pure;
+
 class UnitType extends AbstractEnum
 {
     public const DAYS = 1;
     public const MONTHS = 2;
     public const YEARS = 3;
 
+    #[Pure]
     public function pluralization(): ?string
     {
         $options = static::pluralizationOptions();

@@ -9,7 +9,7 @@ use JetBrains\PhpStorm\Pure;
 class UnitTypeCast implements CastsAttributes
 {
     #[Pure]
-    public function get($model, string $key, $value, array $attributes)
+    public function get($model, string $key, $value, array $attributes): UnitType
     {
         return new UnitType($value);
     }

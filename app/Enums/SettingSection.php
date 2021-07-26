@@ -4,17 +4,11 @@
 namespace App\Enums;
 
 
-use JetBrains\PhpStorm\ArrayShape;
-
 class SettingSection extends AbstractEnum
 {
     public const SMTP = 'smtp';
     public const SITE = 'site';
 
-    #[ArrayShape([
-        self::SMTP => "string",
-        self::SITE => "string"
-    ])]
     public static function labels(): array
     {
         return [

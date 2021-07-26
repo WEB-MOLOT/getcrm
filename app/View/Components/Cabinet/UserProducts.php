@@ -3,6 +3,7 @@
 namespace App\View\Components\Cabinet;
 
 use App\Models\User;
+use App\Models\UserProduct;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
@@ -15,7 +16,9 @@ class UserProducts extends Component
         /** @var User $user */
         $user = auth()->user();
 
-        $this->products = $user->products()->limit(3)->active()->oldest('finished_at')->get();
+        /** @var UserProduct $products */
+
+        $this->products = $user->products()->active()->limit(3)->oldest('finished_at')->get();
     }
 
     public function render(): string
