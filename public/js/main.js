@@ -1740,7 +1740,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'GET',
-                url: '/subscribe',
+                url: '/ajax/subscribe',
                 data: {
                     'email': $(footerSubscription).find('input[name=email]').val(),
                 },

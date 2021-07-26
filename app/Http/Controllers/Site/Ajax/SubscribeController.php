@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Site\Ajax;
 
 use App\Http\Controllers\Controller;
-use App\Mail\SubscribeMail;
+use App\Mail\SubscriberMail;
+use App\Mail\SubscriptionMail;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
@@ -19,20 +20,9 @@ class SubscribeController extends Controller
     {
         $subscriberEmail = $request->get('email');
 
-        $subscribeEmail = config('site.email.subscribe');;
+        Mail::to(config('site.email.subscribe'))->send(new SubscriptionMail($subscriberEmail));
 
-        $text = <<< EOL
-$subscriberEmail - посетитель сайта подписался на рассылку
-EOL;
-
-        Mail::raw($text, static function ($message) use ($subscribeEmail) {
-            $message->to($subscribeEmail, 'Лист рассылки')
-                ->subject('Новый подписчик на рассылку');
-        });
-
-        if ($request->user()) {
-            Mail::to($request->user())->send(new SubscribeMail);
-        }
+        Mail::to($subscriberEmail)->send(new SubscriberMail);
 
         return response('', 204);
     }

@@ -6,7 +6,13 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SubscribeMail extends Mailable
+/**
+ * Письмо для подписчика
+ *
+ * Class SubscriberMail
+ * @package App\Mail
+ */
+class SubscriberMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,6 +23,7 @@ class SubscribeMail extends Mailable
 
     public function build(): self
     {
-        return $this->text('emails.subscribe');
+        return $this->text('emails.subscriber')
+            ->subject('Подписка на рассылку');
     }
 }
