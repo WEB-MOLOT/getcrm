@@ -54,5 +54,38 @@
 }
 
 .mobile-app-page .reviews .content .r-item .result span.half {
-    background: url(../img/star2.svg);
+    background: url("/img/star2.svg");
+}
+
+.mobile-app-page .effects .item {
+    text-align: center;
+}
+
+.mobile-app-page .effects .item.i2 {
+    margin-top: 0;
+}
+
+.mobile-app-page .effects .item:after {
+    width: 33px;
+    height: 51px;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    content: "";
+    position: absolute;
+    left: 50%;
+    background-image: none;
+}
+
+.mobile-app-page .effects .item.effect-up:after {
+    top: auto;
+    bottom: 100%;
+    margin: 50px 0 20px 0;
+    background: url("/img/fire2.svg");
+}
+
+.mobile-app-page .effects .item.effect-down:after {
+    top: 100%;
+    margin: 20px 0 50px 0;
+    background: url("/img/fire.svg");
 }
