@@ -1,8 +1,14 @@
+<?php
+/**
+ * @var \App\Models\Page $page
+ * @var \App\Models\SeoData $seo
+ */
+?>
 @extends('layouts.site')
 
-@section('title')
-    Форма
-@endsection
+@section('title', $page->getSeoTitle())
+@section('keywords', $page->getSeoKeywords())
+@section('description', $page->getSeoDescription())
 
 @section('footer')
     @include('_partials.modals.subscription')
@@ -12,7 +18,7 @@
     <script src="/js/jquery.maskedinput.min.js"></script>
     <script>
         $(function () {
-            $("#phone").mask("+7(999) 999-9999");
+            $("#phone").mask("+7 (999) 999 99 99");
         });
     </script>
 @endpush
@@ -37,11 +43,12 @@
                 в ближайшее время.
             </div>
             <img src="/img/form.png"/>
-            <form>
-                <input type="text" placeholder="Ваше имя"/>
-                <input type="email" placeholder="E-mail" required/>
-                <input type="text" placeholder="Телефон" required id="phone"/>
-                <textarea placeholder="Сообщение" required></textarea>
+            <form data-url="{{ route('site.sale.email') }}" class="form_contact">
+                {{ csrf_field() }}
+                <input type="text" placeholder="Ваше имя" name="name" required/>
+                <input type="email" placeholder="E-mail" required name="mail"/>
+                <input type="text" placeholder="Телефон" required name="phone" id="phone"/>
+                <textarea placeholder="Сообщение" name="text" required></textarea>
                 <div class="agree">
                     <input type="checkbox" class="checkbox" id="agree"/><label
                         for="agree"
@@ -52,6 +59,7 @@
                 <div class="button disabled">
                     <button>отправить</button>
                 </div>
+                <div class="form_result"></div>
             </form>
         </div>
     </div>

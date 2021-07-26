@@ -19,6 +19,8 @@ class SaleMail extends Mailable
 
     public function build(): self
     {
-        return $this->text('emails.sale');
+        return $this->text('emails.sale')
+            ->replyTo($this->data['mail'], $this->data['name'])
+            ->subject('Письмо с формы отдела продаж');
     }
 }
