@@ -39,5 +39,7 @@ class Stepper extends Component
         $value = $filter->values->firstWhere('name', '=', $valueName);
 
         $this->pickedValues->put($filterId, $value?->id);
+
+        $this->emit('reinit');
     }
 }

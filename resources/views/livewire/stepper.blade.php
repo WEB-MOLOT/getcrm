@@ -6,10 +6,20 @@
 ?>
 @push('js_bottom')
     <script>
+
+        console.log('stepper')
         const sliderCheck = document.querySelector(".actual_slider");
 
         const pickedValues = {!! json_encode($pickedValues->toArray()) !!};
         console.log(pickedValues);
+
+        Livewire.on('sliderChanged', (x, y) => {
+            console.log('sliderChanged', x, y)
+        })
+
+        Livewire.on('reinit', (x, y) => {
+            console.log('reinit', x, y)
+        })
 
         if (sliderCheck != null) {
             $(".actual_slider").each(function () {
@@ -62,7 +72,6 @@
                 </button>
             </div>
         @endforeach
-
     </div>
     <div class="actual_info_cols d_flex f_wrap">
         <div class="actual_info_col">
