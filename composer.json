@@ -15,7 +15,8 @@
         "laravelrus/sleepingowl": "8.*",
         "livewire/livewire": "^2.5",
         "phpoffice/phpspreadsheet": "^1.18",
-        "symfony/dom-crawler": "^5.3"
+        "symfony/dom-crawler": "^5.3",
+        "voku/portable-utf8": "^5.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
