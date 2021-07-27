@@ -15,7 +15,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use voku\helper\UTF8;
 
 class PageSeeder extends Seeder
 {
@@ -64,13 +63,18 @@ class PageSeeder extends Seeder
         if ($sheet) {
             $data = $sheet->toArray();
             foreach ($data as $key => $line) {
-                $page->blocks()->create([
+                if (empty($line[0])) {
+                    break;
+                }
+
+                $attributes = [
                     'slug' => $line[0],
                     'label' => $line[1],
                     'type' => constant(BlockType::class . '::' . $line[2]),
                     'content' => $this->getValue($line[2], $line),
                     'order' => $key,
-                ]);
+                ];
+                $page->blocks()->create($attributes);
             }
         }
     }
@@ -107,7 +111,7 @@ class PageSeeder extends Seeder
 
         $content = trim($content, " \t\n\r\0\x0B\"");
 
-        return UTF8::to_utf8($content);
+        return $content;
     }
 
     protected array $pages = [
@@ -125,7 +129,7 @@ class PageSeeder extends Seeder
         'customer' => [
             'name' => 'Что такое Customer Experience (CX)?',
             'model' => CustomExperiencePage::class,
-            //'blocks' => 'xlsx',
+            'blocks' => 'xlsx',
         ],
         'form' => [
             'name' => 'Отдел продаж',
