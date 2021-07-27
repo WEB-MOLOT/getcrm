@@ -84,6 +84,10 @@ class EditFormFactory
                     ->setUploadPath(static function () {
                         return 'storage/contents';
                     }),
+                BlockType::FILE => AdminFormElement::file($block->slug, $block->label)
+                    ->setUploadPath(static function () {
+                        return 'storage/contents';
+                    }),
                 BlockType::TEXTAREA => AdminFormElement::textarea($block->slug, $block->label),
                 BlockType::EDITOR => AdminFormElement::wysiwyg($block->slug, $block->label),
                 BlockType::LIST => AdminFormElement::hasManyLocal($block->slug, [

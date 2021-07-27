@@ -54,16 +54,14 @@
                   >{{ $page->name() }}</span
                   >
                             <span class="landing-main__title-bottom"
-                            >Инновационный инструмент для увеличения продаж.</span
+                            >{{ $page->block1_subtitle }}</span
                             >
                         </h1>
                         <p class="landing-main__subtitle">
-                            Эффективное
-                            <strong>управление ресурсами</strong> и<br/>проактивная
-                            <strong>коммуникация с клиентами</strong>
+                            {!! $page->block1_content !!}
                         </p>
                         <button class="landing-main__callback btn btn_orange">
-                            Узнать подробнее
+                            {{ $page->block1_btn }}
                         </button>
                     </div>
                     <div class="landing-main__col landing-main__col--video">
@@ -79,14 +77,14 @@
                                     class="landing-main__video-play"
                                 ></button>
                                 <video
-                                    src="/img/landing/Pexels-Videos-1448735.mp4"
+                                    src="{{ $page->getBlock1VideoUrl() }}"
                                     class="landing-main__video"
                                     poster="img/landing/macbook-poster.jpg"
                                 ></video>
                             </div>
                         </div>
                         <span class="landing-main__video-title"
-                        >Демонстрация платформы</span
+                        >{{ $page->block1_help }}</span
                         >
                     </div>
                 </div>
@@ -208,7 +206,7 @@
             <div class="container">
                 <div class="landing-features__inner">
                     <h2 class="landing-features__title">
-                        Увеличит прибыль вашего бизнеса минимум на 20%
+                        {{ $page->block2_title }}
                     </h2>
                     <div class="landing-features__list">
                         <div class="landing-features__item">
@@ -569,7 +567,7 @@
         <section class="landing-get">
             <div class="container">
                 <div class="landing-get__inner">
-                    <h2 class="landing-get__title">Получите пожизненную лицензию</h2>
+                    <h2 class="landing-get__title">{{ $page->block3_title }}</h2>
                     <div class="landing-get__wrap">
                         <div class="landing-get__wrap-inner">
                             <div class="landing-get__top">

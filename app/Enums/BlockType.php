@@ -14,6 +14,7 @@ class BlockType extends AbstractEnum
     public const IMAGE = 'image';
     public const VIDEO = 'video';
     public const HEADER = 'header';
+    public const FILE = 'file';
 
     public static function labels(): array
     {
@@ -25,6 +26,7 @@ class BlockType extends AbstractEnum
             self::LIST_WITH_ICON => 'Список с иконками',
             self::IMAGE => 'Изображение',
             self::VIDEO => 'Видео',
+            self::FILE => 'Файл',
             self::HEADER => 'Заголовок блока',
         ];
     }
@@ -39,6 +41,7 @@ class BlockType extends AbstractEnum
             self::LIST_WITH_ICON,
             self::IMAGE,
             self::VIDEO,
+            self::FILE,
             self::HEADER,
         ];
     }

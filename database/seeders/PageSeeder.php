@@ -140,9 +140,9 @@ class PageSeeder extends Seeder
             //'blocks' => 'xlsx',
         ],
         'dimarke' => [
-            'name' => 'ДиМарКЭ - Платформа цифрового маркетинга',
+            'name' => 'ДИМАРКЭ - ПЛАТФОРМА ЦИФРОВОГО МАРКЕТИНГА',
             'model' => LandingPage::class,
-            //'blocks' => 'xlsx',
+            'blocks' => 'xlsx',
         ],
         'privacy' => [
             'name' => 'Политика конфиденциальности',
