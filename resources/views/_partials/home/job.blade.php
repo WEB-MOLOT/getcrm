@@ -1,29 +1,27 @@
+<?php
+/**
+ * @var \App\Models\Pages\HomePage $page
+ */
+?>
 <div class="vacancies_bk">
     <div class="container">
-        <div class="title_bk">Мы сделаны из того же теста!</div>
+        <div class="title_bk">{{ $page->block7_title }}</div>
         <div class="vacancies_wrapper_inside">
             <div class="vacancies_inside d_flex a_items_center">
                 <div class="vacancies_image">
-                    <img src="/img/temp/vacancies_1.jpg" alt=""/>
+                    <img src="{{ $page->getBlock7ImageUrl() }}" alt=""/>
                 </div>
                 <div class="vacancies_info d_flex a_items_center">
                     <div class="vacancies_info_inside">
                         <div class="vacancies_info_title">
-                            Наша замечательная команда
+                            {{ $page->block7_subtitle }}
                         </div>
                         <div class="vacancies_info_desc">
-                            <p>
-                                Если вы готовы менять мир к лучшему, знаете как улучшить
-                                опыт покупаетеля на пути покупки необходимого ему товара.
-                            </p>
-                            <p>
-                                Дале ещё более вдохновляющий текст по мотивации будующих
-                                сотрудников которые станут новой кровью нашей компании.
-                            </p>
+                            {!! $page->block7_content !!}
                         </div>
                         <div class="vacancies_info_btn">
                             <a href="{{ route('site.job.index') }}" class="btn btn_orange btn_orange_with_border">
-                                <span>Вакансии</span>
+                                <span>{{ $page->block7_btn }}</span>
                             </a>
                         </div>
                     </div>
@@ -40,9 +38,8 @@
                   </span>
                         <span class="vacancies_btn_link--txt">
                     <span class="vacancies_btn_link--txt_one"
-                    >Профиль нашей компании
+                    >{{ $page->block7_link }}
                     </span>
-                    <span class="vacancies_btn_link--txt_two">на hh.ru</span>
                   </span>
                     </a>
                 </div>

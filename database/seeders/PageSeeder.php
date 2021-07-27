@@ -8,6 +8,7 @@ use App\Models\PageBlock;
 use App\Models\Pages\AboutPage;
 use App\Models\Pages\ContactsPage;
 use App\Models\Pages\CustomExperiencePage;
+use App\Models\Pages\HomePage;
 use App\Models\Pages\LandingPage;
 use App\Models\Pages\PrivacyPage;
 use App\Models\SeoData;
@@ -137,7 +138,8 @@ class PageSeeder extends Seeder
         ],
         'index' => [
             'name' => 'Главная',
-            //'blocks' => 'xlsx',
+            'model' => HomePage::class,
+            'blocks' => 'xlsx',
         ],
         'dimarke' => [
             'name' => 'ДИМАРКЭ - ПЛАТФОРМА ЦИФРОВОГО МАРКЕТИНГА',

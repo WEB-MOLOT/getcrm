@@ -12,21 +12,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class LandingPage
  * @package App\Models\Pages
- * @property-read string block1_subtitle
- * @property-read string block1_content
- * @property-read string block1_btn
- * @property-read string block1_help
- * @property-read string block1_video
- * @property-read string block2_title
- * @property-read string block3_title
- * @property-read string block3_content
- * @property-read string block3_btn
- * @property-read string block4_title
- * @property-read string block5_title
- * @property-read string block5_subtitle
- * @property-read string block5_content
- * @property-read string block5_btn
- * @property-read string block5_image
+ * @property-read string $block1_subtitle
+ * @property-read string $block1_content
+ * @property-read string $block1_btn
+ * @property-read string $block1_help
+ * @property-read string $block1_video
+ * @property-read string $block2_title
+ * @property-read string $block3_title
+ * @property-read string $block3_content
+ * @property-read string $block3_btn
+ * @property-read string $block4_title
+ * @property-read string $block5_title
+ * @property-read string $block5_subtitle
+ * @property-read string $block5_content
+ * @property-read string $block5_btn
+ * @property-read string $block5_image
  */
 class LandingPage extends Page
 {

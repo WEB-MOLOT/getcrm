@@ -1,15 +1,12 @@
 <?php
 /**
- * @var Collection|NewsItem[] $newsItems
+ * @var \Illuminate\Database\Eloquent\Collection|\App\Models\NewsItem[] $newsItems
+ * @var \App\Models\Pages\HomePage $page
  */
-
-use App\Models\NewsItem;
-use Illuminate\Database\Eloquent\Collection;
-
 ?>
 <div class="news_bk">
     <div class="container">
-        <div class="title_bk">Новости</div>
+        <div class="title_bk">{{ $page->block8_title }}</div>
         <div class="news_slider_wrapper">
             <div class="news_slider">
                 @foreach($newsItems as $item)
@@ -126,7 +123,7 @@ use Illuminate\Database\Eloquent\Collection;
                     </svg>
                   </span>
                         <span class="news_more_link--txt">
-                            Все новости
+                            {{ $page->block8_link }}
                         </span>
                     </a>
                 </div>

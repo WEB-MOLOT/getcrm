@@ -1,8 +1,14 @@
+<?php
+/**
+ * @var \App\Models\Pages\HomePage $page
+ * @var \App\Models\SeoData $seo
+ */
+?>
 @extends('layouts.site')
 
-@section('title')
-    Главная
-@endsection
+@section('title', $page->getSeoTitle())
+@section('keywords', $page->getSeoKeywords())
+@section('description', $page->getSeoDescription())
 
 @section('footer')
     @include('_partials.footer')
@@ -16,17 +22,16 @@
         <div class="container">
             <div class="ftbk_title">
             <span class="ftbk_title--large"
-            ><em>GETCRM</em> создает запоминающийся клиентский опыт</span
+            >{{ $page->block1_line1 }}</span
             >
                 <span class="ftbk_title--small"
-                >используя современные IT технологии и накопленные
-              бизнес-практики</span
+                >{{ $page->block1_line2 }}</span
                 >
             </div>
-            <div class="ftbk_big">НОВАЯ ЭРА <span>CUSTOMER EXPERIENCE</span></div>
+            <div class="ftbk_big">{{ $page->block1_line3 }} <span>{{ $page->block1_line4 }}E</span></div>
             <div class="ftbk_btn">
                 <a href="{{ route('site.customer.index') }}" class="btn btn_orange btn_orange_with_border">
-                    <span>Начни знакомство</span>
+                    <span>{{ $page->block1_btn }}о</span>
                 </a>
             </div>
         </div>
@@ -41,7 +46,7 @@
     <div class="actual_bk">
         <div class="container">
             <div class="title_bk">
-                Выбери то, что актуально <br/>для вашего бизнеса!
+                {{ $page->block2_title }}
             </div>
             <livewire:stepper/>
         </div>
@@ -49,8 +54,8 @@
     <div class="mb_now_bk">
         <div class="container">
             <div class="title_bk">
-                Так можно уже сейчас!
-                <span>1:1 событийный маркетинг в реальном времени</span>
+                {{ $page->block3_title }}
+                <span>{{ $page->block3_subtitle }}</span>
             </div>
             <div class="mb_now_slider_wrapper">
                 <div class="mb_now_slider">
@@ -367,7 +372,7 @@
     <div class="why_getcrm_bk">
         <div class="container">
             <div class="title_bk">
-                Почему GETCRM? <span>Мыслим по новому!</span>
+                {{ $page->block4_title }} <span>{{ $page->block4_subtitle }}</span>
             </div>
             <div class="why_getcrm_items">
                 <div
@@ -595,7 +600,7 @@
     </div>
     <div class="projects_bk">
         <div class="container">
-            <div class="title_bk">Все наши проекты референциальны!</div>
+            <div class="title_bk">{{ $page->block5_title }}</div>
             <div class="projects_slider_wrapper">
                 <div class="projects_slider">
                     <div class="item">
@@ -979,7 +984,7 @@
     </div>
     <div class="certificates_bk">
         <div class="container">
-            <div class="title_bk">Эксперты верят в нас!</div>
+            <div class="title_bk">{{ $page->block6_title }}</div>
             <div class="certificates_slider_wrapper">
                 <div class="certificates_slider">
                     <div class="item">
@@ -1077,18 +1082,16 @@
                 </div>
                 <div class="certificates_desc">
                     <div class="certificates_desc--title">
-                        Держать вектор развития <span>наша основная задача</span>
+                        {{ $page->block6_line1 }} <span>{{ $page->block6_line2 }}</span>
                     </div>
                     <div class="certificates_desc--content">
-                        Компания постоянно развивается и участвует вразличных выставках
-                        и конкурсах. Таким образом мы держим высокую планку оказываемых
-                        услуг и являемся лидером в сфере оказания подобных услуг.
+                        {{ $page->block6_content }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    @include('_partials.home.job')
-    @include('_partials.home.news')
+    @include('_partials.home.job', ['page' => $page])
+    @include('_partials.home.news', ['page' => $page])
 @endsection
