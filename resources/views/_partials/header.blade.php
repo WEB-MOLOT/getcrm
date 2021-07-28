@@ -102,6 +102,7 @@
                                 type="text"
                                 name="email"
                                 placeholder="Логин"
+                                autocomplete="username"
                                 class="mobile_ligin_form__input"
                                 required=""
                             />
@@ -110,6 +111,7 @@
                                 name="password"
                                 placeholder="Пароль"
                                 class="mobile_ligin_form__input"
+                                autocomplete="current-password"
                                 required=""
                             />
                             <a href="{{ route('password.request') }}" class="mobile_ligin_form__fogot"
