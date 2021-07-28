@@ -13,40 +13,55 @@
 @push('js_bottom')
     <script>
 
-        console.log('stepper')
-        const sliderCheck = document.querySelector(".actual_slider");
+        var s = [];
+        var block_change_event = false;
 
-        Livewire.on('sliderChanged', (x, y) => {
-            console.log('sliderChanged', x, y)
-        })
-
-        Livewire.on('reinit', (x, y) => {
-            console.log('reinit', x, y)
-        })
-
-        if (sliderCheck != null) {
-            $(".actual_slider").each(function () {
-                var filter_id = $(this).data('filter');
-                var items = $(this)
-                    .find(".actual_slider--range")
-                    .attr("data-labels")
-                    .split(",");
-                var s = $(this).find(".actual_slider--range");
-                s.slider({
-                    range: "min",
-                    min: 0,
-                    max: items.length - 1,
-                    value: 0,
-                    change: function (event, ui) {
-                        console.log(ui.value, filter_id)
-                        Livewire.emit('sliderChanged', filter_id, items[ui.value])
-                    }
-                }).slider("pips", {
-                    rest: "label",
-                    labels: items,
+        function initStepper() {
+            const sliderCheck = document.querySelector(".actual_slider");
+            console.log('stepper')
+            if (sliderCheck != null) {
+                $(".actual_slider").each(function () {
+                    const filter_id = $(this).data('filter');
+                    const items = $(this)
+                        .find(".actual_slider--range")
+                        .attr("data-labels")
+                        .split(",");
+                    s[filter_id] = $(this).find(".actual_slider--range");
+                    s[filter_id].slider({
+                        range: "min",
+                        min: 0,
+                        max: items.length - 1,
+                        value: 0,
+                        change: function (event, ui) {
+                            if (block_change_event) {
+                                return;
+                            }
+                            Livewire.emit('sliderChanged', filter_id, items[ui.value], ui.value);
+                        }
+                    }).slider("pips", {
+                        rest: "label",
+                        labels: items,
+                    });
                 });
-            });
+            }
         }
+
+        Livewire.on('reinit', (filter_id, value_name, value_index) => {
+            console.log('reinit', filter_id, value_name, value_index);
+
+            block_change_event = true;
+            s.forEach(function (item, i) {
+                let index = filter_id === i
+                    ? value_index
+                    : s[i].slider('value');
+                s[i].slider('value', index);
+            });
+
+            block_change_event = false;
+        })
+
+        initStepper();
+
     </script>
 @endpush
 

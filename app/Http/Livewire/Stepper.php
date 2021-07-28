@@ -15,6 +15,10 @@ class Stepper extends Component
 
     public Collection $pickedValues;
 
+    public Collection $solutions;
+
+    public Collection $functionalities;
+
     protected $listeners = [
         'sliderChanged' => 'toggleFilterValue',
     ];
@@ -22,6 +26,10 @@ class Stepper extends Component
     public function mount()
     {
         $this->pickedValues = collect();
+
+        $this->solutions = collect();
+
+        $this->functionalities = collect();
 
         $this->filters = Filter::query()->oldest('order')->with('values')->get()->keyBy('id');
     }
@@ -31,7 +39,7 @@ class Stepper extends Component
         return view('livewire.stepper');
     }
 
-    public function toggleFilterValue(int $filterId, string $valueName): void
+    public function toggleFilterValue(int $filterId, string $valueName, int $valueIndex): void
     {
         /** @var Collection $filter */
         $filter = $this->filters->firstWhere('id', '=', $filterId);
@@ -40,6 +48,6 @@ class Stepper extends Component
 
         $this->pickedValues->put($filterId, $value?->id);
 
-        $this->emit('reinit');
+        $this->emit('reinit', $filterId, $valueName, $valueIndex);
     }
 }

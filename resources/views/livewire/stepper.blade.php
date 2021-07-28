@@ -7,7 +7,8 @@
 <div class="actual_sliders_wrapper">
     <div class="actual_sliders ">
         @foreach($filters as $filter)
-            <div class="actual_slider actual_slider_{{ $filter->id }}" data-filter="{{ $filter->id }}">
+            <div class="actual_slider actual_slider_{{ $filter->id }}"
+                 data-filter="{{ $filter->id }}">
                 <div class="actual_slider_title">{{ $filter->name }}:</div>
                 <div class="one_slider__wrapper">
                     <div class="actual_slider_inside">
