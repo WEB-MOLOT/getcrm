@@ -85,7 +85,7 @@ class Stepper extends Component
 
     protected function getPickedValuesAsString(): string
     {
-        return $this->pickedValues->sortKeys()->toJson();
+        return str_replace('":"', '": "', $this->pickedValues->sortKeys()->toJson());
     }
 
     protected function init(): void
@@ -103,6 +103,10 @@ class Stepper extends Component
         $picked = $this->getPickedValuesAsString();
 
         $this->pickedSolutions = $this->solutions->filter(static function (Solution $solution) use ($filters, $picked) {
+            Log::debug($picked);
+            foreach ($filters->get($solution->id) as $line) {
+                Log::debug('      ' . $line, [$line === $picked]);
+            }
             return in_array($picked, $filters->get($solution->id));
         });
 
@@ -114,7 +118,7 @@ class Stepper extends Component
         $this->solutionsFilters = $this->solutions->keyBy('id')->map(static function (Solution $solution) {
             return $solution->solution->filters->pluck('params_as_string')->toArray();
         });
-        //Log::debug($this->solutionsFilters);
+        Log::debug($this->solutionsFilters);
     }
 
     protected function getEventObject(): array
