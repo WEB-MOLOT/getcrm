@@ -7,7 +7,7 @@
 <div class="actual_sliders_wrapper">
     <div class="actual_sliders ">
         @foreach($filters as $filter)
-            <div class="actual_slider actual_slider_{{ $filter->id }}"
+            <div class="actual_slider actual_slider_{{ $filter->id }}" wire:key="filter{{ $filter->id }}"
                  data-filter="{{ $filter->id }}">
                 <div class="actual_slider_title">{{ $filter->name }}:</div>
                 <div class="one_slider__wrapper">
@@ -39,8 +39,9 @@
                 >
                     Подобранные решения:
                 </div>
+
                 <div class="actual_info_body actual_info_body__left">
-                    <div class="aib_inside_zero aib_inside_zero_left selected">
+                    <div class="aib_inside_zero aib_inside_zero_left">
                         <div class="aib_inside_zero__content">
                             Выберите параметры фильтра, исходя из потребностей
                             вашего бизнеса, и система подберет для вас подходящее

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Dictionaries\Filter;
+use App\Models\Solution;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,9 +16,18 @@ class Stepper extends Component
 
     public Collection $pickedValues;
 
-    public Collection $solutions;
+    public bool $hasSolution = false;
 
-    public Collection $functionalities;
+    public int $timestamp;
+
+
+    protected Collection $solutions;
+
+    protected Collection $functionalities;
+
+    protected Collection $pickedSolutions;
+
+    protected Collection $pickedFunctionalities;
 
     protected $listeners = [
         'sliderChanged' => 'toggleFilterValue',
@@ -25,13 +35,11 @@ class Stepper extends Component
 
     public function mount()
     {
+        $this->filters = Filter::query()->oldest('order')->with('values')->get()->keyBy('id');
+
         $this->pickedValues = collect();
 
-        $this->solutions = collect();
-
-        $this->functionalities = collect();
-
-        $this->filters = Filter::query()->oldest('order')->with('values')->get()->keyBy('id');
+        $this->timestamp = time();
     }
 
     public function render(): Factory|View|Application
@@ -48,6 +56,30 @@ class Stepper extends Component
 
         $this->pickedValues->put($filterId, $value?->id);
 
+        $this->timestamp = time();
+
+        $this->init();
+
         $this->emit('reinit', $filterId, $valueName, $valueIndex);
+
+        $this->dispatchBrowserEvent('test', $this->getEventObject());
+    }
+
+    protected function init()
+    {
+        $this->solutions = Solution::all();
+
+        $this->pickedSolutions = $this->solutions;
+
+        $this->functionalities = collect();
+    }
+
+    protected function getEventObject(): array
+    {
+        return [
+            'has_solutions' => $this->hasSolution,
+            'picked_solutions' => $this->pickedSolutions,
+            'time' => $this->timestamp,
+        ];
     }
 }

@@ -33,6 +33,9 @@
                         max: items.length - 1,
                         value: 0,
                         change: function (event, ui) {
+                            if (ui.value === ui.max) {
+                                return;
+                            }
                             if (block_change_event) {
                                 return;
                             }
@@ -45,6 +48,10 @@
                 });
             }
         }
+
+        window.addEventListener('test', event => {
+            console.log('Test event: ', event.detail);
+        })
 
         Livewire.on('reinit', (filter_id, value_name, value_index) => {
             console.log('reinit', filter_id, value_name, value_index);
