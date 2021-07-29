@@ -75,7 +75,7 @@
                     Функционал:
                 </div>
                 <div class="actual_info_body">
-                    <div class="aib_inside_zero selected aib_inside_zero_right js-functionalities-zero">
+                    <div class="aib_inside_zero selected aib_inside_zero_right js-functionalities-empty">
                         <div class="aib_inside_zero__content">
                             Наведите на название решения, чтобы увидеть
                             соответствующий ему функционал.

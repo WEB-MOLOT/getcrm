@@ -49,16 +49,8 @@
             }
         }
 
-        // var solution_li_template = '<li class="" data-search="1">
-        //     <label><input type="checkbox" value=""/><span>Работа с сервисными обращениями</span></label>
-        //
-        //
-        // </li>'
-
-        var myFunction = function () {
-            let attribute = this.getAttribute("data-id");
-            alert(attribute);
-        };
+        let functionalitiesEmpty = document.querySelector('.js-functionalities-empty');
+        let functionalities = document.querySelectorAll('.js-functionalities-block');
 
         window.addEventListener('test', event => {
             console.log(event.detail);
@@ -80,20 +72,32 @@
                         let obj = solutions[key];
 
                         let li = document.createElement('li');
-                        li.className = 'checked checkbox__wrapper';
+                        li.className = 'checked checkbox__wrapper js-xxx-mouseover';
+                        li.dataset.id = obj.solution_id;
                         li.innerHTML = '<label><input type="checkbox" class="js-xxx" data-id="' + obj.solution_id + '" value=""/><span>' + obj.title + '</span></label>';
                         solution_list_container.appendChild(li);
                     }
                 }
             }
 
-            let xxx = document.getElementsByClassName('js-xxx');
+            //let xxx = document.getElementsByClassName('js-xxx');
 
-            if (xxx) {
-                for (let i = 0; i < xxx.length; i++) {
-                    xxx[i].addEventListener('mouseover', myFunction, false);
+            const divs = document.querySelectorAll('.js-xxx-mouseover');
+
+            divs.forEach(el => el.addEventListener('mouseover', event => {
+                let id = event.target.getAttribute('data-id');
+                if (id === null) {
+                    return;
                 }
-            }
+
+                functionalitiesEmpty.classList.remove('selected');
+                functionalities.forEach(ell => ell.classList.remove('selected'));
+
+                let functionality = document.querySelector('.js-functionalities' + id);
+                functionality.classList.add('selected')
+
+                console.log(id);
+            }));
         })
 
         Livewire.on('reinit', (filter_id, value_name, value_index) => {
