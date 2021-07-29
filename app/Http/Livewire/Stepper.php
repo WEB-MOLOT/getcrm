@@ -102,7 +102,6 @@ class Stepper extends Component
         $picked = $this->getPickedValuesAsString();
 
         $this->pickedSolutions = $this->solutions->filter(function (Solution $solution) use ($picked) {
-            Log::debug($picked);
             foreach ($this->solutionsFilters->get($solution->id) as $line) {
                 $lineArr = json_decode($line);
                 $pickedArr = json_decode($picked);
@@ -118,6 +117,10 @@ class Stepper extends Component
 
     protected function arrayContainsArray($pickedArr, $mainArr): bool
     {
+        if (!is_object($pickedArr)) {
+            return false;
+        }
+
         foreach ($mainArr as $name => $value) {
             if (!property_exists($pickedArr, $name)) {
                 return false;
@@ -135,7 +138,6 @@ class Stepper extends Component
         $this->solutionsFilters = $this->solutions->keyBy('id')->map(static function (Solution $solution) {
             return $solution->solution->filters->pluck('params_as_string')->toArray();
         });
-        Log::debug($this->solutionsFilters);
     }
 
     protected function getEventObject(): array

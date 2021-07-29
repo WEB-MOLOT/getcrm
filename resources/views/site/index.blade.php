@@ -67,6 +67,18 @@
             functionality.classList.add('selected')
         };
 
+        // скрытие списка функциональности когда когда курсор покидает блок
+        let hideFunctionalities = function (event) {
+            let id = event.target.getAttribute('data-id');
+
+            if (id === null) {
+                return;
+            }
+
+            let functionality = document.querySelector('.js-functionalities' + id);
+            functionality.classList.remove('selected')
+        };
+
         window.addEventListener('test', event => {
             console.log(event.detail);
 
@@ -84,7 +96,10 @@
 
                 // сброс старых слушателей
                 const divs = document.querySelectorAll('.js-xxx-mouseover');
-                divs.forEach(el => el.removeEventListener('mouseover', showFunctionalities));
+                divs.forEach(el => {
+                    el.removeEventListener('mouseenter', showFunctionalities);
+                    el.removeEventListener('mouseleave', hideFunctionalities);
+                });
 
                 // очистка старого списка
                 solution_list_container.innerHTML = '';
@@ -105,7 +120,10 @@
 
             // вешаем новые слушатели для отображения списка функциональности
             const divs = document.querySelectorAll('.js-xxx-mouseover');
-            divs.forEach(el => el.addEventListener('mouseover', showFunctionalities));
+            divs.forEach(el => {
+                el.addEventListener('mouseenter', showFunctionalities);
+                el.addEventListener('mouseleave', hideFunctionalities);
+            });
         })
 
         Livewire.on('reinit', (filter_id, value_name, value_index) => {
