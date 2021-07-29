@@ -32,6 +32,7 @@ class Solution extends Model
 
     protected $with = [
         'solution',
+        'solution.filters',
     ];
 
     protected $appends = [

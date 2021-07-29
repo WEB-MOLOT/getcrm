@@ -8,6 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Stepper extends Component
@@ -16,12 +17,14 @@ class Stepper extends Component
 
     public Collection $pickedValues;
 
-    public bool $hasSolution = false;
+    public Collection $rawSolutions;
 
-    public int $timestamp;
+    public bool $hasSolution = false;
 
 
     protected Collection $solutions;
+
+    protected Collection $solutionsFilters;
 
     protected Collection $functionalities;
 
@@ -39,7 +42,7 @@ class Stepper extends Component
 
         $this->pickedValues = collect();
 
-        $this->timestamp = time();
+        $this->rawSolutions = \App\Models\Dictionaries\Solution::with('filters')->get();
     }
 
     public function render(): Factory|View|Application
@@ -54,24 +57,64 @@ class Stepper extends Component
 
         $value = $filter->values->firstWhere('name', '=', $valueName);
 
-        $this->pickedValues->put($filterId, $value?->id);
+        $this->setPickedValue($filterId, $value);
 
-        $this->timestamp = time();
+        Log::debug($this->pickedValues->toJson());
 
         $this->init();
+
+        $this->setSolutionsFilters();
+
+        $this->setPickedSolutions();
 
         $this->emit('reinit', $filterId, $valueName, $valueIndex);
 
         $this->dispatchBrowserEvent('test', $this->getEventObject());
     }
 
-    protected function init()
+    protected function setPickedValue($filterId, $value): void
     {
-        $this->solutions = Solution::all();
+        $value = $value?->id;
+
+        $value === null
+            ? $this->pickedValues->pull((string)$filterId)
+            : $this->pickedValues->put((string)$filterId, (string)$value);
+
+        $this->pickedValues = $this->pickedValues->sortKeys();
+    }
+
+    protected function getPickedValuesAsString(): string
+    {
+        return $this->pickedValues->sortKeys()->toJson();
+    }
+
+    protected function init(): void
+    {
+        $this->solutions = Solution::query()->get();
 
         $this->pickedSolutions = $this->solutions;
 
         $this->functionalities = collect();
+    }
+
+    protected function setPickedSolutions(): void
+    {
+        $filters = $this->solutionsFilters;
+        $picked = $this->getPickedValuesAsString();
+
+        $this->pickedSolutions = $this->solutions->filter(static function (Solution $solution) use ($filters, $picked) {
+            return in_array($picked, $filters->get($solution->id));
+        });
+
+        $this->hasSolution = $this->pickedSolutions->isNotEmpty();
+    }
+
+    protected function setSolutionsFilters(): void
+    {
+        $this->solutionsFilters = $this->solutions->keyBy('id')->map(static function (Solution $solution) {
+            return $solution->solution->filters->pluck('params_as_string')->toArray();
+        });
+        //Log::debug($this->solutionsFilters);
     }
 
     protected function getEventObject(): array
@@ -79,7 +122,8 @@ class Stepper extends Component
         return [
             'has_solutions' => $this->hasSolution,
             'picked_solutions' => $this->pickedSolutions,
-            'time' => $this->timestamp,
+            'filters' => $this->solutionsFilters,
+            'picked_values' => $this->getPickedValuesAsString(),
         ];
     }
 }

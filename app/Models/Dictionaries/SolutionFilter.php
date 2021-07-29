@@ -19,4 +19,13 @@ class SolutionFilter extends Model
     protected $casts = [
         'params' => 'array',
     ];
+
+    protected $appends = [
+        'params_as_string',
+    ];
+
+    public function getParamsAsStringAttribute(): string
+    {
+        return $this->attributes['params'] ?: '{}';
+    }
 }

@@ -49,8 +49,51 @@
             }
         }
 
+        // var solution_li_template = '<li class="" data-search="1">
+        //     <label><input type="checkbox" value=""/><span>Работа с сервисными обращениями</span></label>
+        //
+        //
+        // </li>'
+
+        var myFunction = function () {
+            let attribute = this.getAttribute("data-id");
+            alert(attribute);
+        };
+
         window.addEventListener('test', event => {
-            console.log('Test event: ', event.detail);
+            console.log(event.detail);
+
+            // Переключение между инф. текстом и списком решений
+            let has_solutions = event.detail.has_solutions;
+            let solutionsEmpty = document.querySelector('.js-stepper-solutions-empty');
+            let solutions = document.querySelector('.js-stepper-solutions');
+            solutions.classList.toggle('selected', has_solutions);
+            solutionsEmpty.classList.toggle('selected', !has_solutions);
+
+            // Вывод решений
+            if (has_solutions) {
+                let solutions = event.detail.picked_solutions;
+                let solution_list_container = document.querySelector('.js-stepper-solutions-list');
+                solution_list_container.innerHTML = '';
+                for (let key in solutions) {
+                    if (Object.prototype.hasOwnProperty.call(solutions, key)) {
+                        let obj = solutions[key];
+
+                        let li = document.createElement('li');
+                        li.className = 'checked checkbox__wrapper';
+                        li.innerHTML = '<label><input type="checkbox" class="js-xxx" data-id="' + obj.solution_id + '" value=""/><span>' + obj.title + '</span></label>';
+                        solution_list_container.appendChild(li);
+                    }
+                }
+            }
+
+            let xxx = document.getElementsByClassName('js-xxx');
+
+            if (xxx) {
+                for (let i = 0; i < xxx.length; i++) {
+                    xxx[i].addEventListener('mouseover', myFunction, false);
+                }
+            }
         })
 
         Livewire.on('reinit', (filter_id, value_name, value_index) => {

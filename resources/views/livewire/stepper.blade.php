@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="actual_info_body actual_info_body__left">
-                    <div class="aib_inside_zero aib_inside_zero_left">
+                    <div class="aib_inside_zero aib_inside_zero_left selected js-stepper-solutions-empty">
                         <div class="aib_inside_zero__content">
                             Выберите параметры фильтра, исходя из потребностей
                             вашего бизнеса, и система подберет для вас подходящее
@@ -52,87 +52,12 @@
                         <div
                             class="aib_inside_content_check d_flex j_content_center"
                         >
-                            <div class="aib_inside_check_list">
-                                <ul>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="1"
-                                    >
+                            <div class="aib_inside_check_list js-stepper-solutions">
+                                <ul class="js_solutions_list js-stepper-solutions-list">
+                                    <li class="checked checkbox__wrapper" data-search="1">
                                         <label>
                                             <input type="checkbox" value=""/>
                                             <span>Работа с сервисными обращениями</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="2"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Обращение в колл-центр</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="3"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Обновление профиля клиента</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="1"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Работа с сервисными обращениями</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="2"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Обращение в колл-центр</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="3"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Обновление профиля клиента</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="1"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Работа с сервисными обращениями</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="2"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Обращение в колл-центр</span>
-                                        </label>
-                                    </li>
-                                    <li
-                                        class="checked checkbox__wrapper"
-                                        data-search="3"
-                                    >
-                                        <label>
-                                            <input type="checkbox" value=""/>
-                                            <span>Обновление профиля клиента</span>
                                         </label>
                                     </li>
                                 </ul>
@@ -150,172 +75,25 @@
                     Функционал:
                 </div>
                 <div class="actual_info_body">
-                    <div class="aib_inside_zero selected aib_inside_zero_right">
+                    <div class="aib_inside_zero selected aib_inside_zero_right js-functionalities-zero">
                         <div class="aib_inside_zero__content">
                             Наведите на название решения, чтобы увидеть
                             соответствующий ему функционал.
                         </div>
                     </div>
                     <div class="aib_inside">
-                        <div
-                            class="aib_inside_content_functional d_flex j_content_between f_wrap"
-                            data-result="1"
-                        >
-                            <ol>
-                                <li>Регистрация профиля клиента (тел., email…)</li>
-                                <li>Регистрация членов семьи</li>
-                                <li>Сбор поведенческих данных со всех каналов</li>
-                                <li>
-                                    Маркетинговые атрибуты (RFM-сегмент, LTV, риск
-                                    оттока)
-                                </li>
-                                <li>Путешествие клиента</li>
-                                <li>Карта лояльности</li>
-                                <li>ID устройств, Cookies</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                            </ol>
-                        </div>
-                        <div
-                            class="aib_inside_content_functional d_flex j_content_between f_wrap"
-                            data-result="2"
-                        >
-                            <ol>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                                <li>Регистрация профиля клиента (тел., email…)</li>
-                                <li>Регистрация членов семьи</li>
-                                <li>Сбор поведенческих данных со всех каналов</li>
-                                <li>
-                                    Маркетинговые атрибуты (RFM-сегмент, LTV, риск
-                                    оттока)
-                                </li>
-                                <li>Путешествие клиента</li>
-                                <li>Карта лояльности</li>
-                                <li>ID устройств, Cookies</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                            </ol>
-                        </div>
-                        <div
-                            class="aib_inside_content_functional d_flex j_content_between f_wrap"
-                            data-result="3"
-                        >
-                            <ol>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>Сбор поведенческих данных со всех каналов</li>
-                                <li>
-                                    Маркетинговые атрибуты (RFM-сегмент, LTV, риск
-                                    оттока)
-                                </li>
-                                <li>Путешествие клиента</li>
-                                <li>Карта лояльности</li>
-                                <li>ID устройств, Cookies</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                                <li>
-                                    История обращений и рекламаций (чат,
-                                    email-переписка…)
-                                </li>
-                                <li>Транзакционная история</li>
-                                <li>Поисковая история (сайт и интернет)</li>
-                                <li>
-                                    Предиктивные паттерны – следующая покупка,
-                                    приемлемая стоимость, вероятность оттока…
-                                </li>
-                                <li>Предпочитаемые каналы</li>
-                                <li>Соц. сети ID</li>
-                            </ol>
-                        </div>
+                        @foreach($rawSolutions as $solution)
+                            <div
+                                class="aib_inside_content_functional d_flex j_content_between f_wrap js-functionalities-block js-functionalities{{ $solution->id }}"
+                                data-result="{{ $solution->id }}"
+                            >
+                                <ol>
+                                    @foreach($solution->functionalities as $item)
+                                        <li>{{ $item->name }}</li>
+                                    @endforeach
+                                </ol>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
