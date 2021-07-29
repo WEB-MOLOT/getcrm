@@ -65,7 +65,7 @@ class NewsItemSeeder extends Seeder
                         $date->format('d.m.Y')
                     ], '', $content->html()))),
                     'content' => $content->filter('a.link')->first()->attr('href'),
-                    'image' => 'http://getcrm.ru' . $content->filter('img')->attr('src'),
+                    'image' => 'https://getcrm.ru' . $content->filter('img')->attr('src'),
                 ];
 
                 $newsItem = NewsItem::create($item);
