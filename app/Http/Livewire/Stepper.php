@@ -111,7 +111,7 @@ class Stepper extends Component
                 }
             }
             return false;
-        });
+        })->unique('solution_id');
 
         $this->hasSolution = $this->pickedSolutions->isNotEmpty();
     }
