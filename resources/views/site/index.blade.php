@@ -13,12 +13,12 @@
 @push('js_bottom')
     <script>
 
-        var s = [];
-        var block_change_event = false;
+        var s = []; // массив для хранения объектов степпера
+        var block_change_event = false; // блокировка передачи событий изменения значения степпера при изменение из кода
 
+        // Функция инициализации степпера
         function initStepper() {
             const sliderCheck = document.querySelector(".actual_slider");
-            console.log('stepper')
             if (sliderCheck != null) {
                 $(".actual_slider").each(function () {
                     const filter_id = $(this).data('filter');
@@ -33,11 +33,11 @@
                         max: items.length - 1,
                         value: 0,
                         change: function (event, ui) {
-                            if (ui.value === ui.max) {
-                                return;
-                            }
                             if (block_change_event) {
                                 return;
+                            }
+                            if (ui.value === ui.max) {
+                                ui.value = 0;
                             }
                             Livewire.emit('sliderChanged', filter_id, items[ui.value], ui.value);
                         }
@@ -51,6 +51,21 @@
 
         let functionalitiesEmpty = document.querySelector('.js-functionalities-empty');
         let functionalities = document.querySelectorAll('.js-functionalities-block');
+
+        // показ списка функциональности при наведение на решение
+        let showFunctionalities = function (event) {
+            let id = event.target.getAttribute('data-id');
+
+            if (id === null) {
+                return;
+            }
+
+            functionalitiesEmpty.classList.remove('selected');
+            functionalities.forEach(ell => ell.classList.remove('selected'));
+
+            let functionality = document.querySelector('.js-functionalities' + id);
+            functionality.classList.add('selected')
+        };
 
         window.addEventListener('test', event => {
             console.log(event.detail);
@@ -66,7 +81,15 @@
             if (has_solutions) {
                 let solutions = event.detail.picked_solutions;
                 let solution_list_container = document.querySelector('.js-stepper-solutions-list');
+
+                // сброс старых слушателей
+                const divs = document.querySelectorAll('.js-xxx-mouseover');
+                divs.forEach(el => el.removeEventListener('mouseover', showFunctionalities));
+
+                // очистка старого списка
                 solution_list_container.innerHTML = '';
+
+                // генерация нового списка
                 for (let key in solutions) {
                     if (Object.prototype.hasOwnProperty.call(solutions, key)) {
                         let obj = solutions[key];
@@ -80,24 +103,9 @@
                 }
             }
 
-            //let xxx = document.getElementsByClassName('js-xxx');
-
+            // вешаем новые слушатели для отображения списка функциональности
             const divs = document.querySelectorAll('.js-xxx-mouseover');
-
-            divs.forEach(el => el.addEventListener('mouseover', event => {
-                let id = event.target.getAttribute('data-id');
-                if (id === null) {
-                    return;
-                }
-
-                functionalitiesEmpty.classList.remove('selected');
-                functionalities.forEach(ell => ell.classList.remove('selected'));
-
-                let functionality = document.querySelector('.js-functionalities' + id);
-                functionality.classList.add('selected')
-
-                console.log(id);
-            }));
+            divs.forEach(el => el.addEventListener('mouseover', showFunctionalities));
         })
 
         Livewire.on('reinit', (filter_id, value_name, value_index) => {

@@ -85,7 +85,7 @@ class Stepper extends Component
 
     protected function getPickedValuesAsString(): string
     {
-        return str_replace('":"', '": "', $this->pickedValues->sortKeys()->toJson());
+        return str_replace(' ', '', $this->pickedValues->sortKeys()->toJson());
     }
 
     protected function init(): void
@@ -99,18 +99,35 @@ class Stepper extends Component
 
     protected function setPickedSolutions(): void
     {
-        $filters = $this->solutionsFilters;
         $picked = $this->getPickedValuesAsString();
 
-        $this->pickedSolutions = $this->solutions->filter(static function (Solution $solution) use ($filters, $picked) {
+        $this->pickedSolutions = $this->solutions->filter(function (Solution $solution) use ($picked) {
             Log::debug($picked);
-            foreach ($filters->get($solution->id) as $line) {
-                Log::debug('      ' . $line, [$line === $picked]);
+            foreach ($this->solutionsFilters->get($solution->id) as $line) {
+                $lineArr = json_decode($line);
+                $pickedArr = json_decode($picked);
+                if ($this->arrayContainsArray($pickedArr, $lineArr)) {
+                    return true;
+                }
             }
-            return in_array($picked, $filters->get($solution->id));
+            return false;
         });
 
         $this->hasSolution = $this->pickedSolutions->isNotEmpty();
+    }
+
+    protected function arrayContainsArray($pickedArr, $mainArr): bool
+    {
+        foreach ($mainArr as $name => $value) {
+            if (!property_exists($pickedArr, $name)) {
+                return false;
+            }
+            if ($pickedArr->$name !== $value) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     protected function setSolutionsFilters(): void

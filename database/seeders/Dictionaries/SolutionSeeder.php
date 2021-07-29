@@ -64,6 +64,18 @@ class SolutionSeeder extends Seeder
                     'params' => $params->toArray(),
                 ]);
             }
+
+            for ($i = 2; $i <= 3; $i++) {
+                $params = collect();
+
+                foreach ($filters->skip(1) as $filter) {
+                    $params->put($filter->id, (string)$filter->values->random()->id);
+                }
+
+                $solution->filters()->create([
+                    'params' => $params->toArray(),
+                ]);
+            }
         }
     }
 
