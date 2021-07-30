@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Cabinet;
+use App\Http\Controllers\Export;
 use App\Http\Controllers\Site;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,8 @@ Route::post('/ajax/sale', Site\Ajax\SaleController::class)->name('site.sale.emai
 Route::post('/ajax/contact', Site\Ajax\ContactController::class)->name('site.contact.email');
 Route::get('/ajax/cart', Site\Ajax\Cart\IndexController::class)->name('site.cart.index');
 Route::delete('/ajax/cart/{id}', Site\Ajax\Cart\DeleteController::class)->name('site.cart.delete');
+
+Route::get('/export/cart', Export\CartController::class)->name('export.cart');
 
 Route::middleware([
     'auth',

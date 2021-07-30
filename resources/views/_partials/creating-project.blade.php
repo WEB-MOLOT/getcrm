@@ -32,7 +32,7 @@
     <div id="cart_list" class="creating-project__list">
 
     </div>
-    <a href="#" class="btn">
+    <a href="{{ route('export.cart') }}" class="btn">
         <img src="/img/pdf.png" alt=""/> ВЫГРУЗИТЬ PDF</a>
     <a href="{{ route('site.price.index') }}" class="btn">
         <img src="/img/dollar.png" alt=""/> РАСЧИТАТЬ ЦЕНУ</a>
