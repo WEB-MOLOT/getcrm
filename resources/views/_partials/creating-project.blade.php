@@ -33,9 +33,7 @@
 
     </div>
     <a href="#" class="btn">
-        <img src="/img/pdf.png" alt=""/> ВЫГРУЗИТЬ PDF</a
-    >
-    <a href="#" class="btn">
-        <img src="/img/dollar.png" alt=""/> РАСЧИТАТЬ ЦЕНУ</a
-    >
+        <img src="/img/pdf.png" alt=""/> ВЫГРУЗИТЬ PDF</a>
+    <a href="{{ route('site.price.index') }}" class="btn">
+        <img src="/img/dollar.png" alt=""/> РАСЧИТАТЬ ЦЕНУ</a>
 </div>
