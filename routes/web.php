@@ -29,6 +29,7 @@ Route::get('/ajax/subscribe', Site\Ajax\SubscribeController::class)->name('site.
 Route::post('/ajax/sale', Site\Ajax\SaleController::class)->name('site.sale.email');
 Route::post('/ajax/contact', Site\Ajax\ContactController::class)->name('site.contact.email');
 Route::get('/ajax/cart', Site\Ajax\Cart\IndexController::class)->name('site.cart.index');
+Route::delete('/ajax/cart/{id}', Site\Ajax\Cart\DeleteController::class)->name('site.cart.delete');
 
 Route::middleware([
     'auth',

@@ -318,6 +318,28 @@ $(document).ready(function () {
         $(this).next(".r-items").slideToggle();
     });
 
+    $('#cart_list').on('click', function (event) {
+        const obj = $(event.target);
+
+        if (!obj.hasClass('creating-project__item__remove')) {
+            return;
+        }
+
+        const id = obj.data('id');
+
+        obj.parent().remove();
+        event.stopPropagation();
+
+        $.ajax({
+            url: '/ajax/cart/' + id,
+            method: 'DELETE',
+            dataType: 'json',
+            data: {
+                '_token': $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+    })
+
     $(".creating-project-open").on("click", function () {
 
         $.ajax({
@@ -331,7 +353,8 @@ $(document).ready(function () {
                     console.log();
                     const div = document.createElement('div');
                     div.className = 'creating-project__item';
-                    div.innerHTML = '<div class="creating-project__item__remove"></div><h5>' + item['name'] + '</h5>';
+                    div.innerHTML = '<div class="creating-project__item__remove" data-id="'
+                        + item['id'] + '"></div><h5>' + item['name'] + '</h5>';
                     cart_list.appendChild(div);
                 });
             }
