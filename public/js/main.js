@@ -1878,12 +1878,11 @@ $(document).ready(function () {
         contactManagerModalWindow
             .querySelector("form")
             .addEventListener("submit", (e) => {
-                e.preventDefault();
                 contactManagerModalWindow.classList.remove("opened");
                 windowOverlay.classList.remove("active-modal");
                 setTimeout(
                     () => contactManagerModalWindow.querySelector("form").reset(),
-                    400
+                    100
                 );
             });
     }

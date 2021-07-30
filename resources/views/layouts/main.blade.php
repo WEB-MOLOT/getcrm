@@ -92,6 +92,11 @@
         {{ session('warning') }}
     </div>
 @endif
+@if (session()->has('success'))
+    <div class="alert alert-success alert-top">
+        {{ session('success') }}
+    </div>
+@endif
 
 <div class="wrapper">
     @yield('before_content')

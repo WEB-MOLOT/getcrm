@@ -2,7 +2,8 @@
 <div class="modal_windows">
     <!-- Modal "Manager connection" -->
     <div class="modal_connection modal-block js-parent-cart-item-remove">
-        <form action="#" name="connection">
+        <form action="{{ route('mail.manager') }}" name="connection" method="POST">
+            {{ csrf_field() }}
             <div class="form__left_block">
                 <h3 class="form__left_title">Связаться с менеджером</h3>
                 <input
@@ -22,12 +23,12 @@
                 <input
                     type="tel"
                     placeholder="Телефон"
-                    name="tel"
+                    name="phone"
                     class="form__input"
                     required
                 />
                 <textarea
-                    name="connection-area"
+                    name="text"
                     placeholder="Сообщение"
                     class="form__area"
                 ></textarea>

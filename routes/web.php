@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Cabinet;
 use App\Http\Controllers\Export;
+use App\Http\Controllers\Mail;
 use App\Http\Controllers\Site;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,8 @@ Route::get('/ajax/cart', Site\Ajax\Cart\IndexController::class)->name('site.cart
 Route::delete('/ajax/cart/{id}', Site\Ajax\Cart\DeleteController::class)->name('site.cart.delete');
 
 Route::get('/export/cart', Export\CartController::class)->name('export.cart');
+
+Route::post('/mail/manager', Mail\ManagerController::class)->name('mail.manager');
 
 Route::middleware([
     'auth',
