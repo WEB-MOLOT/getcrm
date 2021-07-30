@@ -29,7 +29,7 @@
         </div>
     </div>
     <h4 class="creating-project__title">Формирование проекта</h4>
-    <div id="cart_list" class="creating-project__list">
+    <div id="cart_list" class="creating-project__list js-parent-cart-item-remove">
 
     </div>
     <a href="{{ route('export.cart') }}" class="btn">

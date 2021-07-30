@@ -1,7 +1,7 @@
 <!-- Modal-windows -->
 <div class="modal_windows">
     <!-- Modal "Manager connection" -->
-    <div class="modal_connection modal-block">
+    <div class="modal_connection modal-block js-parent-cart-item-remove">
         <form action="#" name="connection">
             <div class="form__left_block">
                 <h3 class="form__left_title">Связаться с менеджером</h3>
@@ -33,110 +33,10 @@
                 ></textarea>
                 <div class="form__right_block_mobile">
                     <h3 class="form__right_title">Формирование проекта</h3>
-                    <ul class="form__right_list ">
+                    <ul class="form__right_list">
                         <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">
-                                Работа с сервисными обращениями
-                            </h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
-                        </li>
-                        <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">Обращение в колл-центр</h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
-                        </li>
-                        <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">
-                                Работа с сервисными обращениями
-                            </h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
-                        </li>
-                        <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">Обращение в колл-центр</h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
-                        </li>
-                        <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">
-                                Работа с сервисными обращениями
-                            </h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
-                        </li>
-                        <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">Обращение в колл-центр</h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
-                        </li>
-                        <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">
-                                Работа с сервисными обращениями
-                            </h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
-                        </li>
-                        <li class="list__item">
-                            <div class="item__remove"></div>
-                            <h5 class="list__item_title">Обращение в колл-центр</h5>
-                            <div>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                                <p class="list__item_text">
-                                    Работа с сервисными обращениями
-                                </p>
-                                <p class="list__item_text">Обращение в колл-центр</p>
-                            </div>
+                            <div class="item__remove js-cart-item-remove"></div>
+                            <h5 class="list__item_title"></h5>
                         </li>
                     </ul>
                 </div>
@@ -148,92 +48,22 @@
                     Отправить
                 </button>
                 <label class="form__privacy">
-                    <input type="checkbox" checked class="checkbox"/>
+                    <input type="checkbox" checked required class="checkbox"/>
                     <p>
                         Я согласен с условиями
-                        <a href="#">политики конфиденциальности</a>
+                        <a href="{{ route('site.privacy.index') }}">политики конфиденциальности</a>
                     </p>
                 </label>
             </div>
             <div class="form__right_block">
                 <h3 class="form__right_title">Формирование проекта</h3>
-                <ul class="form__right_list ">
+                <ul class="form__right_list">
                     <li class="list__item">
-                        <div class="item__remove"></div>
+                        <div class="item__remove js-cart-item-remove"></div>
                         <h5 class="list__item_title">
                             Работа с сервисными обращениями
                         </h5>
                         <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                        </div>
-                    </li>
-                    <li class="list__item">
-                        <div class="item__remove"></div>
-                        <h5 class="list__item_title">Обращение в колл-центр</h5>
-                        <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                        </div>
-                    </li>
-                    <li class="list__item">
-                        <div class="item__remove"></div>
-                        <h5 class="list__item_title">
-                            Работа с сервисными обращениями
-                        </h5>
-                        <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                        </div>
-                    </li>
-                    <li class="list__item">
-                        <div class="item__remove"></div>
-                        <h5 class="list__item_title">Обращение в колл-центр</h5>
-                        <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                        </div>
-                    </li>
-                    <li class="list__item">
-                        <div class="item__remove"></div>
-                        <h5 class="list__item_title">
-                            Работа с сервисными обращениями
-                        </h5>
-                        <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                        </div>
-                    </li>
-                    <li class="list__item">
-                        <div class="item__remove"></div>
-                        <h5 class="list__item_title">Обращение в колл-центр</h5>
-                        <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                        </div>
-                    </li>
-                    <li class="list__item">
-                        <div class="item__remove"></div>
-                        <h5 class="list__item_title">
-                            Работа с сервисными обращениями
-                        </h5>
-                        <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
-                        </div>
-                    </li>
-                    <li class="list__item">
-                        <div class="item__remove"></div>
-                        <h5 class="list__item_title">Обращение в колл-центр</h5>
-                        <div>
-                            <p class="list__item_text">Работа с сервисными обращениями</p>
-                            <p class="list__item_text">Обращение в колл-центр</p>
                             <p class="list__item_text">Работа с сервисными обращениями</p>
                             <p class="list__item_text">Обращение в колл-центр</p>
                         </div>

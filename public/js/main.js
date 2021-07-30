@@ -318,10 +318,10 @@ $(document).ready(function () {
         $(this).next(".r-items").slideToggle();
     });
 
-    $('#cart_list').on('click', function (event) {
+    $('.js-parent-cart-item-remove').on('click', function (event) {
         const obj = $(event.target);
 
-        if (!obj.hasClass('creating-project__item__remove')) {
+        if (!obj.hasClass('js-cart-item-remove')) {
             return;
         }
 
@@ -350,12 +350,11 @@ $(document).ready(function () {
                 const cart_list = document.querySelector('#cart_list');
                 cart_list.innerHTML = '';
                 data.data.forEach(item => {
-                    console.log();
-                    const div = document.createElement('div');
-                    div.className = 'creating-project__item';
-                    div.innerHTML = '<div class="creating-project__item__remove" data-id="'
+                    const child = document.createElement('div');
+                    child.className = 'creating-project__item';
+                    child.innerHTML = '<div class="creating-project__item__remove js-cart-item-remove" data-id="'
                         + item['id'] + '"></div><h5>' + item['name'] + '</h5>';
-                    cart_list.appendChild(div);
+                    cart_list.appendChild(child);
                 });
             }
         });
@@ -1425,6 +1424,27 @@ $(document).ready(function () {
     if (contactManagerBtn) {
         contactManagerBtn.addEventListener("click", (e) => {
             e.preventDefault();
+
+            $.ajax({
+                url: '/ajax/cart',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    const form_lists = document.querySelectorAll('.form__right_list');
+                    form_lists.forEach(item => item.innerHTML = '');
+                    data.data.forEach(item => {
+                        const child = document.createElement('li');
+                        child.className = 'list__item';
+
+                        child.innerHTML = '<div class="item__remove js-cart-item-remove" data-id="'
+                            + item['id'] + '"></div><h5 class="list__item_title">'
+                            + item['name'] + '</h5>';
+                        form_lists[0].appendChild(child);
+                        form_lists[1].appendChild(child);
+                    });
+                }
+            });
+
             contactManagerModalWindow.classList.add("opened");
             windowOverlay.classList.add("active-modal");
         });

@@ -40,7 +40,7 @@ class CartService
     {
         $this->items = $this->items->reject(static function (array $item) use ($id) {
             return $id === $item['id'];
-        });
+        })->values();
 
         $this->save();
 
@@ -51,7 +51,7 @@ class CartService
     {
         $this->items = $this->items->reject(static function (array $item) use ($name) {
             return $name === $item['name'];
-        });
+        })->values();
 
         $this->save();
 
