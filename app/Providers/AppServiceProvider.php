@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use App\Enums\SettingType;
 use App\Models\Setting;
+use App\Services\Cart\CartService;
+use App\Services\Cart\CartSessionRepository;
+use App\Services\Cart\ICartRepository;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -12,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        //
+        $this->app->bind(ICartRepository::class, CartSessionRepository::class);
+        $this->app->singleton(CartService::class, CartService::class);
     }
 
     public function boot()

@@ -29,73 +29,8 @@
         </div>
     </div>
     <h4 class="creating-project__title">Формирование проекта</h4>
-    <div class="creating-project__list">
-        <div class="creating-project__item">
-            <div class="creating-project__item__remove"></div>
-            <h5>
-                Работа с сервисными обращениями
-            </h5>
-        </div>
+    <div id="cart_list" class="creating-project__list">
 
-        <div class="creating-project__item">
-            <h5>
-                Oracle Responsys
-            </h5>
-            <div>
-                <div class="creating-project__subitem-wrap">
-                    <div class="creating-project__subitem__remove"></div>
-                    <p class="creating-project__item__text">
-                        Мобильное приложение
-                    </p>
-                </div>
-                <div class="creating-project__subitem-wrap">
-                    <div class="creating-project__subitem__remove"></div>
-                    <p class="creating-project__item__text">
-                        Обращение в колл-центр
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="creating-project__item">
-            <h5>
-                CRM Loyalty
-            </h5>
-            <div>
-                <div class="creating-project__subitem-wrap">
-                    <div class="creating-project__subitem__remove"></div>
-                    <p class="creating-project__item__text">
-                        Мобильное приложение
-                    </p>
-                </div>
-                <div class="creating-project__subitem-wrap">
-                    <div class="creating-project__subitem__remove"></div>
-                    <p class="creating-project__item__text">
-                        Обращение в колл-центр
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="creating-project__item">
-            <h5>
-                Обращение в колл-центр
-            </h5>
-            <div>
-                <div class="creating-project__subitem-wrap">
-                    <div class="creating-project__subitem__remove"></div>
-                    <p class="creating-project__item__text">
-                        Работа с сервисными обращениями
-                    </p>
-                </div>
-                <div class="creating-project__subitem-wrap">
-                    <div class="creating-project__subitem__remove"></div>
-                    <p class="creating-project__item__text">
-                        Обращение в колл-центр
-                    </p>
-                </div>
-            </div>
-        </div>
     </div>
     <a href="#" class="btn">
         <img src="/img/pdf.png" alt=""/> ВЫГРУЗИТЬ PDF</a

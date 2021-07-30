@@ -319,6 +319,24 @@ $(document).ready(function () {
     });
 
     $(".creating-project-open").on("click", function () {
+
+        $.ajax({
+            url: '/ajax/cart',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                const cart_list = document.querySelector('#cart_list');
+                cart_list.innerHTML = '';
+                data.data.forEach(item => {
+                    console.log();
+                    const div = document.createElement('div');
+                    div.className = 'creating-project__item';
+                    div.innerHTML = '<div class="creating-project__item__remove"></div><h5>' + item['name'] + '</h5>';
+                    cart_list.appendChild(div);
+                });
+            }
+        });
+
         $(".creating-project").toggleClass("active");
         $(this).toggleClass("active");
     });

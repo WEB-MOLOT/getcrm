@@ -50,7 +50,6 @@
         }
 
         let functionalitiesEmpty = document.querySelector('.js-functionalities-empty');
-        let functionalities = document.querySelectorAll('.js-functionalities-block');
 
         // показ списка функциональности при наведение на решение
         let showFunctionalities = function (event) {
@@ -61,10 +60,13 @@
             }
 
             functionalitiesEmpty.classList.remove('selected');
-            functionalities.forEach(ell => ell.classList.remove('selected'));
+            let currentBlock = document.querySelector('.js-functionalities-block.selected');
+            if (currentBlock) {
+                currentBlock.classList.remove('selected');
+            }
 
-            let functionality = document.querySelector('.js-functionalities' + id);
-            functionality.classList.add('selected')
+            let newBlock = document.querySelector('.js-functionalities' + id);
+            newBlock.classList.add('selected');
         };
 
         // скрытие списка функциональности когда когда курсор покидает блок
@@ -79,26 +81,38 @@
             functionality.classList.remove('selected')
         };
 
-        window.addEventListener('test', event => {
+        let solutionCheckboxChanged = function (event) {
+            let id = event.target.getAttribute('data-id');
+            let checked = event.target.checked;
+
+            Livewire.emit('cartUpdate', id, checked);
+
+            console.log(id, checked);
+        };
+
+        window.addEventListener('update-solutions', event => {
             console.log(event.detail);
 
             // Переключение между инф. текстом и списком решений
-            let has_solutions = event.detail.has_solutions;
-            let solutionsEmpty = document.querySelector('.js-stepper-solutions-empty');
-            let solutions = document.querySelector('.js-stepper-solutions');
+            const has_solutions = event.detail.has_solutions;
+            const solutionsEmpty = document.querySelector('.js-stepper-solutions-empty');
+            const solutions = document.querySelector('.js-stepper-solutions');
             solutions.classList.toggle('selected', has_solutions);
             solutionsEmpty.classList.toggle('selected', !has_solutions);
 
             // Вывод решений
             if (has_solutions) {
-                let solutions = event.detail.picked_solutions;
-                let solution_list_container = document.querySelector('.js-stepper-solutions-list');
+                const solutions = event.detail.picked_solutions;
+                const solution_list_container = document.querySelector('.js-stepper-solutions-list');
 
                 // сброс старых слушателей
-                const divs = document.querySelectorAll('.js-xxx-mouseover');
-                divs.forEach(el => {
+                document.querySelectorAll('.js-solution-li').forEach(el => {
                     el.removeEventListener('mouseenter', showFunctionalities);
                     el.removeEventListener('mouseleave', hideFunctionalities);
+                });
+
+                solution_list_container.querySelectorAll('input').forEach(el => {
+                    el.removeEventListener('change', solutionCheckboxChanged);
                 });
 
                 // очистка старого списка
@@ -107,27 +121,28 @@
                 // генерация нового списка
                 for (let key in solutions) {
                     if (Object.prototype.hasOwnProperty.call(solutions, key)) {
-                        let obj = solutions[key];
+                        const obj = solutions[key];
 
-                        let li = document.createElement('li');
-                        li.className = 'checked checkbox__wrapper js-xxx-mouseover';
-                        li.dataset.id = obj.solution_id;
-                        li.innerHTML = '<label><input type="checkbox" class="js-xxx" data-id="' + obj.solution_id + '" value=""/><span>' + obj.title + '</span></label>';
+                        const li = document.createElement('li');
+                        const checked = event.detail.cartKeys.includes(obj.id) ? 'checked' : '';
+                        li.className = 'checked checkbox__wrapper js-solution-li';
+                        li.dataset.id = obj.id;
+                        li.innerHTML = '<label><input type="checkbox" class="js-solution-checkbox" data-id="'
+                            + obj.id + '" ' + checked + '/><span>' + obj.name + '</span></label>';
+                        li.addEventListener('mouseenter', showFunctionalities);
+                        li.addEventListener('mouseleave', hideFunctionalities);
                         solution_list_container.appendChild(li);
                     }
                 }
-            }
 
-            // вешаем новые слушатели для отображения списка функциональности
-            const divs = document.querySelectorAll('.js-xxx-mouseover');
-            divs.forEach(el => {
-                el.addEventListener('mouseenter', showFunctionalities);
-                el.addEventListener('mouseleave', hideFunctionalities);
-            });
+                solution_list_container.querySelectorAll('input').forEach(el => {
+                    el.addEventListener('change', solutionCheckboxChanged);
+                });
+            }
         })
 
-        Livewire.on('reinit', (filter_id, value_name, value_index) => {
-            console.log('reinit', filter_id, value_name, value_index);
+        Livewire.on('reinit', (filter_id, value_index) => {
+            console.log('reinit', filter_id, value_index);
 
             block_change_event = true;
             s.forEach(function (item, i) {
@@ -136,7 +151,6 @@
                     : s[i].slider('value');
                 s[i].slider('value', index);
             });
-
             block_change_event = false;
         })
 

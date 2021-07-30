@@ -82,11 +82,10 @@
                         </div>
                     </div>
                     <div class="aib_inside">
-                        @foreach($rawSolutions as $solution)
+                        @foreach($solutions as $solution)
                             <div
                                 class="aib_inside_content_functional d_flex j_content_between f_wrap js-functionalities-block js-functionalities{{ $solution->id }}"
-                                data-result="{{ $solution->id }}"
-                            >
+                                data-result="{{ $solution->id }}">
                                 <ol>
                                     @foreach($solution->functionalities as $item)
                                         <li>{{ $item->name }}</li>

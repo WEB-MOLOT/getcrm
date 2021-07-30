@@ -3,12 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Dictionaries\Filter;
-use App\Models\Solution;
+use App\Models\Dictionaries\Solution;
+use App\Services\Cart\CartService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
+use JetBrains\PhpStorm\NoReturn;
 use Livewire\Component;
 
 class Stepper extends Component
@@ -17,24 +18,33 @@ class Stepper extends Component
 
     public Collection $pickedValues;
 
-    public Collection $rawSolutions;
-
     public bool $hasSolution = false;
 
-
-    protected Collection $solutions;
+    public Collection $solutions;
 
     protected Collection $solutionsFilters;
 
-    protected Collection $functionalities;
-
     protected Collection $pickedSolutions;
 
-    protected Collection $pickedFunctionalities;
+    protected CartService $cart;
 
     protected $listeners = [
         'sliderChanged' => 'toggleFilterValue',
+        'cartUpdate' => 'updateCart',
     ];
+
+    /**
+     * Stepper constructor.
+     * @param $id
+     */
+    #[NoReturn]
+    public function __construct($id)
+    {
+        $this->cart = app(CartService::class);
+
+        parent::__construct($id);
+    }
+
 
     public function mount()
     {
@@ -42,12 +52,26 @@ class Stepper extends Component
 
         $this->pickedValues = collect();
 
-        $this->rawSolutions = \App\Models\Dictionaries\Solution::with('filters')->get();
+        $this->solutions = Solution::with('filters')->get();
     }
 
     public function render(): Factory|View|Application
     {
         return view('livewire.stepper');
+    }
+
+    public function updateCart(int $id, bool $checked)
+    {
+        if ($checked) {
+            $name = $this->solutions->first(static function (Solution $solution) use ($id) {
+                return $solution->id === $id;
+            })->name;
+            $this->cart->add($id, $name);
+        } else {
+            $this->cart->removeById($id);
+        }
+
+        $this->xxx();
     }
 
     public function toggleFilterValue(int $filterId, string $valueName, int $valueIndex): void
@@ -59,17 +83,18 @@ class Stepper extends Component
 
         $this->setPickedValue($filterId, $value);
 
-        Log::debug($this->pickedValues->toJson());
+        $this->xxx($filterId, $valueIndex);
+    }
 
-        $this->init();
-
+    protected function xxx($filterId = null, $valueIndex = null)
+    {
         $this->setSolutionsFilters();
 
         $this->setPickedSolutions();
 
-        $this->emit('reinit', $filterId, $valueName, $valueIndex);
+        $this->emit('reinit', $filterId, $valueIndex);
 
-        $this->dispatchBrowserEvent('test', $this->getEventObject());
+        $this->dispatchBrowserEvent('update-solutions', $this->getEventObject());
     }
 
     protected function setPickedValue($filterId, $value): void
@@ -88,15 +113,6 @@ class Stepper extends Component
         return str_replace(' ', '', $this->pickedValues->sortKeys()->toJson());
     }
 
-    protected function init(): void
-    {
-        $this->solutions = Solution::query()->get();
-
-        $this->pickedSolutions = $this->solutions;
-
-        $this->functionalities = collect();
-    }
-
     protected function setPickedSolutions(): void
     {
         $picked = $this->getPickedValuesAsString();
@@ -110,7 +126,7 @@ class Stepper extends Component
                 }
             }
             return false;
-        })->unique('solution_id');
+        })->unique('id');
 
         $this->hasSolution = $this->pickedSolutions->isNotEmpty();
     }
@@ -136,7 +152,7 @@ class Stepper extends Component
     protected function setSolutionsFilters(): void
     {
         $this->solutionsFilters = $this->solutions->keyBy('id')->map(static function (Solution $solution) {
-            return $solution->solution->filters->pluck('params_as_string')->toArray();
+            return $solution->filters->pluck('params_as_string')->toArray();
         });
     }
 
@@ -147,6 +163,8 @@ class Stepper extends Component
             'picked_solutions' => $this->pickedSolutions,
             'filters' => $this->solutionsFilters,
             'picked_values' => $this->getPickedValuesAsString(),
+            'cart' => $this->cart->getItems(),
+            'cartKeys' => $this->cart->getItems()->pluck('id')->toArray(),
         ];
     }
 }
