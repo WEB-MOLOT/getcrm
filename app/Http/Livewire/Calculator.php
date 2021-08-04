@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Dictionaries\License;
 use App\Models\Dictionaries\Platform;
 use App\Models\Dictionaries\Service as DictionaryService;
 use App\Models\Service;
@@ -29,6 +30,8 @@ class Calculator extends Component
 
     public Collection $pickServices;
 
+    public Collection $licenses;
+
     public bool $hasCalculation = false;
 
     public string $productQuery = '';
@@ -55,9 +58,56 @@ class Calculator extends Component
         $this->reloadForms();
     }
 
+    public function updated($field)
+    {
+        Log::debug('updated', [
+            'field' => $field,
+        ]);
+
+        $this->reloadForms();
+    }
+
+    public function toggleProduct($id)
+    {
+        $this->pickProducts->has($id)
+            ? $this->pickProducts->forget($id)
+            : $this->pickProducts->put($id, $id);
+
+        $this->reloadForms();
+    }
+
+    public function togglePlatform($id)
+    {
+        $this->pickPlatforms->has($id)
+            ? $this->pickPlatforms->forget($id)
+            : $this->pickPlatforms->put($id, $id);
+
+        $this->reloadForms();
+    }
+
+    public function toggleServices($id)
+    {
+        $this->pickServices->has($id)
+            ? $this->pickServices->forget($id)
+            : $this->pickServices->put($id, $id);
+
+        $this->reloadForms();
+    }
+
+    public function render(): Factory|View|Application
+    {
+        Log::debug('pickProducts', $this->pickProducts->toArray());
+        Log::debug('pickPlatforms', $this->pickPlatforms->toArray());
+        Log::debug('pickServices', $this->pickServices->toArray());
+
+        return view('livewire.calculator');
+    }
+
     protected function reloadForms(): void
     {
         Log::debug('reloadForms');
+
+        $this->licenses = License::all();
 
         $solutionQuery = Solution::query();
         if ($this->productQuery) {
@@ -110,53 +160,11 @@ class Calculator extends Component
                 'id' => (int)$item->id,
                 'c1' => false,
                 'c2' => $this->pickServices->has((int)$item->id),
+                'licences' => $item->licences,
             ];
         });
 
-    }
+        $this->hasCalculation = $this->pickServices->isNotEmpty();
 
-    public function updated($field)
-    {
-        Log::debug('updated', [
-            'field' => $field,
-        ]);
-
-        $this->reloadForms();
-    }
-
-    public function toggleProduct($id)
-    {
-        $this->pickProducts->has($id)
-            ? $this->pickProducts->forget($id)
-            : $this->pickProducts->put($id, $id);
-
-        $this->reloadForms();
-    }
-
-    public function togglePlatform($id)
-    {
-        $this->pickPlatforms->has($id)
-            ? $this->pickPlatforms->forget($id)
-            : $this->pickPlatforms->put($id, $id);
-
-        $this->reloadForms();
-    }
-
-    public function toggleServices($id)
-    {
-        $this->pickServices->has($id)
-            ? $this->pickServices->forget($id)
-            : $this->pickServices->put($id, $id);
-
-        $this->reloadForms();
-    }
-
-    public function render(): Factory|View|Application
-    {
-        Log::debug('pickProducts', $this->pickProducts->toArray());
-        Log::debug('pickPlatforms', $this->pickPlatforms->toArray());
-        Log::debug('pickServices', $this->pickServices->toArray());
-
-        return view('livewire.calculator');
     }
 }

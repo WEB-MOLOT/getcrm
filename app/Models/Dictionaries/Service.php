@@ -5,6 +5,7 @@ namespace App\Models\Dictionaries;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Service extends Model
@@ -29,5 +30,8 @@ class Service extends Model
         return $this->belongsToMany(Platform::class);
     }
 
-
+    public function licences(): HasMany
+    {
+        return $this->hasMany(License::class);
+    }
 }

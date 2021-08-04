@@ -84,7 +84,7 @@
     </div>
 
     @if($hasCalculation)
-        <div class="flex">
+        <div class="flex" style="display: none;">
             <div class="pre-table">
                 <span class="pre-table__title">Спецификация</span>
                 <select>
@@ -119,191 +119,43 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="no_b">
-                            <td colspan="2">
-                                Oracle Responsys
-                                <a class="delete"><span>Удалить платформу</span></a>
-                            </td>
-                            <td colspan="6"></td>
-                            <td>49%</td>
-                            <td>59 670</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><span>Responsys Interaction Cloud Service</span></td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr class="no_b2">
-                            <td>Responsys Interaction Cloud Service</td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr class="no_b">
-                            <td colspan="2">
-                                Oracle Responsys
-                                <a class="delete"><span>Удалить платформу</span></a>
-                            </td>
-                            <td colspan="6"></td>
-                            <td>49%</td>
-                            <td>59 670</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Responsys Interaction Cloud Service</td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Responsys Interaction Cloud Service</td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Responsys Interaction Cloud Service</td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Responsys Interaction Cloud Service</td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Responsys Interaction Cloud Service</td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr class="no_b2">
-                            <td>Responsys Interaction Cloud Service</td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
-                        <tr class="no_b">
-                            <td colspan="2">
-                                Oracle Responsys
-                                <a class="delete"><span>Удалить платформу</span></a>
-                            </td>
-                            <td colspan="6"></td>
-                            <td>49%</td>
-                            <td>59 670</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="no_b2 bg">
-                            <td>
-                                Responsys Interaction Cloud Service
-                                <div class="small-text">
-                                    Рекомендовано к приобритению
-                                </div>
-                            </td>
-                            <td>3</td>
-                            <td>1000 <br/>коммуниаций</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td><input type="text" value="35000"/></td>
-                            <td><input type="text" value="1"/></td>
-                            <td>105 000</td>
-                            <td>49%</td>
-                            <td>53 550</td>
-                            <td>N/A</td>
-                            <td>
-                                <a class="delete"><span>Удалить сервис</span></a>
-                            </td>
-                        </tr>
+                        @foreach($platforms as $platform)
+                            @if (! $pickPlatforms->has($platform['id']))
+                                @continue
+                            @endif
+                            <tr class="no_b">
+                                <td colspan="2">
+                                    {{ $platform['name'] }}
+                                    <a class="delete" wire:click="togglePlatform({{ $platform['id'] }})"><span>Удалить платформу</span></a>
+                                </td>
+                                <td colspan="6"></td>
+                                <td>0%</td>
+                                <td>0</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            @foreach($licenses->random(random_int(1, 3)) as $license)
+                                <tr class="no_b2">
+                                    <td>{{ $license->name }}</td>
+                                    <td>{{ $license->price }}</td>
+                                    <td>{{ $license->metric_value }}<br/>{{ $license->metric }}</td>
+                                    <td>{{ $license->metric_period }}</td>
+                                    <td>{{ $license->price }}</td>
+                                    <td><input type="text" value="10"/></td>
+                                    <td><input type="text" value="1"/></td>
+                                    <td>--</td>
+                                    <td>0%</td>
+                                    <td>0</td>
+                                    <td>{{ $license->support ?: 'N/A' }}</td>
+                                    <td>
+                                        <a class="delete" wire:click="toggleServices({{ $license->id }})"><span>Удалить сервис</span></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endforeach
                         </tbody>
                     </table>
-                    <table data-table="2">
+                    <table style="display: none;" data-table="2">
                         <thead id="thead2">
                         <tr>
                             <td>Наименование</td>
@@ -443,7 +295,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <table data-table="3">
+                    <table style="display: none;" data-table="3">
                         <thead id="thead2">
                         <tr>
                             <td>Наименование</td>
@@ -584,7 +436,7 @@
                         </tbody>
                     </table>
                 </div>
-                <nav class="menu">
+                <nav class="menu" style="display: none;">
                     <a class="active" data-table="1"
                     >Базовый вариант <span>806 000 $</span></a
                     >
@@ -593,12 +445,12 @@
                     <a class="menu__add">+</a>
                 </nav>
             </div>
-            <div class="flex">
+            <div class="flex" style="display: none;">
                 <button class="save-button"><span></span> Сохранить</button>
             </div>
         </div>
-        <p class="table2__title">Покупайте больше - платите меньше</p>
-        <div class="table2">
+        <p class="table2__title" style="display: none;">Покупайте больше - платите меньше</p>
+        <div class="table2" style="display: none;">
             <table>
                 <thead>
                 <tr>
@@ -651,7 +503,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="flex">
+        <div class="flex" style="display: none;">
             <div class="base-block">
                 <p>Базовый вариант</p>
                 <table>
@@ -700,7 +552,7 @@
                 <p>3. Цены указаны без НДС</p>
             </div>
         </div>
-        <div class="buttons">
+        <div class="buttons" style="display: none;">
             <button class="modal-download-prices__btn">
                 <img src="img/btn1.svg"/>Выгрузить
             </button>

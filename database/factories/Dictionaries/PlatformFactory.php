@@ -17,7 +17,7 @@ class PlatformFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence,
+            'name' => ucwords($this->faker->unique()->words(2, true)),
             'description' => $this->faker->sentences(3, true),
         ];
     }
