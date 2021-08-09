@@ -33,7 +33,7 @@
     <script src="/js/jquery.maskedinput.min.js"></script>
     <script>
         $(function () {
-            $("#phone").mask("+7(999) 999-9999");
+            $("#phone").mask("{{ config('app.phone_mask') }}");
         });
     </script>
     <script>

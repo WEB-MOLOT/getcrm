@@ -441,7 +441,7 @@ $(document).ready(function () {
         }
     );
 
-    $(".field.phones input[type='text'").mask("+7(999) 999-9999");
+    $(".field.phones input[type='text']").mask(phone_mask);
 
     $(".cabinet-page .profile .block .field.mail2 .add").click(function () {
         $(".cabinet-page .profile .block .field.mail2 .field__input-wrap:first")
@@ -465,7 +465,7 @@ $(document).ready(function () {
             .appendTo(".cabinet-page .profile .block .field.phones")
             .find("input")
             .val("")
-            .mask("+7(999) 999-9999");
+            .mask(phone_mask);
     });
 
     $(document).on(
@@ -1887,7 +1887,7 @@ $(document).ready(function () {
             });
     }
     //Маска для номера телефона
-    $("input[type=tel]").mask("+9(999) 999-99-99", {
+    $("input[type=tel]").mask(phone_mask, {
         translation: {
             9: {
                 pattern: /[0-9]/,

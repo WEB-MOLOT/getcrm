@@ -82,6 +82,9 @@
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script>
+        const phone_mask = '{{ config('app.phone_mask') }}';
+    </script>
     {!! config('site.code.head') !!}
     @livewireStyles
 </head>
